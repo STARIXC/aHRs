@@ -221,32 +221,13 @@
                                                     <th>Termination Type</th>
                                                     <th>Notice Date</th>
                                                     <th>Termination Date</th>
-                                                    <th>Status</th>
+<!--                                                    <th>Status</th>-->
                                                     <th style="text-align: center;">Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="termination_data">
 
 
-                                                <tr class="8">
-                                                    <td style="width: 100px;">2</td>
-                                                    <td> Fatima Carson </td>
-                                                    <td>1245</td>
-                                                    <td>13/04/2022</td>
-                                                    <td>06/05/2022</td>
-                                                    <td>
-                                                        <span class="label label-info">Pending</span>
-                                                    </td>
-                                                    <td style="width: 100px;">
-                                                        <a  title="View Details" href="http://hrms.braintricker.com/termination/8" class="btn btn-primary btn-xs btnColor">
-                                                            <i class="glyphicon glyphicon-th-large" aria-hidden="true"></i>
-                                                        </a>
-                                                        <a href="http://hrms.braintricker.com/termination/8/edit"  class="btn btn-success btn-xs btnColor">
-                                                            <i class="fa fa-edit-square-o" aria-hidden="true"></i>
-                                                        </a>
-                                                        <a href="http://hrms.braintricker.com/termination/8/delete" data-token="VaYD9VqbyVCwLglfpOe4kkUQweEVF6rWHgGvMO9j" data-id="8" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class=" mdi mdi-trash-can-outline" aria-hidden="true"></i></a>
-                                                    </td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>

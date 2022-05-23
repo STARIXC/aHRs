@@ -1493,3 +1493,71 @@ footer{
     width: 100%;
   }
 }
+.white-box {
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+.analytics-info .list-inline {
+    margin-bottom: 0;
+}
+.analytics-info .list-inline li {
+    vertical-align: middle;
+}
+
+.two-part li {
+    width: 48.8%;
+}
+.analytics-info .list-inline li i {
+    font-size: 20px;
+}
+
+.two-part li i {
+    font-size: 50px;
+}
+.analytics-info .list-inline li span {
+    font-size: 24px;
+}
+
+.two-part li span {
+    font-size: 50px;
+    font-weight: 100;
+    font-family: Rubik,sans-serif;
+}
+panel .panel-heading {
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 25px;
+}
+
+.panel-blue .panel-heading, .panel-info .panel-heading {
+    border-color: #41b3f9;
+    color: #fff;
+    background-color: #41b3f9;
+}
+.panel .panel-heading {
+    border-radius: 0;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 20px 25px;
+}
+
+.panel .panel-body {
+    padding: 25px;
+}
+.table-responsive {
+    overflow-y: hidden;
+}
+.table.dataTable, table.dataTable {
+    width: 99.8%!important;
+}
+.table-bordered {
+    border: 1px solid #e4e7ea;
+}
+.table-bordered, .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    border-top: 1px solid #e4e7ea;
+}
+.table {
+    margin-bottom: 10px;
+}

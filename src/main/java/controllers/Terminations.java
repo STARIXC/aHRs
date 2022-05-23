@@ -4,6 +4,8 @@
  */
 package controllers;
 
+import Utils.JSONConverter;
+import Utils.TerminationDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,32 +19,41 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Terminations extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+      PrintWriter out;
+    int status, execute_activity = 0;
+    private TerminationDAO dao;
+    //  Gson gson = new Gson();
+    String result, nextPage;
+    private JSONConverter json;
+      public Terminations() {
+          dao = new TerminationDAO();
+    }
+
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Terminations</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Terminations at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+          out = response.getWriter();
+        // setting the response type
+        response.setContentType("application/json");
+        String action = request.getParameter("action");
+        String emp_no = request.getParameter("emp_no");
+
+        if (action.equalsIgnoreCase("view")) {
+            String termination = json.convert(dao.getTerminationModelById(emp_no));
+            out.println(termination);
+        } 
+//        else if (action.equalsIgnoreCase("notapproved")) {
+//            String leaves = json.convert(dao.getAllrejected());
+//            out.println(leaves);
+//        }
+        else {
+            String termination = json.convert(dao.getAllTerminationModels());
+            out.println(termination);
+            System.out.println(termination);
         }
     }
 
+  
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

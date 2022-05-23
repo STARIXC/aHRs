@@ -33,7 +33,7 @@ jQuery(document).ready(function () {
             dataType: "json",
             dataSrc: "",
             "data": function (d) {
-                $("#employee-table-data").html(d);
+                $("#termination_data").html(d);
             }
         },
         "columns": [
@@ -44,14 +44,10 @@ jQuery(document).ready(function () {
                 }
             },
             {
-                "data": "surname"
+                "data": "full_name"
             },
             
-            {
-                "data": null,
-                render: function (data, type, row) {
-                    return  row.first_name + ' ' + row.other_name;
-                }},
+            
             {
                 "data": "emp_no"
             },

@@ -1,23 +1,29 @@
 
-
-function getNoStaff() {
+jQuery(document).ready(function () {
+function getData() {
     $.ajax({
+        type: 'GET',
         url: './Dashboard?action=staff',
-        type: 'post',
         dataType: 'html',
-        success: function (data) {
+        success: function (pdata) {
 
-            $("#employees").html(data);
-            //pataStandard();
+            var container = $('#counter_emp');
 
+            container.html(
+                    pdata
+                    );
+        },
+        error: function () {
+            // richiesta fallita
+            alert("ERROR!");
         }
-
     });
 }
-;
-function getTotalleave() {
+getData();
+getTotalOnLeave();
+function getTotalOnLeave() {
     $.ajax({
-        url: './Dashboard?action=leave',
+        url: './Dashboard?action=onleave',
         type: 'post',
         dataType: 'html',
         success: function (data) {
@@ -75,3 +81,4 @@ function getRejectedLeaves() {
     });
 }
 ;
+});
