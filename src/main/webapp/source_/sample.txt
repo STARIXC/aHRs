@@ -1,0 +1,203 @@
+ <div class="card box">
+                                                <div class="card-header">
+                                                    <div class="headingOftabel">
+                                                        <h4>Employee <span>Documents</span></h4>
+                                                    </div>
+                                                </div>
+                                                <div class="card-content">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-sm-6 co-xs-12">
+                                                            <div class="form-group efirst">
+                                                                <label class="col-md-12 control-label">
+                                                                    Resume
+                                                                </label>
+                                                                <div class="col-md-12">
+                                                                    <div id="divUploadResume" class="divUploadResume"
+                                                                        style="display: block">
+                                                                        <input type="file" name="fuResume"
+                                                                            id="fuResume" />
+                                                                    </div>
+                                                                    <span id="RVfuResume" class="text-red"
+                                                                        style="display: none">Only .pdf, .doc, .docx,
+                                                                        .jpg, .png,
+                                                                        .jpeg files are allowed!</span>
+
+                                                                    <div id="divViewResume" class="divViewResume"
+                                                                        style="display: none">
+                                                                        <input type="hidden" name="hfResume"
+                                                                            id="hfResume" />
+                                                                        <a id="btnViewResume" class="btn btn-sm"
+                                                                            target="_blank"><i
+                                                                                class="fa fa-download"></i>&nbsp;Download</a>
+                                                                        <a href="javascript:;" class="btn btn-sm"
+                                                                            onclick="EmployeeSave.ShowHideDocument('.divViewResume','.divUploadResume');"><i
+                                                                                class="fa fa-trash"
+                                                                                title="Click to delete resume."></i>&nbsp;Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 co-xs-12">
+                                                            <div class="form-group">
+                                                                <label class="col-md-12 control-label">
+                                                                    Offer Letter
+                                                                </label>
+                                                                <div class="col-md-12">
+                                                                    <div id="divUploadOfferLetter"
+                                                                        class="divUploadOfferLetter"
+                                                                        style="display: block">
+                                                                        <input type="file" name="fuOfferLetter"
+                                                                            id="fuOfferLetter" />
+                                                                        <span id="RfuOfferLetter" class="text-red"
+                                                                            style="display: none">Only .pdf, .doc,
+                                                                            .docx, .jpg, .png,
+                                                                            .jpeg files are allowed!</span>
+                                                                    </div>
+                                                                    <div id="divViewOfferLetter"
+                                                                        class="divViewOfferLetter"
+                                                                        style="display: none">
+                                                                        <input type="hidden" name="hfOfferLetter"
+                                                                            id="hfOfferLetter" />
+                                                                        <a id="btnViewOfferLetter" class="btn btn-sm"
+                                                                            target="_blank"><i
+                                                                                class="fa fa-download"></i>&nbsp;Download</a>
+                                                                        <a href="javascript:;" class="btn btn-sm"
+                                                                            onclick=""><i class="fa fa-trash"
+                                                                                title="Click to delete offer letter."></i>&nbsp;Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-sm-6 co-xs-12">
+                                                            <div class="form-group">
+                                                                <label class="col-md-12 control-label">
+                                                                    Joining Letter
+                                                                </label>
+                                                                <div class="col-md-12">
+                                                                    <div id="divUploadJoiningLetter"
+                                                                        class="divUploadJoiningLetter"
+                                                                        style="display: block">
+                                                                        <input type="file" name="fuJoiningLetter"
+                                                                            id="fuJoiningLetter" />
+                                                                        <span id="RfuJoiningLetter1" class="text-red"
+                                                                            style="display: none">Only .pdf, .doc,
+                                                                            .docx, .jpg, .png,
+                                                                            .jpeg files are allowed!</span>
+                                                                    </div>
+                                                                    <div id="divViewJoiningLetter"
+                                                                        class="divViewJoiningLetter"
+                                                                        style="display: none">
+                                                                        <input type="hidden" name="hfJoiningLetter"
+                                                                            id="hfJoiningLetter" />
+                                                                        <a id="btnViewJoiningLetter" class="btn btn-sm"
+                                                                            target="_blank"><i
+                                                                                class="fa fa-download"></i>&nbsp;Download</a>
+                                                                        <a href="javascript:;" class="btn btn-sm"
+                                                                            onclick="EmployeeSave.ShowHideDocument('.divViewJoiningLetter','.divUploadJoiningLetter');"><i
+                                                                                class="fa fa-trash"
+                                                                                title="Click to delete joining letter."></i>&nbsp;Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 co-xs-12">
+                                                            <div class="form-group">
+                                                                <label class="col-md-12 control-label">
+                                                                    Contract Paper
+                                                                </label>
+                                                                <div class="col-md-12">
+                                                                    <div id="divUploadContractPaper"
+                                                                        class="divUploadContractPaper"
+                                                                        style="display: block">
+                                                                        <input type="file" name="fuContractPaper"
+                                                                            id="fuContractPaper" />
+                                                                        <span id="RfuContractPaper" class="text-red"
+                                                                            style="display: none">Only .pdf, .doc,
+                                                                            .docx, .jpg, .png,
+                                                                            .jpeg files are allowed!</span>
+                                                                    </div>
+                                                                    <div id="divViewContractPaper"
+                                                                        class="divViewContractPaper"
+                                                                        style="display: none">
+                                                                        <input type="hidden" name="hfContractPaper"
+                                                                            id="hfContractPaper" />
+                                                                        <a id="btnViewContractPaper" class="btn btn-sm"
+                                                                            target="_blank"><i
+                                                                                class="fa fa-download"></i>&nbsp;Download</a>
+                                                                        <a href="javascript:;" class="btn btn-sm"
+                                                                            onclick="EmployeeSave.ShowHideDocument('.divViewContractPaper','.divUploadContractPaper');"><i
+                                                                                class="fa fa-trash"
+                                                                                title="Click to delete contract paper."></i>&nbsp;Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-sm-6 co-xs-12">
+                                                            <div class="form-group">
+                                                                <label class="col-md-12 control-label">
+                                                                    ID Proff
+                                                                </label>
+                                                                <div class="col-md-12">
+                                                                    <div id="divUploadIDProff" class="divUploadIDProff"
+                                                                        style="display: block">
+                                                                        <input type="file" name="fuIDProff"
+                                                                            id="fuIDProff" />
+                                                                        <span id="RfuIDProff" class="text-red"
+                                                                            style="display: none">Only .pdf, .doc,
+                                                                            .docx, .jpg, .png,
+                                                                            .jpeg files are allowed!</span>
+                                                                    </div>
+                                                                    <div id="divViewIDProff" class="divViewIDProff"
+                                                                        style="display: none">
+                                                                        <input type="hidden" name="hfIDProff"
+                                                                            id="hfIDProff" />
+                                                                        <a id="btnViewIDProff" class="btn btn-sm"
+                                                                            target="_blank"><i
+                                                                                class="fa fa-download"></i>&nbsp;Download</a>
+                                                                        <a href="javascript:;" class="btn btn-sm"
+                                                                            onclick="EmployeeSave.ShowHideDocument('.divViewIDProff','.divUploadIDProff');"><i
+                                                                                class="fa fa-trash"
+                                                                                title="Click to delete id proff."></i>&nbsp;Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 co-xs-12">
+                                                            <div class="form-group">
+                                                                <label class="col-md-12 control-label">
+                                                                    Other Document
+                                                                </label>
+                                                                <div class="col-md-12">
+                                                                    <div id="divUploadOtherDocument"
+                                                                        class="divUploadOtherDocument"
+                                                                        style="display: block">
+                                                                        <input type="file" name="fuOtherDocument"
+                                                                            id="fuOtherDocument" />
+                                                                        <span id="RfuOtherDocument" class="text-red"
+                                                                            style="display: none">Only .pdf, .doc,
+                                                                            .docx, .jpg, .png,
+                                                                            .jpeg files are allowed!</span>
+                                                                    </div>
+                                                                    <div id="divViewOtherDocument"
+                                                                        class="divViewOtherDocument"
+                                                                        style="display: none">
+                                                                        <input type="hidden" name="hfOtherDocument"
+                                                                            id="hfOtherDocument" />
+                                                                        <a id="btnViewOtherDocument" class="btn btn-sm"
+                                                                            target="_blank"><i
+                                                                                class="fa fa-download"></i>&nbsp;Download</a>
+                                                                        <a href="javascript:;" class="btn btn-sm"
+                                                                            onclick="EmployeeSave.ShowHideDocument('.divViewOtherDocument','.divUploadOtherDocument');"><i
+                                                                                class="fa fa-trash"
+                                                                                title="Click to delete other document."></i>&nbsp;Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
