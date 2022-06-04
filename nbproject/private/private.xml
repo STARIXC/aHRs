@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/Coding_Projects/UTJ_P/aHRIM/src/main/java/models/Holiday.java</file>
+            <file>file:/E:/Coding_Projects/UTJ_P/aHRIM/src/main/java/Utils/HolidayDao.java</file>
+            <file>file:/E:/Coding_Projects/UTJ_P/aHRIM/src/main/java/controllers/ManageHolidays.java</file>
+            <file>file:/E:/Coding_Projects/UTJ_P/aHRIM/src/main/webapp/manage_holidays.jsp</file>
+            <file>file:/E:/Coding_Projects/UTJ_P/aHRIM/src/main/webapp/assets/js/pages/holiday.js</file>
+            <file>file:/E:/Coding_Projects/UTJ_P/aHRIM/src/main/webapp/add_holidays.jsp</file>
+        </group>
     </open-files>
 </project-private>

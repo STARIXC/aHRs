@@ -8,6 +8,15 @@ public class Holiday {
 	private Date start_date;
 	private Date end_date ;
 	private String no_of_days;
+        private String comment;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
 
 	public int getId() {
@@ -59,12 +68,13 @@ public class Holiday {
 		this.no_of_days = no_of_days;
 	}
 
+    @Override
+    public String toString() {
+        return "Holiday{" + "id=" + id + ", holiday_name=" + holiday_name + ", start_date=" + start_date + ", end_date=" + end_date + ", no_of_days=" + no_of_days + ", comment=" + comment + '}';
+    }
 
-	@Override
-	public String toString() {
-		return "Holiday [id=" + id + ", holiday_name=" + holiday_name + ", start_date=" + start_date + ", end_date="
-				+ end_date + ", no_of_days=" + no_of_days + "]";
-	}
+
+
 	
 	
 }

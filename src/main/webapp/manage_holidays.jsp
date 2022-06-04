@@ -14,7 +14,7 @@
         <title>Holidays</title>
 
         <link rel="stylesheet" href="assets/css/bootstrap.css">
-
+        <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
         <script defer src="assets/fontawesome/js/all.min.js"></script>
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
@@ -24,7 +24,7 @@
                 background-color: rgba(0,0,0,0.1);
             }
         </style>
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        
     </head>
     <body>
         <div id="app">
@@ -205,7 +205,7 @@
                                         <div class="card-body panel-body">
                                             <div class="table-responsive">
                                                 <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
-                                                    <table id="myTable" class="table table-bordered  no-footer" >
+                                                    <table id="myTable" class="table table-bordered  no-footer mt-3" >
                                                         <thead class="tr_header">
                                                             <tr role="row">
                                                                 <th >S/L</th>
@@ -233,93 +233,9 @@
                                                                 <td>adfads</td>
                                                                 <td style="width: 100px;">
                                                                     <a href="http://hrms.braintricker.com/publicHoliday/8/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                                        <i class="fa fa-pencil-square-o" ></i>
                                                                     </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/8/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="8" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="7               even" role="row">
-                                                                <td style="width: 100px;">2</td>
-                                                                <td>eyghrfthu</td>
-                                                                <td>20/04/2022</td>
-                                                                <td>29/04/2022</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/7/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/7/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="7" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="6               odd" role="row">
-                                                                <td style="width: 100px;">3</td>
-                                                                <td>republic day</td>
-                                                                <td>26/02/2022</td>
-                                                                <td>26/02/2022</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/6/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/6/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="6" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="5               even" role="row">
-                                                                <td style="width: 100px;">4</td>
-                                                                <td>Christmas Day</td>
-                                                                <td>25/12/2021</td>
-                                                                <td>25/12/2021</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/5/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/5/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="5" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="4               odd" role="row">
-                                                                <td style="width: 100px;">5</td>
-                                                                <td>National Day</td>
-                                                                <td>14/08/2021</td>
-                                                                <td>14/08/2021</td>
-                                                                <td>NATION ONE</td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/4/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/4/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="4" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="3               even" role="row">
-                                                                <td style="width: 100px;">6</td>
-                                                                <td>akhtar</td>
-                                                                <td>22/06/2021</td>
-                                                                <td>01/07/2021</td>
-                                                                <td>akhtar de bakhtawar shah</td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/3/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/3/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="3" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="2               odd" role="row">
-                                                                <td style="width: 100px;">7</td>
-                                                                <td>Victory Day</td>
-                                                                <td>16/10/2020</td>
-                                                                <td>17/10/2020</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/2/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/2/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="2" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="1               even" role="row">
-                                                                <td style="width: 100px;">8</td>
-                                                                <td>National Day</td>
-                                                                <td>07/02/2020</td>
-                                                                <td>08/02/2020</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/1/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/1/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="1" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                    <a href="http://hrms.braintricker.com/publicHoliday/8/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="8" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" ></i></a>
                                                                 </td>
                                                             </tr></tbody>
                                                     </table>
@@ -341,14 +257,24 @@
                 <script src="assets/js/feather-icons/feather.min.js"></script>
                 <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
                 <script src="assets/js/app.js"></script>
-                               <script src="assets/js/main.js"></script>
+                <script src="assets/js/main.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
                 <script>
-                      $(".select2").select2();
-                        $('#myTable').DataTable({
-                            "ordering": false,
-                        });
-              
+                    $(".select2").select2();
+                    $('#myTable').DataTable({
+                        "ordering": false,
+                        responsive: true,
+                        dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                        buttons: [
+                            {extend: 'copy', className: 'btn-sm'},
+                            {extend: 'csv', title: 'ExampleFile', className: 'btn-sm'},
+                            {extend: 'excel', title: 'exportTitle', className: 'btn-sm'},
+                            {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
+                            {extend: 'print', className: 'btn-sm'}
+                        ],
+                    });
+
 
 
                     $(".alert-success").delay(2000).fadeOut("slow");

@@ -24,6 +24,14 @@
                 background-color: rgba(0,0,0,0.1);
             }
         </style>
+        <!--        <link rel="stylesheet" href="vendor/calender/lib/jquery-ui.min.css" />
+                <link rel="stylesheet" href="vendor/calender/lib/bootstrap-datepicker.css" />-->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <link href="assets/vendor/select2/dist/css/select2.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="assets/vendor/calender/lib/jquery-ui.min.css" />
+        <link rel="stylesheet"
+              href="assets/vendor/calender/lib/bootstrap-datepicker.css" />
+        <link rel="stylesheet" href="assets/css/select2.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     </head>
     <body>
@@ -183,156 +191,94 @@
 
                 <div class="main-content">
                     <div class="container-fluid">
-                        <div class="row bg-title mb-3">
-                            <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12">
-                                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.jsp" class="text-info"><i class="fa fa-home"></i> Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Manage Holidays</li>
-                                </ol>
-                            </nav>
-                            </div>	
-                            <div class="col-lg-7 col-sm-8 col-md-8 col-xs-12">
-                                <a href="/publicHoliday/create" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Public Holiday</a>
-                            </div>	
+                        <div class="row bg-title">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="index.jsp" class="text-info"><i class="fa fa-home"></i> Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Manage Holidays</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                <a href="http://hrms.braintricker.com/publicHoliday" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light"><i class="fa fa-list-ul" aria-hidden="true"></i>  View Public Holiday</a>
+                            </div>
                         </div>
-
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-md-12">
                                 <div class="card panel panel-info">
-                                    <div class="panel-heading"><i class="mdi mdi-table fa-fw"></i> Public Holiday List</div>
-                                    <div class="panel-wrapper">
+                                    <div class="panel-heading"><i class="mdi mdi-clipboard-text fa-fw"></i>	Add Public Holiday
+                                    </div>
+                                    <div class="panel-wrapper" >
                                         <div class="card-body panel-body">
-                                            <div class="table-responsive">
-                                                <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
-                                                    <table id="myTable" class="table table-bordered  no-footer" >
-                                                        <thead class="tr_header">
-                                                            <tr role="row">
-                                                                <th >S/L</th>
-                                                                <th >Holy Day Name</th>
-                                                                <th >Start Date</th>
-                                                                <th >End Date</th>
-                                                                <th >Comment</th>
-                                                                <th style="text-align: center;" >Action</th></tr>
-                                                        </thead>
-                                                        <tbody>
+                                            <form method="POST"  enctype="multipart/form-data" id="publicHolidayForm" class="form-horizontal" autocomplete="off">
 
-
-
-
-
-
-
-
-
-                                                            <tr class="8  success               odd" role="row">
-                                                                <td style="width: 100px;">1</td>
-                                                                <td>National Day</td>
-                                                                <td>22/06/2022</td>
-                                                                <td>23/06/2022</td>
-                                                                <td>adfads</td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/8/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/8/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="8" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="7               even" role="row">
-                                                                <td style="width: 100px;">2</td>
-                                                                <td>eyghrfthu</td>
-                                                                <td>20/04/2022</td>
-                                                                <td>29/04/2022</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/7/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/7/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="7" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="6               odd" role="row">
-                                                                <td style="width: 100px;">3</td>
-                                                                <td>republic day</td>
-                                                                <td>26/02/2022</td>
-                                                                <td>26/02/2022</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/6/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/6/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="6" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="5               even" role="row">
-                                                                <td style="width: 100px;">4</td>
-                                                                <td>Christmas Day</td>
-                                                                <td>25/12/2021</td>
-                                                                <td>25/12/2021</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/5/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/5/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="5" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="4               odd" role="row">
-                                                                <td style="width: 100px;">5</td>
-                                                                <td>National Day</td>
-                                                                <td>14/08/2021</td>
-                                                                <td>14/08/2021</td>
-                                                                <td>NATION ONE</td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/4/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/4/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="4" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="3               even" role="row">
-                                                                <td style="width: 100px;">6</td>
-                                                                <td>akhtar</td>
-                                                                <td>22/06/2021</td>
-                                                                <td>01/07/2021</td>
-                                                                <td>akhtar de bakhtawar shah</td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/3/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/3/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="3" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="2               odd" role="row">
-                                                                <td style="width: 100px;">7</td>
-                                                                <td>Victory Day</td>
-                                                                <td>16/10/2020</td>
-                                                                <td>17/10/2020</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/2/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/2/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="2" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr><tr class="1               even" role="row">
-                                                                <td style="width: 100px;">8</td>
-                                                                <td>National Day</td>
-                                                                <td>07/02/2020</td>
-                                                                <td>08/02/2020</td>
-                                                                <td></td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/1/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/1/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="1" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                </td>
-                                                            </tr></tbody>
-                                                    </table>
-
+                                                <div class="form-body">
+                                                    <div class="row">
+                                                        <div class="col-md-offset-2 col-md-6">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-4">Holy Day Name<span class="validateRq">*</span></label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control required " id="no_of_days"   name="no_of_days" type="hidden">
+                                                                    <input class="form-control required " id="holiday_name"  placeholder="Holiday Name" name="holiday_name" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-4">From Date<span class="validateRq">*</span></label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control required datepicker" id="from_date" readonly="readonly" placeholder="From Date" name="from_date" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-4">To Date<span class="validateRq">*</span></label>
+                                                                <div class="col-md-8">
+                                                                    <input class="form-control required datepicker dateField" id="to_date" readonly="readonly" placeholder="To Date" name="to_date" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-md-4">Comment</label>
+                                                                <div class="col-md-8">
+                                                                    <textarea class="form-control comment" id="comment" placeholder="Comment" cols="30" rows="2" name="comment"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div class="form-actions">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="row">
+                                                                <div class="col-md-offset-4 col-md-8">
+                                                                    <button type="submit" class="btn btn-info btn_style"><i class="fa fa-check"></i> Save</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
+
                 </div>
                 <script src="assets/vendor/jquery/jquery.min.js"></script>
                 <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
@@ -340,54 +286,10 @@
                 <script src="assets/js/feather-icons/feather.min.js"></script>
                 <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
                 <script src="assets/js/app.js"></script>
-                <script src="assets/js/pages/termination.js"></script>
+                <script src="assets/js/pages/holiday.js"></script>
                 <script src="assets/js/main.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-                <script>
-                    $(function () {
-                        $(".select2").select2();
-                        $('#myTable').DataTable({
-                            "ordering": false,
-                        });
 
-                    });
-
-
-                    $(".alert-success").delay(2000).fadeOut("slow");
-                    //   $(".alert-danger").delay(2000).fadeOut("slow");
-                    $(document).on("focus", ".yearPicker", function () {
-                        $(this).datepicker({
-                            format: 'yyyy',
-                            minViewMode: 2
-                        }).on('changeDate', function (e) {
-                            $(this).datepicker('hide');
-                        });
-                    });
-                    $(document).on("focus", ".dateField", function () {
-                        $(this).datepicker({
-                            format: 'dd/mm/yyyy',
-                            todayHighlight: true,
-                            clearBtn: true
-                        }).on('changeDate', function (e) {
-                            $(this).datepicker('hide');
-                        });
-                    });
-                    $(document).on("focus", ".timePicker", function () {
-                        $(this).timepicker({
-                            showInputs: false,
-                            minuteStep: 1
-                        });
-                    });
-                    $(".monthField").datepicker({
-                        format: "yyyy-mm",
-                        viewMode: "months",
-                        minViewMode: "months"
-                    }).on('changeDate', function (e) {
-                        $(this).datepicker('hide');
-                    });
-
-                
-                </script>
-                </body>
+                              </body>
                 </html>
 
