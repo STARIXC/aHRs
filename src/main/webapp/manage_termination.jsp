@@ -45,30 +45,24 @@
                                     <span>Dashboard</span>
                                 </a></li>
                             <li class="sidebar-item  has-sub"><a href="#"
-                                                                        class='sidebar-link'> <i class="fa fa-building text-success"></i>
-                                    <span>Department</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_department.jsp">Add Department</a></li>
-                                    <li><a href="./DepartmentController?action=all">Manage Department</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
                                                                  class='sidebar-link'> <i class="fa fa-table text-success"></i>
                                     <span>Designation</span>
                                 </a>
                                 <ul class="submenu ">
-                                    <li><a href="add_designation.jsp">Add Designation</a></li>
-                                    <li><a href="manage_designation.jsp">Manage Designation</a>
-                                    </li>
-                                </ul></li>
+                                    <li><a href="manage_carder_type.jsp">Carder Type</a></li>
+                                    <li><a href="manage_carder_category.jsp">Carder Category</a></li>
+                                    <li><a href="manage_standardised_carder.jsp">Standardized Carder</a></li>
+                                    <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
+                                </ul>
+                            </li>
                             <li class="sidebar-item active  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-users text-success"></i>
+                                                                        class='sidebar-link'> <i class="fa fa-users text-success"></i>
                                     <span>Employees</span>
                                 </a>
                                 <ul class="submenu ">
                                     <li><a href="add_employee.jsp">Add Employee</a></li>
                                     <li><a href="manage_employee.jsp">Manage Employee</a></li>
-                                     <li><a href="manage_termination.jsp">Termination</a></li>
+                                    <li><a href="manage_termination.jsp">Termination</a></li>
                                 </ul></li>
                             <li class="sidebar-item  has-sub"><a href="#"
                                                                  class='sidebar-link'> <i class="fa fa-table text-success"></i>
@@ -221,7 +215,7 @@
                                                     <th>Termination Type</th>
                                                     <th>Notice Date</th>
                                                     <th>Termination Date</th>
-<!--                                                    <th>Status</th>-->
+                                                    <!--                                                    <th>Status</th>-->
                                                     <th style="text-align: center;">Action</th>
                                                 </tr>
                                             </thead>
@@ -242,8 +236,8 @@
         </div>
         <!--        <script src="assets/vendor/jquery/jquery.min.js"></script>
                 <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>-->
-        
-    <script src="assets/vendor/DataTables/datatables.js"></script>
+
+        <script src="assets/vendor/DataTables/datatables.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather-icons/feather.min.js"></script>
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

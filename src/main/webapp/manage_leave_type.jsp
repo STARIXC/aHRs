@@ -34,16 +34,9 @@
 					<ul class="menu">
 						<li class="sidebar-item "><a href="index.jsp"
 							class='sidebar-link'> <i class="fa fa-home text-success"></i>
-								<span>Dashboard</span>
-						</a></li>
-						<li class="sidebar-item  has-sub"><a href="#"
-							class='sidebar-link'> <i class="fa fa-building text-success"></i>
-								<span>Department</span>
-						</a>
-							<ul class="submenu ">
-								<li><a href="add_department.jsp">Add Department</a></li>
-								<li><a href="./PositionTypeController/new">Manage Department</a></li>
-							</ul></li>
+                                                        <span>Dashboard</span>
+                                                    </a></li>
+						
 						<li class="sidebar-item  has-sub"><a href="#"
 							class='sidebar-link'> <i class="fa fa-table text-success"></i>
 								<span>Designation</span>
@@ -57,11 +50,13 @@
 							class='sidebar-link'> <i class="fa fa-users text-success"></i>
 								<span>Employees</span>
 						</a>
-							<ul class="submenu ">
-								<li><a href="add_employee.jsp">Add Employee</a></li>
-								<li><a href="manage_employee.jsp">Manage Employee</a></li>
-                                                                 <li><a href="manage_termination.jsp">Termination</a></li>
-							</ul></li>
+							        <ul class="submenu ">
+                                    <li><a href="manage_carder_type.jsp">Carder Type</a></li>
+                                    <li><a href="manage_carder_category.jsp">Carder Category</a></li>
+                                    <li><a href="manage_standardised_carder.jsp">Standardized Carder</a></li>
+                                    <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
+                                    </ul>
+                            </li>
 						<li class="sidebar-item active  has-sub"><a href="#"
 							class='sidebar-link'> <i class="fa fa-table text-success"></i>
 								<span>Leave Type</span>

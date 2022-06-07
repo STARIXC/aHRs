@@ -6,7 +6,7 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add Department</title>
+        <title>Add Carder Type</title>
 
         <link rel="stylesheet" href="assets/css/bootstrap.css">
 
@@ -33,23 +33,18 @@
                                                           class='sidebar-link'> <i class="fa fa-home text-success"></i>
                                     <span>Dashboard</span>
                                 </a></li>
-                            <li class="sidebar-item  active has-sub"><a href="#"
-                                                                        class='sidebar-link'> <i class="fa fa-building text-success"></i>
-                                    <span>Department</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_department.jsp">Add Department</a></li>
-                                    <li><a href="./DepartmentController?action=all">Manage Department</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
+
+                            <li class="sidebar-item active has-sub">
+                                <a href="#" class='sidebar-link'> <i class="fa fa-table text-success"></i>
                                     <span>Designation</span>
                                 </a>
                                 <ul class="submenu ">
-                                    <li><a href="add_designation.jsp">Add Designation</a></li>
-                                    <li><a href="manage_designation.jsp">Manage Designation</a>
-                                    </li>
-                                </ul></li>
+                                    <li><a href="manage_carder_type.jsp">Carder Type</a></li>
+                                    <li><a href="manage_carder_category.jsp">Carder Category</a></li>
+                                    <li><a href="manage_standardised_carder.jsp">Standardized Carder</a></li>
+                                    <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
+                                </ul>
+                            </li>
                             <li class="sidebar-item  has-sub"><a href="#"
                                                                  class='sidebar-link'> <i class="fa fa-users text-success"></i>
                                     <span>Employees</span>
@@ -201,40 +196,40 @@
                                     <div class="card-content">
                                         <div class="card-body">
                                             <c:if test="${department !=null}">
-                                            <form action="update" method="post" accept-charset="utf-8"
-                                                  autocomplete="off">
-                                            </c:if>
-                                                 <c:if test="${department !=null}">
-                                            <form action="insert" method="post" accept-charset="utf-8"
-                                                  autocomplete="off">
-                                            </c:if>
-                                                <input name="dept_id" class="form-control" type="hidden"
-                                                       value="<c:out value="${department.dept_id}" />" id="dept_id" readonly
-                                                       autocomplete="off">
-                                                <div class="form-group row">
-                                                    <label for="dept_name" class="col-sm-3 col-form-label">Department Name *</label>
-                                                    <div class="col-sm-9">
-                                                        <input name="dept_name" class="form-control" type="text"
-                                                               placeholder="Department Name" id="dept_name" value="<c:out value="${department.dept_name}" />"
-                                                               autocomplete="off">
+                                                <form action="update" method="post" accept-charset="utf-8"
+                                                      autocomplete="off">
+                                                </c:if>
+                                                <c:if test="${department !=null}">
+                                                    <form action="insert" method="post" accept-charset="utf-8"
+                                                          autocomplete="off">
+                                                    </c:if>
+                                                    <input name="dept_id" class="form-control" type="hidden"
+                                                           value="<c:out value="${department.dept_id}" />" id="dept_id" readonly
+                                                           autocomplete="off">
+                                                    <div class="form-group row">
+                                                        <label for="dept_name" class="col-sm-3 col-form-label">Department Name *</label>
+                                                        <div class="col-sm-9">
+                                                            <input name="dept_name" class="form-control" type="text"
+                                                                   placeholder="Department Name" id="dept_name" value="<c:out value="${department.dept_name}" />"
+                                                                   autocomplete="off">
 
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="dept_desc" class="col-sm-3 col-form-label">Department Description *</label>
-                                                    <div class="col-sm-9">
-                                                        <input name="dept_desc" class="form-control" type="text"
-                                                               placeholder="Department Description" id="dept_desc" value="<c:out value="${department.dept_desc}" />"
-                                                               autocomplete="off">
+                                                    <div class="form-group row">
+                                                        <label for="dept_desc" class="col-sm-3 col-form-label">Department Description *</label>
+                                                        <div class="col-sm-9">
+                                                            <input name="dept_desc" class="form-control" type="text"
+                                                                   placeholder="Department Description" id="dept_desc" value="<c:out value="${department.dept_desc}" />"
+                                                                   autocomplete="off">
 
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="form-group form-group-margin text-right">
-                                                    <button type="submit" class="btn btn-success w-md m-b-5"
-                                                            name="save">Save</button>
-                                                </div>
-                                            </form>
+                                                    <div class="form-group form-group-margin text-right">
+                                                        <button type="submit" class="btn btn-success w-md m-b-5"
+                                                                name="save">Save</button>
+                                                    </div>
+                                                </form>
 
                                         </div>
                                     </div>
