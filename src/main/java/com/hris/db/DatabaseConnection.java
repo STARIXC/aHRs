@@ -1,6 +1,5 @@
 package com.hris.db;
 
-import com.mysql.cj.jdbc.CallableStatement;
 import Utils.OSValidator;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -8,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,6 +23,7 @@ public class DatabaseConnection {
     public PreparedStatement pst, pst1, pst2, pst3, pst4, pst5;
     public PreparedStatement prest, prest1, prest2, prest3, prest4, prest5;
     public CallableStatement csmt, csmt1, csmt2, csmt3, csmt4;
+    public 
     String mydrive = "";
     public static int issetdbcalled_file_exists = 2;
     public static int issetdbcalled_exception = 2;
@@ -178,7 +179,7 @@ public class DatabaseConnection {
         try {
 
             //not so good for now because the host name is static
-            String url = "http://localhost:8080/aHRIM/aHRIM//dataconfig.jsp";
+            String url = "http://localhost:8080/aHRIM//dataconfig.jsp";
             java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
              } catch (IOException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);

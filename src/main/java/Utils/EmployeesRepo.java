@@ -14,7 +14,43 @@ public class EmployeesRepo {
     public EmployeesRepo() {
         conn = new DatabaseConnection();
     }
+  public int get_all_active_staff() {
+        int rowsAffected = 1;
+        try {
 
+            String query = "SELECT COUNT(*) FROM hrh.employee_hist WHERE active ='1'";
+            conn.pst = conn.conn.prepareStatement(query);
+            conn.rs = conn.pst.executeQuery();
+            while (conn.rs.next()) {
+                rowsAffected = conn.rs.getInt("count(*)");
+               // System.out.println(rowsAffected);
+            }
+           // conn.rs.close();
+           // conn.pst.close();
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return rowsAffected;
+    }
+
+    public int get_all_staff() {
+        int rowsAffected = 1;
+
+        return rowsAffected;
+    }
+
+    public int get_all_leave() {
+        int response = 0;
+
+        return response;
+    }
+
+    public void get_upcoming_holidays() {
+    }
+
+    public void getPendingLeaves() {
+    }
     //sql_bio,sql_hist ,,,	
     public int addEmpBio(String sql_bio) {
         int rowsAffected = 0;

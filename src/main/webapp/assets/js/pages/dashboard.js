@@ -21,14 +21,16 @@ function getData() {
 }
 getData();
 getTotalOnLeave();
+getPendingLeaves();
+getApprovedLeaves();
 function getTotalOnLeave() {
     $.ajax({
-        url: './Dashboard?action=onleave',
+        url: './Dashboard?action=leave',
         type: 'post',
         dataType: 'html',
         success: function (data) {
 
-            $("#ddlEmployeeType").html(data);
+          //  $("#ddlEmployeeType").html(data);
             //pataStandard();
 
         }
@@ -42,8 +44,8 @@ function getApprovedLeaves() {
         type: 'post',
         dataType: 'html',
         success: function (data) {
-
-            $("#ddlEmployeeType").html(data);
+//
+          //  $("#ddlEmployeeType").html(data);
             //pataStandard();
 
         }
@@ -58,7 +60,7 @@ function getPendingLeaves() {
         dataType: 'html',
         success: function (data) {
 
-            $("#ddlEmployeeType").html(data);
+       //     $("#ddlEmployeeType").html(data);
             //pataStandard();
 
         }
@@ -68,12 +70,12 @@ function getPendingLeaves() {
 ;
 function getRejectedLeaves() {
     $.ajax({
-        url: './Dashboard?action=notapproved',
+        url: './Dashboard',
         type: 'post',
         dataType: 'html',
         success: function (data) {
 
-            $("#ddlEmployeeType").html(data);
+        //    $("#ddlEmployeeType").html(data);
             //pataStandard();
 
         }
