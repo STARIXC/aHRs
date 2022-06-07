@@ -155,6 +155,7 @@ public class DatabaseConnection {
             System.out.println("MY VALUE:" + issetdbcalled_file_exists);
 
             if (issetdbcalled_file_exists%2 == 0) {
+
             calldbjsp();
                 issetdbcalled_file_exists++;
             }
@@ -182,6 +183,7 @@ public class DatabaseConnection {
              } catch (IOException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
 
-    }
+   
 }
