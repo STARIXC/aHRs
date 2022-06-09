@@ -7,19 +7,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Add Carder Type</title>
-
         <link rel="stylesheet" href="assets/css/bootstrap.css">
-
+        <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
+        <link rel="stylesheet" href="assets/css/toggle.css">
+        <link rel="stylesheet" href="assets/vendor/DataTables/datatables.css">
         <script defer src="assets/fontawesome/js/all.min.js"></script>
         <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
         <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/vendor/jquery/jquery.min.js"></script>
+        <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
         <style type="text/css">
             .notif:hover{
                 background-color: rgba(0,0,0,0.1);
             }
         </style>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     </head>
     <body>
+          <%
+            String id = request.getParameter("id");
+        %>
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper active">
@@ -170,81 +178,89 @@
                 </nav>
 
                 <div class="main-content container-fluid">
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Add Department</h3>
-                            </div>
-                            <div class="col-12 col-md-6 order-md-2 order-first">
-                                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.jsp" class="text-success">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Add Department</li>
-                                    </ol>
-                                </nav>
-                            </div>
+                    <div class="row mb-2">
+                        <div class="col-md-8 order-md-1 order-last">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.jsp" class="text-success"><i class="fa fa-home"></i> Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add Department</li>
+                                </ol>
+                            </nav>
                         </div>
+                        <div class="col-md-4 order-md-2 order-first">
+                            <a href="manage_carder_type.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                                <i class="fa fa-list-ul" aria-hidden="true"></i> View Carder Types</a>
 
+                        </div>
                     </div>
 
 
                     <!-- Basic Vertical form layout section start -->
-                    <section id="basic-vertical-layouts">
-                        <div class="row match-height">
-                            <div class="col-md-8 col-12">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <c:if test="${department !=null}">
-                                                <form action="update" method="post" accept-charset="utf-8"
-                                                      autocomplete="off">
-                                                </c:if>
-                                                <c:if test="${department !=null}">
-                                                    <form action="insert" method="post" accept-charset="utf-8"
-                                                          autocomplete="off">
-                                                    </c:if>
-                                                    <input name="dept_id" class="form-control" type="hidden"
-                                                           value="<c:out value="${department.dept_id}" />" id="dept_id" readonly
-                                                           autocomplete="off">
-                                                    <div class="form-group row">
-                                                        <label for="dept_name" class="col-sm-3 col-form-label">Department Name *</label>
-                                                        <div class="col-sm-9">
-                                                            <input name="dept_name" class="form-control" type="text"
-                                                                   placeholder="Department Name" id="dept_name" value="<c:out value="${department.dept_name}" />"
-                                                                   autocomplete="off">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header bg-success text-white"><i class="mdi mdi-clipboard-text fa-fw"></i>
+                                    Add Carder Type
+                                </div>
+                                <div class="card-body">
+                                    <form method="POST"  class="form-horizontal" id="editcarderForm_" enctype="multipart/form-data">
 
+                                        <div class="form-body">
+                                            <div class="row">
+
+                                                <div class="col-sm-12">
+                                                    <div class="form-group ">
+                                                        <label for="carder_name">Carder Name </label>
+                                                        <input type="hidden" class="form-control carder_id input-width-xlarge" name="carder_id" id="carder_id" value="<%=id%>">
+                                                        <input type="text" class="form-control carder_name input-width-xlarge" name="carder_name" id="carder_name" placeholder="Carder Name" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group ">
+                                                        <label for="hrs_per_week">Hours per Week </label>
+                                                        <input type="text" class="form-control hrs_per_week input-width-xlarge" name="hrs_per_week" id="hrs_per_week" placeholder="Expected Work Hours Per Week" autocomplete="off">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+
+
+                                            <div class="form-actions">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <div class="row">
+                                                            <div class="col-md-offset-4 col-md-8">
+                                                                <!--                                                                <input name="update" type="submit" class="btn btn-info btn_style" value="Update">-->
+                                                                <input name="submit" type="submit" class="btn btn-info btn_style" value="Update">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row">
-                                                        <label for="dept_desc" class="col-sm-3 col-form-label">Department Description *</label>
-                                                        <div class="col-sm-9">
-                                                            <input name="dept_desc" class="form-control" type="text"
-                                                                   placeholder="Department Description" id="dept_desc" value="<c:out value="${department.dept_desc}" />"
-                                                                   autocomplete="off">
-
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group form-group-margin text-right">
-                                                        <button type="submit" class="btn btn-success w-md m-b-5"
-                                                                name="save">Save</button>
-                                                    </div>
-                                                </form>
+                                                </div>
+                                            </div>
 
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
+
                             </div>
                         </div>
-                    </section>
+                    </div>
                     <!-- // Basic Vertical form layout section end -->
                 </div>
             </div>
+
         </div>
+        <script src="assets/vendor/DataTables/datatables.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather-icons/feather.min.js"></script>
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/js/app.js"></script>
-        <script src="assets/js/pages/department.js"></script>
+        <script src="assets/js/pages/carder_type_.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
     </body>
 </html>

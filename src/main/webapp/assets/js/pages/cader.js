@@ -103,7 +103,7 @@ jQuery(document).ready(function () {
                 "render": function (data, type, row, meta) {
                     return i++;
                 }
-            }, 
+            },
             {
                 "data": "cadre_type_name"
             }, {
@@ -118,4 +118,37 @@ jQuery(document).ready(function () {
             }]
 
     });
+
+//    save carder
+    $("#carderForm_").submit(function (e) {
+        alert("submited");
+        e.preventDefault(); // prevent actual form submit
+        var form = $("#carderForm_");
+        var action = "save_carder";
+        var data = form.serialize() + "&action=" + action;
+        var url = './CadreTypeServlet';
+        // screenLock();
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data, // serializes form input
+            beforeSend: function beforeSend() {
+                //startLoader();
+                console.log(data);
+            },
+            success: function (data) {
+                var url_ = "manage_carder_type.jsp";
+                $(location).attr('href', url_);
+                console.log(data);
+            },
+            error: function error(result) {
+
+            },
+            complete: function complete() {
+                //	stopLoader();
+
+            }
+        });
+    });
+   
 });

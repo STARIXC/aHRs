@@ -37,6 +37,10 @@
         <servlet-name>Terminations</servlet-name>
         <servlet-class>controllers.Terminations</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CarderTypeUpdates</servlet-name>
+        <servlet-class>controllers.CarderTypeUpdates</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProcessEmployee</servlet-name>
         <url-pattern>/Employee/create_employee</url-pattern>
@@ -77,6 +81,10 @@
     <servlet-mapping>
         <servlet-name>Terminations</servlet-name>
         <url-pattern>/Terminations</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarderTypeUpdates</servlet-name>
+        <url-pattern>/CarderTypeUpdates</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

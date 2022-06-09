@@ -52,10 +52,10 @@ $(document).ready(function () {
 
                 "data": "t_id",
                 "render": function (data, type, row, meta) {
-                    return 	'<div class="center"><a  title="View Details" href="http://hrms.braintricker.com/termination/8" class="btn btn-primary btn-xs btnColor">'
+                    return 	'<div class="center"><a  title="View Details" href="termination/8" class="btn btn-primary btn-xs btnColor">'
                             + '<i class="glyphicon glyphicon-th-large" aria-hidden="true"></i></a>'
-                            + '<a href="http://hrms.braintricker.com/termination/8/edit"  class="btn btn-success btn-xs btnColor"><i class="fa fa-edit-square-o" aria-hidden="true"></i></a>'
-                            + '<a href="http://hrms.braintricker.com/termination/8/delete" data-token="VaYD9VqbyVCwLglfpOe4kkUQweEVF6rWHgGvMO9j" data-id="8" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class=" mdi mdi-trash-can-outline" aria-hidden="true"></i></a> </div>';
+                            + '<a href="termination/8/edit"  class="btn btn-success btn-xs btnColor"><i class="fa fa-edit-square-o" aria-hidden="true"></i></a>'
+                            + '<a href="termination/8/delete"  data-id="8" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class=" mdi mdi-trash-can-outline" aria-hidden="true"></i></a> </div>';
                 },
             }
         ]

@@ -14,7 +14,8 @@ public class EmployeesRepo {
     public EmployeesRepo() {
         conn = new DatabaseConnection();
     }
-  public int get_all_active_staff() {
+
+    public int get_all_active_staff() {
         int rowsAffected = 1;
         try {
 
@@ -23,10 +24,10 @@ public class EmployeesRepo {
             conn.rs = conn.pst.executeQuery();
             while (conn.rs.next()) {
                 rowsAffected = conn.rs.getInt("count(*)");
-               // System.out.println(rowsAffected);
+                // System.out.println(rowsAffected);
             }
-           // conn.rs.close();
-           // conn.pst.close();
+            // conn.rs.close();
+            // conn.pst.close();
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -51,6 +52,7 @@ public class EmployeesRepo {
 
     public void getPendingLeaves() {
     }
+
     //sql_bio,sql_hist ,,,	
     public int addEmpBio(String sql_bio) {
         int rowsAffected = 0;
@@ -248,14 +250,7 @@ public class EmployeesRepo {
 
     public Staff getStaffById(String emp_no) {
         Staff staff = new Staff();
-//int emp_no_ = Integer.parseInt(emp_no);
         try {
-//String sql = "SELECT b.id,b.emp_no, b.first_name,b.surname,
-//b.other_name,b.national_id,b.gender,b.phone,b.email,b.dob,
-//b.home_address,b.postal_code,b.nationality,b.disability,b.disability_explain,h.mfl,h.position,h.date_started,h.date_ended,
-//h.financial_year,c.carder_category_id,c.standardized_cadre_id,c.position_title,c.cadre_type_id,c.basic_pay
-//,bk.bank_name,bk.branch,bk.account_name,bk.acount_number,st.kra_pin,st.nssf_no,st.nhif_no,st.cert_good_conduct_no,st.helb_clearance_no,st.helb_benefitiary,lg.username  from emp_bio b JOIN  employee_hist h on h.emp_no =b.emp_no JOIN  cadre_positions c on h.position=c.id JOIN banking_det bk ON b.emp_no = bk.employee_no JOIN statutory_details st ON b.emp_no =st.employee_no JOIN login lg ON b.emp_no=lg.emp_no WHERE b.emp_no ='"+emp_no+"' and h.active=1" ;
-
             String sql = "select IFNULL(b.id,'-') as emp_id,  IFNULL(b.emp_no,'-') as emp_no,"
                     + "IFNULL(b.first_name,'') as firstname,"
                     + "IFNULL(b.surname,'') as surname, IFNULL( b.other_name,'') as other_name,"
@@ -285,17 +280,8 @@ public class EmployeesRepo {
                     + "from emp_bio as b join employee_hist as h on h.emp_no =b.emp_no "
                     + "join cadre_positions as c on h.position=c.id "
                     + "join banking_det as bk ON bk.employee_no = b.emp_no "
-
                     + "where b.emp_no ='" + emp_no + "' and h.active =1";
             System.out.println(sql);
-//conn.pst = conn.conn.prepareStatement(sql);
-//conn.pst.setString(1, emp_no);
-//Staff [id=1, emp_no=0004, first_name=ESTHER,
-//surname=ARENCHI, other_name=NYANGARA, gender=FEMALE, 
-//phone=0711564042, email=arenchiesther@gmail.com, dob=, home_address=, postal_code=, nationality=Kenyan, disability=0, disability_explain=, national_id=27456435, mfl=15212, position=6,
-//date_started=2018-10-01, date_ended=, months_worked=null, current_contract=null, contract_period=null, contract_end_date=null,
-//expected_months=null, status=null, kra_pin=null, nssf_no=null, nhif_no=null, cert_good_conduct_no=null, helb_clearance_no=null, helb_benefitiary=0, active=1, bank_name=null, branch=null, account_name=null, acount_number=null]current district ___
-
             conn.rs = conn.st.executeQuery(sql);
             while (conn.rs.next()) {
                 staff.setId(conn.rs.getInt("emp_id"));
@@ -339,7 +325,7 @@ public class EmployeesRepo {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
         return staff;
 
     }
@@ -416,7 +402,7 @@ public class EmployeesRepo {
     }
 
     public List<Staff> get_basic_All() {
-     List<Staff> allStaff = new ArrayList<>();
+        List<Staff> allStaff = new ArrayList<>();
 
         try {
             String sql = "select IFNULL(b.id,'-') as emp_id,IFNULL(b.emp_no,' ') as empl_no,"
@@ -425,10 +411,10 @@ public class EmployeesRepo {
             conn.rs = conn.st.executeQuery(sql);
             while (conn.rs.next()) {
                 int emp_id = conn.rs.getInt("emp_id");
-                String emp_no =conn.rs.getString("empl_no");
-                String full_name=conn.rs.getString("full_name");
-                Staff staff = new Staff(emp_id,emp_no,full_name);
-               
+                String emp_no = conn.rs.getString("empl_no");
+                String full_name = conn.rs.getString("full_name");
+                Staff staff = new Staff(emp_id, emp_no, full_name);
+
                 allStaff.add(staff);
 
             }

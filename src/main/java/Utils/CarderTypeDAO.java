@@ -1,10 +1,11 @@
-
 package Utils;
 
 import com.hris.db.DatabaseConnection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.CarderType;
 
 /**
@@ -12,18 +13,18 @@ import models.CarderType;
  * @author STARIXC
  */
 public class CarderTypeDAO {
-private final DatabaseConnection conn;
-    private static final String INSERT_CARDER_TYPE = "REPLACE INTO cadre_type(cadre_type_name,hrs_per_week) VALUES (?,?)";
-    private static final String DELETE_CARDER_TYPE = "DELETE FROM cadre_type WHERE id= ?";
-    private static final String UPDATE_CARDER_TYPE = "UPDATE cadre_type SET cadre_type_name = ?,hrs_per_week = ? WHERE id= ?";
-    private static final String SELECT_ALL_CARDER_TYPES = "SELECT c.id as carderT_id ,c.cadre_type_name as cadre_type_name,c.hrs_per_week as hours_per_week FROM hrh.cadre_type c";
-    private static final String SELECT_CARDER_TYPE_ID = "SELECT * from cadre_type where id=?";
+
+    private final DatabaseConnection conn;
+    public static final String INSERT_CARDER_TYPE = "REPLACE INTO cadre_type(cadre_type_name,hrs_per_week) VALUES (?,?)";
+    public static final String DELETE_CARDER_TYPE = "DELETE FROM cadre_type WHERE id= ?";
+    public static final String UPDATE_CARDER_TYPE = "UPDATE cadre_type SET cadre_type_name = ?,hrs_per_week = ? WHERE id= ?";
+    public static final String SELECT_ALL_CARDER_TYPES = "SELECT c.id as carderT_id ,c.cadre_type_name as cadre_type_name,c.hrs_per_week as hours_per_week FROM hrh.cadre_type c";
     
     public CarderTypeDAO() {
-         conn = new DatabaseConnection();
+        conn = new DatabaseConnection();
     }
-    
-      public List<CarderType> getAllCarderType() {
+
+    public List<CarderType> getAllCarderType() {
         List<CarderType> carders = new ArrayList<>();
 
         try {
@@ -36,10 +37,52 @@ private final DatabaseConnection conn;
                 carders.add(carderT);
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Logger.getLogger(CarderTypeDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         //System.out.print(positions);
         return carders;
+    }
+
+    public void addCarderType(CarderType ct) {
+        try {
+            conn.pst = conn.conn.prepareStatement(INSERT_CARDER_TYPE);
+            conn.pst.setString(1, ct.getCadre_type_name());
+            conn.pst.setString(2, ct.getHrs_per_week());
+            conn.pst.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CarderTypeDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+    public void updateCarderType(CarderType ctype) {
+
+        try {
+            conn.pst = conn.conn.prepareStatement(UPDATE_CARDER_TYPE);
+            conn.pst.setString(1, ctype.getCadre_type_name());
+            conn.pst.setString(2, ctype.getHrs_per_week());
+            conn.pst.setInt(3, ctype.getId());
+            conn.pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CarderTypeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public CarderType getCarderTypeById(int carder_id) {
+        CarderType ctype = new CarderType();
+        try {
+           String SELECT_CARDER_TYPE_ID = "SELECT * from cadre_type where id='"+carder_id+"'";
+            conn.rs = conn.st.executeQuery(SELECT_CARDER_TYPE_ID);
+             while (conn.rs.next()) {
+                ctype.setId(conn.rs.getInt("id"));
+                ctype.setCadre_type_name(conn.rs.getString("cadre_type_name"));
+                ctype.setHrs_per_week(conn.rs.getString("hrs_per_week"));
+             }
+           
+    
+        } catch (SQLException ex) {
+            Logger.getLogger(CarderTypeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ctype;
     }
 }
