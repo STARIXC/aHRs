@@ -1,5 +1,8 @@
 package controllers;
 
+import Utils.CarderTypeDAO;
+import Utils.JSONConverter;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -20,92 +23,91 @@ import com.hris.db.DatabaseConnection;
  */
 @WebServlet("/CadreTypeServlet")
 public class CadreTypeServlet extends HttpServlet {
-	HttpSession session = null;
 
-	private static final long serialVersionUID = 1L;
+    HttpSession session = null;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public CadreTypeServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    private static final long serialVersionUID = 1L;
+    Gson gson = new Gson();
+    public JSONConverter json;
+    public CarderTypeDAO dao;
+    PrintWriter out;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	@SuppressWarnings("static-access")
-        @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    public CadreTypeServlet() {
+        super();
+        dao = new CarderTypeDAO();
+    }
 
+    @SuppressWarnings("static-access")
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        out = response.getWriter();
+        String ctypes = json.convert(dao.getAllCarderType());
+        System.out.println(ctypes);
+        out.println(ctypes);
 
-	}
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-        @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		try {
-			response.setContentType("text/html;charset=UTF-8");
-			session = request.getSession();
-			String sessioncadretype = "";
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            response.setContentType("text/html;charset=UTF-8");
+            session = request.getSession();
+            String sessioncadretype = "";
 
-			if (session.getAttribute("cadre_type_id") != null) {
+            if (session.getAttribute("cadre_type_id") != null) {
 
-				sessioncadretype = session.getAttribute("cadre_type_id").toString();
-			}
+                sessioncadretype = session.getAttribute("cadre_type_id").toString();
+            }
 
-			String cadre_type = "";
+            String cadre_type = "";
 
-			DatabaseConnection conn = new DatabaseConnection();
-		
-			String qr = "SELECT * FROM hrh.cadre_category";
-			conn.rs = conn.st.executeQuery(qr);
-			while (conn.rs.next()) {
-				if (sessioncadretype.equalsIgnoreCase(conn.rs.getString(1))) {
+            DatabaseConnection conn = new DatabaseConnection();
 
-					cadre_type += "<option selected value=\"" + conn.rs.getInt("id") + "\">"
-							+ conn.rs.getString("cadre_category_name") + "</option>";
-				}
+            String qr = "SELECT * FROM hrh.cadre_category";
+            conn.rs = conn.st.executeQuery(qr);
+            while (conn.rs.next()) {
+                if (sessioncadretype.equalsIgnoreCase(conn.rs.getString(1))) {
 
-				else {
-					cadre_type += "<option value=\"" + conn.rs.getInt("id") + "\">"
-							+ conn.rs.getString("cadre_category_name") + "</option>";
-				}
+                    cadre_type += "<option selected value=\"" + conn.rs.getInt("id") + "\">"
+                            + conn.rs.getString("cadre_category_name") + "</option>";
+                } else {
+                    cadre_type += "<option value=\"" + conn.rs.getInt("id") + "\">"
+                            + conn.rs.getString("cadre_category_name") + "</option>";
+                }
 
-			}
+            }
 
-			PrintWriter out = response.getWriter();
-			try {
-				out.println(cadre_type);
-			} finally {
-				out.close();
-				if (conn != null)
+            PrintWriter out = response.getWriter();
+            try {
+                out.println(cadre_type);
+            } finally {
+                out.close();
+                if (conn != null)
 					try {
 
-						if (conn.conn != null) {
-							conn.conn.close();
-						}
-						if (conn.rs != null) {
-							conn.rs.close();
-						}
-						if (conn.st != null) {
-							conn.st.close();
-						}
+                    if (conn.conn != null) {
+                        conn.conn.close();
+                    }
+                    if (conn.rs != null) {
+                        conn.rs.close();
+                    }
+                    if (conn.st != null) {
+                        conn.st.close();
+                    }
 
-					} catch (Exception ignore) {
-					}
-			}
-		} catch (SQLException ex) {
-			Logger.getLogger(CadreTypeServlet.class.getName()).log(Level.SEVERE, null, ex);
-		}
-		doGet(request, response);
-	}
+                } catch (Exception ignore) {
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CadreTypeServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      //  doGet(request, response);
+    }
 
 }

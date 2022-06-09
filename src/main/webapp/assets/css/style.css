@@ -1524,7 +1524,7 @@ footer{
     font-weight: 100;
     font-family: Rubik,sans-serif;
 }
-panel .panel-heading {
+/*panel .panel-heading {
     border-radius: 0;
     font-weight: 500;
     font-size: 16px;
@@ -1535,8 +1535,8 @@ panel .panel-heading {
     border-color: #41b3f9;
     color: #fff;
     background-color: #41b3f9;
-}
-.panel .panel-heading {
+}*/
+/*.panel .panel-heading {
     border-radius: 0;
     font-weight: 500;
     font-size: 16px;
@@ -1545,11 +1545,11 @@ panel .panel-heading {
 
 .panel .panel-body {
     padding: 25px;
-}
+}*/
 .table-responsive {
     overflow-y: hidden;
 }
-.table.dataTable, table.dataTable {
+/*.table.dataTable, table.dataTable {
     width: 99.8%!important;
 }
 .table-bordered {
@@ -1560,7 +1560,7 @@ panel .panel-heading {
 }
 .table {
     margin-bottom: 10px;
-}
+}*/
 .bg-title {
     background: #fff;
     overflow: hidden;
@@ -1568,4 +1568,7 @@ panel .panel-heading {
     margin-bottom: 25px;
     margin-left: -25.5px;
     margin-right: -25.5px;
+}
+table.dataTable thead th.ui-state-default:first-child, table.dataTable tfoot th.ui-state-default:first-child {
+    border-left-width: 0px !important;
 }
