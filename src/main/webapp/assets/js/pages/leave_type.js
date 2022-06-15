@@ -22,7 +22,7 @@ jQuery(document).ready(function () {
             {
                 "data": "leave_type_name"
             },
-           
+
             {
                 "data": "leave_type_name"
             },
@@ -33,20 +33,22 @@ jQuery(document).ready(function () {
                 "targets": 0,
                 "data": "typeID",
                 "render": function (data, type, row, meta) {
-                    return '<div class="d-flex"><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a> <ahref="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></div>';
+                    return '<div class="d-flex"><a href="edit_leave_type.jsp?id=' + data + '" class="btn btn-md btn-success ms-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="fa fa-pen text-white"></i></a> <a id="delete_leave_type" data-id="' + data + '" href="javascript:void(0)" class="btn btn-md btn-danger ms-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"><i class="fa fa-trash text-white"></i></a></div>';
                 }
             }]
     });
 
 
+   
+
 
     // jQuery ajax form submit example, runs when form is submitted
-    $("#positionForm").submit(function (e) {
+    $("#leaveTypeForm").submit(function (e) {
         e.preventDefault(); // prevent actual form submit
-        var form = $("#timesheetForm");
-        var action = "save_log";
+        var form = $("#leaveTypeForm");
+        var action = "save_leave_type";
         var data = form.serialize() + "&action=" + action;
-        var url = './PositionServlet'; //get submit url [replace url here if desired]
+        var url = './ProcessLeaves'; //get submit url [replace url here if desired]
         // screenLock();
         $.ajax({
             type: "POST",
@@ -57,7 +59,7 @@ jQuery(document).ready(function () {
                 console.log(data);
             },
             success: function (data) {
-                var url_ = "manage_timesheet.jsp";
+                var url_ = "manage_leave_type.jsp";
                 $(location).attr('href', url_);
             },
             error: function error(result) {

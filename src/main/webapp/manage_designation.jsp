@@ -176,12 +176,62 @@
                         </ul>
                     </div>
                 </nav>
+                <div class="main-content container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-md-8 order-md-1 order-last">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.jsp" class="text-success"><i class="fa fa-home"></i> Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Manage Designation</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-md-4 order-md-2 order-first">
+                            <a href="add_designation.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Add Designation</a>
+
+                        </div>
+                    </div>
+
+
+                    <!-- Basic Vertical form layout section start -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <i class="mdi mdi-table fa-fw"></i> 
+                                    Designation/Position List
+                                </div>
+                                <div class="card-body pt-3">
+                                    <div class="table-responsive">
+                                        <table id="position_table" class="table mt-3">
+                                            <thead>
+                                                <tr>
+                                                    <th>Designation Name</th>
+                                                    <th>Description</th>
+                                                    <!-- 	<th>Creation Date</th> -->
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="position_table_data">
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // Basic Vertical form layout section end -->
+                </div>
 
                 <div class="main-content container-fluid">
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Manage Designation</h3>
+                                <h3></h3>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
@@ -198,7 +248,7 @@
                     <section class="section">
                         <div class="card">
                             <div class="card-body">
-                                <table class='table ' id="position_table">
+                                <table class='table ' id="position_table_">
                                     <thead>
                                         <tr>
                                             <th>Designation Name</th>

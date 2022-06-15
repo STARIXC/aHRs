@@ -6,21 +6,21 @@ jQuery(document).ready(function () {
     "use strict";
     function getCarderType() {
 
-        var carder_id = $("#carder_id").val();
+        var carder_cat_id = $("#carder_cat_id").val();
         ;
 
         $.ajax({
-            url: "./CarderTypeUpdates?action=edit",
+            url: "./CarderCatUpdates?action=edit",
             method: 'GET',
             dataType: 'json',
             data: {
-                'ctype_id':carder_id 
+                'carder_cat_id':carder_cat_id 
             },
             success: function (data) {
                 console.log(data);
 
-                document.getElementById('carder_name').value = data.cadre_type_name;
-                document.getElementById('hrs_per_week').value = data.hrs_per_week;
+                document.getElementById('carder_category_name').value = data.cadre_type_name;
+               
                
 
             },
@@ -40,7 +40,7 @@ jQuery(document).ready(function () {
         var form = $("#editcarderForm_");
         var action = "update_carder";
         var data = form.serialize() + "&action=" + action;
-        var url = './CarderTypeUpdates';
+        var url = './CarderCatUpdates';
         // screenLock();
         $.ajax({
             type: "POST",
@@ -51,7 +51,7 @@ jQuery(document).ready(function () {
                 console.log(data);
             },
             success: function (data) {
-                var url_ = "manage_carder_type.jsp";
+                var url_ = "manage_carder_category.jsp";
                 $(location).attr('href', url_);
                 console.log(data);
             },

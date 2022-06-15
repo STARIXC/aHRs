@@ -21,45 +21,46 @@ import Utils.LeaveModel;
  */
 @WebServlet("/LeaveType")
 public class LeaveType extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	HttpSession session = null;
-	DatabaseConnection conn = new DatabaseConnection();
-	  Gson gson = new Gson();
-	  @SuppressWarnings("unused")
-	private LeaveModel dao;
-	  private JSONConverter json;
-	  int status= 0;
-		String message="";
-		PrintWriter out;
 
-
+    private static final long serialVersionUID = 1L;
+    HttpSession session = null;
+    DatabaseConnection conn = new DatabaseConnection();
+    Gson gson = new Gson();
+    @SuppressWarnings("unused")
+    private LeaveModel dao;
+    private JSONConverter json;
+    int status = 0;
+    String message = "";
+    PrintWriter out;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
     public LeaveType() {
         super();
-        dao=new LeaveModel();
-       }
+        dao = new LeaveModel();
+    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		out= response.getWriter();
-		@SuppressWarnings("static-access")
-		String leave = json.convert(dao.getAllLeaves());
-		out.println(leave);
-	
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        out = response.getWriter();
+        @SuppressWarnings("static-access")
+        String leave = json.convert(dao.getAllLeaves());
+        out.println(leave);
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }

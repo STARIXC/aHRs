@@ -1,39 +1,31 @@
 jQuery(document).ready(function () {
     var jsonData;
     var i = 1;
-    $('#cadre_table').DataTable({
+    $('#cadre_category_table').DataTable({
         "ajax": {
-            "url": './AllStaffServlet?action=allStaff',
+            "url": './CarderCat?action=all',
             "type": "GET",
             dataType: "json",
             dataSrc: "",
             "data": function (d) {
-                $("#employee-table-data").html(d);
+                $("#cadre_category_data").html(d);
             }
         },
-        "columns": [{
-                "data": "emp_no"
-            }, {
+       "columns": [
+            {
                 "data": null,
-                render: function (data, type, row) {
-                    return row.surname + ' ' + row.first_name + ' ' + row.other_name;
-                }}, {
-                "data": "position_name"
-            }, {
-                "targets": 0,
-                "data": "active",
                 "render": function (data, type, row, meta) {
-                    if (data == 1) {
-                        return '<span class="badge bg-success">Active</span>';
-                    } else {
-                        return '<span class="badge bg-danger">In Active</span>';
-                    }
+                    return i++;
                 }
-            }, {
+            },
+            {
+                "data": "cadre_category_name"
+            },
+            {
                 "targets": 0,
-                "data": "emp_no",
+                "data": "id",
                 "render": function (data, type, row, meta) {
-                    return 	'<div class="d-flex"><a  class="badge bg-success" href="./AllStaffServlet?id=' + data + '&action=edit"><i class="fa fa-pen text-white"></i></a><a class="badge bg-primary" href="./AllStaffServlet?id=' + data + '&action=view"><i class="fa fa-eye text-white"></i></a> <a class="badge bg-danger" href="./AllStaffServlet?id=' + data + '&action=delete"><i class="fa fa-trash text-white"></i></a></div>';
+                    return 	'<div class="d-flex m-2"><a  class="btn btn-sm bg-success" href="edit_carder_category.jsp?id=' + data + '&action=edit"><i class="fa fa-pen text-white"></i></a><a class="btn btn-sm bg-danger" href="./CarderCat?id=' + data + '&action=delete"><i class="fa fa-trash text-white"></i></a></div>';
                 }
             }]
 
@@ -138,6 +130,37 @@ jQuery(document).ready(function () {
             },
             success: function (data) {
                 var url_ = "manage_carder_type.jsp";
+                $(location).attr('href', url_);
+                console.log(data);
+            },
+            error: function error(result) {
+
+            },
+            complete: function complete() {
+                //	stopLoader();
+
+            }
+        });
+    });
+//    save carder
+    $("#carder_cat_Form_").submit(function (e) {
+      //  alert("submited");
+        e.preventDefault(); // prevent actual form submit
+        var form = $("#carder_cat_Form_");
+        var action = "save_carder_cat";
+        var data = form.serialize() + "&action=" + action;
+        var url = './CarderCat';
+        // screenLock();
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data, // serializes form input
+            beforeSend: function beforeSend() {
+                //startLoader();
+                console.log(data);
+            },
+            success: function (data) {
+                var url_ = "manage_carder_category.jsp";
                 $(location).attr('href', url_);
                 console.log(data);
             },

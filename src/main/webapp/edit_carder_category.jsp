@@ -1,8 +1,3 @@
-<%-- 
-    Document   : edit_termination
-    Created on : May 18, 2022, 10:36:43 AM
-    Author     : CBWAHYI
---%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -11,14 +6,13 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Carder Type</title>
+        <title>Add Carder Type</title>
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
         <link rel="stylesheet" href="assets/css/toggle.css">
         <link rel="stylesheet" href="assets/vendor/DataTables/datatables.css">
         <script defer src="assets/fontawesome/js/all.min.js"></script>
-        <link rel="stylesheet"
-              href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+        <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="assets/vendor/jquery/jquery.min.js"></script>
         <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
@@ -31,9 +25,12 @@
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     </head>
     <body>
+          <%
+            String id = request.getParameter("id");
+        %>
         <div id="app">
             <div id="sidebar" class='active'>
-                <div class="sidebar-wrapper ">
+                <div class="sidebar-wrapper active">
                     <div class="sidebar-header" style="height: 50px;margin-top: -30px">
                         <i class="fa fa-users text-success me-4"></i>
                         <span>HRH</span>
@@ -44,8 +41,9 @@
                                                           class='sidebar-link'> <i class="fa fa-home text-success"></i>
                                     <span>Dashboard</span>
                                 </a></li>
-                            <li class="sidebar-item active has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
+
+                            <li class="sidebar-item active has-sub">
+                                <a href="#" class='sidebar-link'> <i class="fa fa-table text-success"></i>
                                     <span>Designation</span>
                                 </a>
                                 <ul class="submenu ">
@@ -55,8 +53,8 @@
                                     <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
                                 </ul>
                             </li>
-                            <li class="sidebar-item   has-sub"><a href="#"
-                                                                        class='sidebar-link'> <i class="fa fa-users text-success"></i>
+                            <li class="sidebar-item  has-sub"><a href="#"
+                                                                 class='sidebar-link'> <i class="fa fa-users text-success"></i>
                                     <span>Employees</span>
                                 </a>
                                 <ul class="submenu ">
@@ -122,7 +120,7 @@
                     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
                 </div>
             </div>
-             <div id="main">
+            <div id="main">
                 <nav class="navbar navbar-header navbar-expand navbar-light">
                     <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
                     <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -185,13 +183,13 @@
                             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.jsp" class="text-success"><i class="fa fa-home"></i> Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Manage Carder Type</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add Department</li>
                                 </ol>
                             </nav>
                         </div>
                         <div class="col-md-4 order-md-2 order-first">
-                            <a href="add_carder_type.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Add Carder Type</a>
+                            <a href="manage_carder_type.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                                <i class="fa fa-list-ul" aria-hidden="true"></i> View Carder Types</a>
 
                         </div>
                     </div>
@@ -201,27 +199,45 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header bg-success text-white">
-                                    <i class="mdi mdi-table fa-fw"></i> 
-                                    Carder Type List
+                                <div class="card-header bg-success text-white"><i class="mdi mdi-clipboard-text fa-fw"></i>
+                                    Add Carder Type
                                 </div>
-                                <div class="card-body pt-3">
-                                    <div class="table-responsive">
-                                        <table id="cadre_type_table" class="table mt-3">
-                                            <thead>
-                                                <tr>
-                                                    <th>S/L</th>
-                                                    <th>Carder Name</th>
-                                                    <th>Hours Per Week</th>
-                                                  <th style="text-align: center;">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="cadre_type_data">
+                                <div class="card-body">
+                                    <form method="POST"  class="form-horizontal" id="editcarderForm_" enctype="multipart/form-data">
+
+                                        <div class="form-body">
+                                            <div class="row">
+
+                                                <div class="col-sm-12">
+                                                    <div class="form-group ">
+                                                        <label for="carder_name">Carder Name </label>
+                                                        <input type="hidden" class="form-control carder_cat_id input-width-xlarge" name="carder_cat_id" id="carder_cat_id" value="<%=id%>">
+                                                        <input type="text" class="form-control carder_category_name input-width-xlarge" name="carder_category_name" id="carder_category_name" placeholder="Carder Name" autocomplete="off">
+                                                    </div>
+                                                </div>
+                                              
+                                                </div>
 
 
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            </div>
+
+
+
+                                            <div class="form-actions">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <div class="row">
+                                                            <div class="col-md-offset-4 col-md-8">
+                                                                <!--                                                                <input name="update" type="submit" class="btn btn-info btn_style" value="Update">-->
+                                                                <input name="submit" type="submit" class="btn btn-info btn_style" value="Update">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
                                 </div>
 
                             </div>
@@ -230,19 +246,17 @@
                     <!-- // Basic Vertical form layout section end -->
                 </div>
             </div>
-       </div>
-        <!--        <script src="assets/vendor/jquery/jquery.min.js"></script>
-                <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>-->
 
+        </div>
         <script src="assets/vendor/DataTables/datatables.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather-icons/feather.min.js"></script>
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/js/app.js"></script>
-        <script src="assets/js/pages/cader.js"></script>
+        <script src="assets/js/pages/carder_cat_.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+
     </body>
 </html>
-

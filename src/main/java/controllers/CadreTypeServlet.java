@@ -61,23 +61,7 @@ public class CadreTypeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-        // String emp_no = request.getParameter("emp_no");
-        if (action.equalsIgnoreCase("save_carder")) {
-            CarderType ctype = new CarderType();
-            ctype.setCadre_type_name(request.getParameter("carder_name"));
-            ctype.setHrs_per_week(request.getParameter("hrs_per_week"));
-            String id = request.getParameter("id");
-            if (id == null || id.isEmpty()) {
-                dao.addCarderType(ctype);
-            } else {
-                ctype.setId(Integer.parseInt(id));
-                dao.updateCarderType(ctype);
-            }
-
-        } else if (action.equalsIgnoreCase("update_carder")) {
-
-        } else {
+       
             try {
                 response.setContentType("text/html;charset=UTF-8");
                 session = request.getSession();
@@ -130,7 +114,7 @@ public class CadreTypeServlet extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(CadreTypeServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        
 
         //  doGet(request, response);
     }

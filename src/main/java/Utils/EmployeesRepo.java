@@ -220,7 +220,7 @@ public class EmployeesRepo {
 
         try {
             String sql = "select IFNULL(b.id,'-') as emp_id,  IFNULL(b.emp_no,'-') as emp_no,  IFNULL(b.first_name,'') as firstname,"
-                    + "  IFNULL(b.surname,'') as surname, IFNULL( b.other_name,'') as other_name,IFNULL(b.phone,'_') as phone, IFNULL(b.email,'') as email,"
+                    + "  IFNULL(b.surname,'') as surname, IFNULL( b.other_name,'') as other_name,CONCAT(IFNULL(b.first_name,'') , ' ',IFNULL( b.other_name,''), ' ',  IFNULL(b.surname,' ')) as full_name,IFNULL(b.phone,'_') as phone, IFNULL(b.email,'') as email,"
                     + "  IFNULL(b.nationality,'-') as nationality,h.active as status,c.position_title as position "
                     + "from emp_bio b join employee_hist h on h.emp_no =b.emp_no "
                     + "join cadre_positions c on h.position=c.id ";
@@ -229,6 +229,7 @@ public class EmployeesRepo {
                 Staff staff = new Staff();
                 staff.setId(conn.rs.getInt("emp_id"));
                 staff.setEmp_no(conn.rs.getString("emp_no"));
+                staff.setFull_name(conn.rs.getString("full_name"));
                 staff.setFirst_name(conn.rs.getString("firstname"));
                 staff.setSurname(conn.rs.getString("surname"));
                 staff.setOther_name(conn.rs.getString("other_name"));

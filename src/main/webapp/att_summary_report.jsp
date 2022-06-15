@@ -1,31 +1,29 @@
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Manage Leave Type</title>
-        <link href="assets/vendor/swal2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+        <title>Manage Designation</title>
+
         <link rel="stylesheet" href="assets/css/bootstrap.css">
 
         <link rel="stylesheet" href="assets/vendor/DataTables/datatables.css">
 
-        <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-
+        <script defer src="assets/fontawesome/js/all.min.js"></script>
+        <link rel="stylesheet"
+              href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="assets/vendor/jquery/jquery.min.js"></script>
         <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
 
-        <script defer src="assets/fontawesome/js/all.min.js"></script>
-        <script src="assets/vendor/swal2/sweetalert2.min.js" type="text/javascript"></script>
         <style type="text/css">
             .notif:hover {
                 background-color: rgba(0, 0, 0, 0.1);
             }
-            .fade:not(.show) {
-                opacity: 1 !important;
-            }
         </style>
+        <script src="assets/vendor/jquery/jquery.min.js"></script>
     </head>
 
     <body>
@@ -37,23 +35,14 @@
                     </div>
                     <div class="sidebar-menu">
                         <ul class="menu">
-                            <li class="sidebar-item "><a href="index.jsp"
-                                                         class='sidebar-link'> <i class="fa fa-home text-success"></i>
+                            <li class="sidebar-item  "><a href="index.jsp"
+                                                          class='sidebar-link'> <i class="fa fa-home text-success"></i>
                                     <span>Dashboard</span>
                                 </a></li>
 
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
+                            <li class="sidebar-item active  has-sub"><a href="#"
+                                                                        class='sidebar-link'> <i class="fa fa-table text-success"></i>
                                     <span>Designation</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_designation.jsp">Add Designation</a></li>
-                                    <li><a href="manage_designation.jsp">Manage Designation</a>
-                                    </li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-users text-success"></i>
-                                    <span>Employees</span>
                                 </a>
                                 <ul class="submenu ">
                                     <li><a href="manage_carder_type.jsp">Carder Type</a></li>
@@ -62,8 +51,17 @@
                                     <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
                                 </ul>
                             </li>
-                            <li class="sidebar-item active  has-sub"><a href="#"
-                                                                        class='sidebar-link'> <i class="fa fa-table text-success"></i>
+                            <li class="sidebar-item  has-sub"><a href="#"
+                                                                 class='sidebar-link'> <i class="fa fa-users text-success"></i>
+                                    <span>Employees</span>
+                                </a>
+                                <ul class="submenu ">
+                                    <li><a href="add_employee.jsp">Add Employee</a></li>
+                                    <li><a href="manage_employee.jsp">Manage Employee</a></li>
+                                    <li><a href="manage_termination.jsp">Termination</a></li>
+                                </ul></li>
+                            <li class="sidebar-item  has-sub"><a href="#"
+                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
                                     <span>Leave Type</span>
                                 </a>
                                 <ul class="submenu ">
@@ -178,22 +176,17 @@
                         </ul>
                     </div>
                 </nav>
-
                 <div class="main-content container-fluid">
                     <div class="row mb-2">
-                        <div class="col-md-8 order-md-1 order-last">
+                        <div class="col-md-12 order-md-1 order-last">
                             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.jsp" class="text-success"><i class="fa fa-home"></i> Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Manage Leave Type</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Attendance Summary Report</li>
                                 </ol>
                             </nav>
                         </div>
-                        <div class="col-md-4 order-md-2 order-first">
-                            <a href="add_leave_type.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Add Leave Type</a>
 
-                        </div>
                     </div>
 
 
@@ -203,29 +196,94 @@
                             <div class="card">
                                 <div class="card-header bg-success text-white">
                                     <i class="mdi mdi-table fa-fw"></i> 
-                                    Leave Type List
+                                    Attendance Summary Report
                                 </div>
                                 <div class="card-body pt-3">
-                                    <section class="section">
-                                        <div class="leave_section">
-                                            <div class=" table-responsive">
-                                                <table width="100%" class='table table-striped table-bordered table-hover' id="leave_type_table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Leave Name</th>
-                                                            <th>Description</th>
-                                                            <th>Days Allowed</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="leave_type_data">
+                                    <div class="row">
+                                        <div id="searchBox">
+                                            <form method="POST" action="https://hrms.braintricker.com/attendanceSummaryReport" accept-charset="UTF-8" id="attendanceSummaryReport"><input name="_token" type="hidden" value="VC2IFNCl30Tfr3xoVjBa8kWDFS4v8non1posxvty">
+                                                <div class="col-md-3"></div>
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                <div class="col-md-4">
+                                                    <label class="control-label" for="email">Month<span class="validateRq">*</span></label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                        <input type="text" class="form-control monthField required" readonly placeholder="Month"  name="month" value=" 2022-06">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <input type="submit" id="filter" style="margin-top: 25px; width: 100px;" class="btn btn-info " value="Filter">
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
+                                    </div>
+                                    <h4 class="text-end">
+                                        <a target="_blank" class="btn btn-success" style="color: #fff" href="https://hrms.braintricker.com/downloadAttendanceSummaryReport/2022-06"><i class="fa fa-download fa-lg" aria-hidden="true"></i> Download PDF</a>
+                                    </h4>
+                                    <div class="table-responsive">
+                                        <table id="timesheet_table" class="table mt-3">
+                                            <thead>
+                                                <tr>
+                                                    <th>S/L</th>
+                                                    <th>year</th>
+                                                    <th colspan="0" class="totalCol">Month</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th> 2022 </th>
+                                                    <th>June</th>
+                                                    <th>Wed</th>
+                                                    <th>Thu</th>
+                                                    <th>Fri</th>
+                                                    <th>Sat</th>
+                                                    <th>Sun</th>
+                                                    <th>Mon</th>
+                                                    <th>Tue</th>
+                                                    <th>Wed</th>
+                                                    <th>Thu</th>
+                                                    <th>Fri</th>
+                                                    <th>Sat</th>
+                                                    <th>Sun</th>
+                                                    <th>Mon</th>
+                                                    <th>Tue</th>
+                                                    <th>Wed</th>
+                                                    <th>Thu</th>
+                                                    <th>Fri</th>
+                                                    <th>Sat</th>
+                                                    <th>Sun</th>
+                                                    <th>Mon</th>
+                                                    <th>Tue</th>
+                                                    <th>Wed</th>
+                                                    <th>Thu</th>
+                                                    <th>Fri</th>
+                                                    <th>Sat</th>
+                                                    <th>Sun</th>
+                                                    <th>Mon</th>
+                                                    <th>Tue</th>
+                                                    <th>Wed</th>
+                                                    <th>Thu</th>
+                                                    <th>Day off worked</th>
+                                                    <th>Gov. Day Worked </th>
+                                                    <th>Earn Leave</th>
+                                                    <th>Casual Leave</th>
+                                                    <th>Sick Leave</th>
+                                                    <th>Vacation</th>
+                                                    <th>MEDICAL LEAVE</th>
+                                                    <th>Maternity Leave</th>
+                                                    <th>WFH</th>
+                                                    <th>Touqeer</th>
+                                                    <th>abc</th>
+                                                </tr>
+                                            </thead>
+                                            </thead>
+                                            <tbody id="timesheet_table_data">
 
-                                    </section>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
 
                             </div>
@@ -233,68 +291,18 @@
                     </div>
                     <!-- // Basic Vertical form layout section end -->
                 </div>
-
-
             </div>
         </div>
 
         <script src="assets/js/feather-icons/feather.min.js"></script>
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/js/app.js"></script>
+
         <script src="assets/vendor/DataTables/datatables.js"></script>
+        <script src="assets/js/pages/attendace.js"></script>  
+
         <script src="assets/js/main.js"></script>
-        <script src="assets/js/pages/leave_type.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-
-                $(document).on('click', '#delete_leave_type', function (e) {
-                    e.preventDefault();
-                    var typeId = $(this).data('id');
-                    console.log("Type id: " + typeId);
-                    SwalDelete(typeId);
-
-                });
-
-            });
-
-            function SwalDelete(typeId) {
-
-                swal({
-                    title: 'Are you sure?',
-                    text: "It will be deleted permanently",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6', //sweetalert confirm dialouge 
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!',
-                    showLoaderOnConfirm: true,
-
-                    preConfirm: function () {
-                        return new Promise(function (resolve) {    //Promise() function take care delete process done by ajax
-                            var action = "delete";
-                            var data = "deleteId=" + typeId + "&action=" + action;
-                            var url = url;
-                            $.ajax({
-                                url: './ProcessLeaves', //ajax codes start for delete data
-                                type: 'POST',
-                                data: data,
-                                dataType: 'JSON'
-                            })
-                                    .done(function (response) {
-                                        swal('Deleted!', response.message, response.status);    //after process done on delete.jsp file get JSON response display message "Fruit Delete Successfully"
-                                        var url_ = "manage_leave_type.jsp";
-                                        $(location).attr('href', url_);
-                                        //  readFruit();
-                                    })
-                                    .fail(function () {
-                                        swal('Oops...', 'Something went wrong with ajax !', 'error');    //if process fail on delete.jsp file get JSON response display message "Unable to delete fruit"
-                                    });
-                        });
-                    },
-                    allowOutsideClick: false
-                });
-            }
-        </script>
+        <script src="assets/js/pages/position.js"></script>
     </body>
 
 </html>

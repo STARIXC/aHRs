@@ -71,6 +71,7 @@ public class AllStaffServlet extends HttpServlet {
 			request.setAttribute("staff", staff);
 		} else if (action.equalsIgnoreCase("allStaff")) {
 			String employees = json.convert(dao.findAll());
+                         System.out.print(employees);
 			out.println(employees);
 		}else if (action.equalsIgnoreCase("get_basic")) {
 			String employees = json.convert(dao.get_basic_All());
