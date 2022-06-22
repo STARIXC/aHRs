@@ -17,19 +17,26 @@ jQuery(document).ready(function () {
         },
 
         "columns": [
-
+            {
+                "data": null,
+                "render": function (data, type, row, meta) {
+                    return i++;
+                }
+            },
             {
                 "data": "employee_name"
             }, {
-                "data": "employee_id"
+                "data": "leave_type_name"
             }, {
-                "data": "start_date"
-            }
-            , {
-                "data": "end_date"
-            }, {
+                "data": "duration"
+            },
+            {
                 "data": "date_of_application"
-            }, {
+            },
+            {
+                "data": "number_days"
+            },
+            {
                 "targets": 0,
                 "data": "leave_status",
                 "render": function (data, type, row, meta) {
@@ -38,7 +45,7 @@ jQuery(document).ready(function () {
                     } else if (data === 1) {
                         return '<span class="badge bg-info">Pending</span>';
                     } else if (data === 3) {
-                        return ' <span class="badge bg-danger">Not Approved</span>';
+                        return ' <span class="badge bg-danger">Rejected</span>';
                     } else {
                         return '<span class="badge bg-danger">Not Applicable</span>';
                     }
@@ -47,7 +54,7 @@ jQuery(document).ready(function () {
                 "targets": 0,
                 "data": "application_id",
                 "render": function (data, type, row, meta) {
-                    return 	'<a href="./approve_application_form?tambua=' + data + '" title="Leave Approve" class="btn btn-xs btn-info"><i class="fa fa-paper-plane" aria-hidden="true"></i></a><a  class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>';
+                    return 	'';
                 }
             }
         ]

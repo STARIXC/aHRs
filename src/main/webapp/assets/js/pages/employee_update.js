@@ -14,21 +14,7 @@ function getEmpDet() {
         },
         success: function (data) {
             console.log(data);
-//active: 1
-//disability: "0"
-//email: "mm2005bs@yahoo.com"
-//emp_no: "0179"
-//first_name: "MUSOGA"
-//gender: "FEMALE"
-//helb_benefitiary: 0
-//id: 34
-//mfl: "15280"
-//national_id: "21783412"
-//nationality: "Kenyan"
-//other_name: "MILKA"
-//phone: "0727747818"
-//position: "1"
-//surname: "OMBATU"
+
             document.getElementById('txtSurname').value = data.surname;
             document.getElementById('txtFirstName').value = data.first_name;
             document.getElementById('txtMiddleName').value = data.other_name;

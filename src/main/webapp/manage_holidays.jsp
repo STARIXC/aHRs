@@ -34,88 +34,9 @@
                         <i class="fa fa-users text-success me-4"></i>
                         <span>HRH</span>
                     </div>
-                    <div class="sidebar-menu">
-                        <ul class="menu">
-                            <li class="sidebar-item  "><a href="index.jsp"
-                                                          class='sidebar-link'> <i class="fa fa-home text-success"></i>
-                                    <span>Dashboard</span>
-                                </a></li>
-
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Designation</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="manage_carder_type.jsp">Carder Type</a></li>
-                                    <li><a href="manage_carder_category.jsp">Carder Category</a></li>
-                                    <li><a href="manage_standardised_carder.jsp">Standardized Carder</a></li>
-                                    <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item  has-sub active"><a href="#"
-                                                                        class='sidebar-link'> <i class="fa fa-users text-success"></i>
-                                    <span>Employees</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_employee.jsp">Add Employee</a></li>
-                                    <li><a href="manage_employee.jsp">Manage Employee</a></li>
-                                    <li><a href="manage_termination.jsp">Termination</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Type</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_leave_type.jsp">Add Leave Type</a></li>
-                                    <li><a href="manage_leave_type.jsp">Manage Leave Type</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Management</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="all_leave.jsp">All Leaves</a></li>
-                                    <li><a href="pending_leave.jsp">Pending Leaves</a></li>
-                                    <li><a href="approve_leave.jsp">Approve Leaves</a></li>
-                                    <li><a href="not_approve_leave.jsp">Not Approve Leaves</a>
-                                    </li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="javascript:void(0)" class='sidebar-link'>
-                                    <i class="fa fa-user text-success"></i> <span>Attendance</span></i>
-                                    </span>
-                                </a>
-
-                                <ul class="submenu" style="display: block;">
-                                    <li class=""><a
-                                            href="monthly_manual_attendance.jsp">Monthly
-                                            Attendance</a></li>
-
-                                    <li class=""><a
-                                            href="missing_attendance">Missing
-                                            Attendance</a></li>
-
-
-                                    <!-- single level menu/link -->
-                                    <li class=""><a
-                                            href="att_log_report">Attendance
-                                            Log</a></li>
-
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-user text-success"></i>
-                                    <span>Users</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_user.jsp">Add User</a></li>
-                                    <li><a href="manage_user.jsp">Manage Users</a></li>
-                                </ul></li>
-                            <li class="sidebar-item "><a href="reports.jsp"
-                                                         class='sidebar-link'> <i class="fa fa-chart-bar text-success"></i>
-                                    <span>Reports</span>
-                                </a></li>
-                        </ul>
-                    </div>
-
+                    <!-- BEGIN SIDEBAR MENU -->         
+                    <%@include file="/_includes/sidebar_menu.jsp"%>
+                    <!-- END SIDEBAR MENU -->
                     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
                 </div>
             </div>
@@ -194,10 +115,10 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="card panel panel-info">
-                                    <div class="panel-heading"><i class="mdi mdi-table fa-fw"></i> Public Holiday List</div>
-                                    <div class="panel-wrapper">
-                                        <div class="card-body panel-body">
+                                <div class=" card text-white">
+                                    <div class="card-header bg-success"><i class="fa fa-th fa-fw"></i> Public Holiday List</div>
+                                    <div class="card-wrapper">
+                                        <div class=" card-body">
                                             <div class="table-responsive">
                                                 <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
                                                     <table id="myTable" class="table table-bordered  no-footer mt-3" >
@@ -210,7 +131,7 @@
                                                                 <th >Comment</th>
                                                                 <th style="text-align: center;" >Action</th></tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody id="tbl_holidays">
 
 
 
@@ -232,7 +153,8 @@
                                                                     </a>
                                                                     <a href="http://hrms.braintricker.com/publicHoliday/8/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="8" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" ></i></a>
                                                                 </td>
-                                                            </tr></tbody>
+                                                            </tr>
+                                                        </tbody>
                                                     </table>
 
                                                 </div>
@@ -253,60 +175,9 @@
                 <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
                 <script src="assets/js/app.js"></script>
                 <script src="assets/js/main.js"></script>
+                <script src="assets/js/pages/holiday.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-                <script>
-                    $(".select2").select2();
-                    $('#myTable').DataTable({
-                        "ordering": false,
-                        responsive: true,
-                        dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
-                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                        buttons: [
-                            {extend: 'copy', className: 'btn-sm'},
-                            {extend: 'csv', title: 'ExampleFile', className: 'btn-sm'},
-                            {extend: 'excel', title: 'exportTitle', className: 'btn-sm'},
-                            {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
-                            {extend: 'print', className: 'btn-sm'}
-                        ],
-                    });
-
-
-
-                    $(".alert-success").delay(2000).fadeOut("slow");
-                    //   $(".alert-danger").delay(2000).fadeOut("slow");
-                    $(document).on("focus", ".yearPicker", function () {
-                        $(this).datepicker({
-                            format: 'yyyy',
-                            minViewMode: 2
-                        }).on('changeDate', function (e) {
-                            $(this).datepicker('hide');
-                        });
-                    });
-                    $(document).on("focus", ".dateField", function () {
-                        $(this).datepicker({
-                            format: 'dd/mm/yyyy',
-                            todayHighlight: true,
-                            clearBtn: true
-                        }).on('changeDate', function (e) {
-                            $(this).datepicker('hide');
-                        });
-                    });
-                    $(document).on("focus", ".timePicker", function () {
-                        $(this).timepicker({
-                            showInputs: false,
-                            minuteStep: 1
-                        });
-                    });
-                    $(".monthField").datepicker({
-                        format: "yyyy-mm",
-                        viewMode: "months",
-                        minViewMode: "months"
-                    }).on('changeDate', function (e) {
-                        $(this).datepicker('hide');
-                    });
-
-
-                </script>
+         
                 </body>
                 </html>
 

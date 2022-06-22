@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hris.db.DatabaseConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.LeaveApplication;
 import models.Leave;
+import models.LeaveBalance;
 
 public class LeaveDAO {
 
@@ -133,16 +136,21 @@ public class LeaveDAO {
         List<LeaveApplication> leaves = new ArrayList<>();
         try {
 
-            String sql = "SELECT a.application_id as id,a.start_date as startdate,a.end_date as enddate, a.date_of_application AS applicationdate, a.leave_status AS status,t.leave_name AS leave_name, e.emp_no AS employee_no, \n"
+            String sql = "SELECT a.application_id as id,a.start_date as startdate,a.end_date as enddate, a.date_of_application AS applicationdate, a.leave_status AS status,a.number_days AS no_days,t.leave_name AS leave_name, e.emp_no AS employee_no, \n"
                     + "CONCAT(e.first_name,' ',e.surname) AS EmployeeName FROM tbl_leave_application a join tbl_leave_type t on t.leave_type_id=a.leave_type_id JOIN emp_bio e ON e.emp_no=a.employee_id";
             conn.rs = conn.st.executeQuery(sql);
 
             while (conn.rs.next()) {
+                String start_date = conn.rs.getString("startdate");
+                String end_date = conn.rs.getString("enddate");
+                String duration = start_date + " to " + end_date;
                 LeaveApplication leave = new LeaveApplication();
                 leave.setEmployee_name(conn.rs.getString("EmployeeName"));
                 leave.setApplication_id(conn.rs.getInt("id"));
-                leave.setStart_date(conn.rs.getString("startdate"));
-                leave.setEnd_date(conn.rs.getString("enddate"));
+                leave.setStart_date(start_date);
+                leave.setEnd_date(end_date);
+                leave.setDuration(duration);
+                leave.setNumber_days(conn.rs.getDouble("no_days"));
                 leave.setLeave_status(conn.rs.getInt("status"));
                 leave.setLeave_type_name(conn.rs.getString("leave_name"));
                 leave.setDate_of_application(conn.rs.getString("applicationdate"));
@@ -269,6 +277,84 @@ public class LeaveDAO {
             e.printStackTrace();
         }
         return leave;
+
+    }
+
+    public int approveLeave(String sql) {
+        int i = 0;
+        try {
+            conn.pst = conn.conn.prepareStatement(sql);
+            int submit = conn.pst.executeUpdate();
+
+            if (submit > 0) {
+                i = +1;
+            } else {
+                System.out.println(submit);
+                i = +submit;
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    public List<LeaveApplication> getAllAppliedByEmpNo(int employee_id, String start, String end) {
+        List<LeaveApplication> leaves = new ArrayList<>();
+        try {
+
+            String sql = "SELECT a.application_id as id,a.start_date as startdate,a.end_date as enddate, a.date_of_application AS applicationdate,a.supervisor_id AS approved_by, a.leave_status AS status,a.number_days AS no_days,t.leave_name AS leave_name, e.emp_no AS employee_no, \n"
+                    + "CONCAT(e.first_name,' ',e.surname) AS EmployeeName FROM tbl_leave_application a join tbl_leave_type t on t.leave_type_id=a.leave_type_id JOIN emp_bio e ON e.emp_no=a.employee_id where a.employee_id='" + employee_id + "'";
+            conn.rs = conn.st.executeQuery(sql);
+
+            while (conn.rs.next()) {
+                String start_date = conn.rs.getString("startdate");
+                String end_date = conn.rs.getString("enddate");
+                String duration = start_date + " to " + end_date;
+                LeaveApplication leave = new LeaveApplication();
+                leave.setEmployee_name(conn.rs.getString("EmployeeName"));
+                leave.setApplication_id(conn.rs.getInt("id"));
+                leave.setStart_date(start_date);
+                leave.setEnd_date(end_date);
+                leave.setDuration(duration);
+                leave.setNumber_days(conn.rs.getDouble("no_days"));
+                leave.setUser_id(conn.rs.getInt("approved_by"));
+                leave.setLeave_status(conn.rs.getInt("status"));
+                leave.setLeave_type_name(conn.rs.getString("leave_name"));
+                leave.setDate_of_application(conn.rs.getString("applicationdate"));
+                leave.setEmployee_id(conn.rs.getInt("employee_no"));
+                leaves.add(leave);
+
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return leaves;
+    }
+
+    public List<LeaveBalance> getBalanceByEmpNo(String emp_id, String start, String end) {
+        List<LeaveBalance> leaves = new ArrayList<>();
+
+        String sql = "SELECT ltp.leave_name as leave_type, ifnull(la.no_days,0) as accrud_days,ifnull(lt.no_days,0) as days_taken,  ((ifnull(la.no_days,0)-ifnull(lt.no_days,0)) ) as balance FROM hrh.tbl_leave_days_available la \n"
+                + "left join hrh.tbl_leave_taken lt on la.employee_id =lt.employee_id  left join hrh.tbl_leave_type ltp on ltp.leave_type_id =la.leave_type_id   where  la.fy_id='2022' and la.employee_id='" + emp_id + "' ";
+        try {
+            conn.rs = conn.st.executeQuery(sql);
+            while (conn.rs.next()) {
+                LeaveBalance lb =new LeaveBalance();
+                lb.setLeave_type(conn.rs.getString("leave_type"));
+                lb.setNumber_days(conn.rs.getString("accrud_days"));
+                lb.setNumber_consumed(conn.rs.getString("days_taken"));
+                lb.setCurrent_balance(conn.rs.getString("balance"));
+                leaves.add(lb);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LeaveDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return leaves;
 
     }
 

@@ -62,9 +62,16 @@ public class AllStaffServlet extends HttpServlet {
 			String emp_no = request.getParameter("emp_no");
 			Staff staff = dao.getStaffById(emp_no);
 			String details=json.convert(staff);
-                        System.out.print(staff);
+//                        System.out.print(details);
                         out.println(details);
-		} else if (action.equalsIgnoreCase("view")) {
+		}
+                 else if (action.equalsIgnoreCase("get_details")) {
+			String emp_no = request.getParameter("emp_no");
+			Staff staff = dao.getProfile(emp_no);
+			String details=json.convert(staff);
+                        System.out.print(details);
+                        out.println(details);
+		}else if (action.equalsIgnoreCase("view")) {
 			forward = VIEW_STAFF;
 			String emp_no = request.getParameter("emp_no");
 			Staff staff = dao.getStaffById(emp_no);

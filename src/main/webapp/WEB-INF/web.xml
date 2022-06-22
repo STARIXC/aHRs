@@ -57,6 +57,26 @@
         <servlet-name>ProcessLeaves</servlet-name>
         <servlet-class>controllers.ProcessLeaves</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetMonthDates</servlet-name>
+        <servlet-class>controllers.GetMonthDates</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TimesheetSummary</servlet-name>
+        <servlet-class>controllers.TimesheetSummary</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Designation</servlet-name>
+        <servlet-class>controllers.Designation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessLeaveApplications</servlet-name>
+        <servlet-class>controllers.ProcessLeaveApplications</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Roles</servlet-name>
+        <servlet-class>controllers.Roles</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProcessEmployee</servlet-name>
         <url-pattern>/Employee/create_employee</url-pattern>
@@ -117,6 +137,26 @@
     <servlet-mapping>
         <servlet-name>ProcessLeaves</servlet-name>
         <url-pattern>/ProcessLeaves</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetMonthDates</servlet-name>
+        <url-pattern>/GetMonthDates</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimesheetSummary</servlet-name>
+        <url-pattern>/TimesheetSummary</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Designation</servlet-name>
+        <url-pattern>/Designation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessLeaveApplications</servlet-name>
+        <url-pattern>/ProcessLeaveApplications</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Roles</servlet-name>
+        <url-pattern>/Roles</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

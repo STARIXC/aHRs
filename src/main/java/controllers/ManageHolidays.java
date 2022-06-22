@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Utils.HolidayDao;
+import Utils.JSONConverter;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,56 +28,37 @@ import models.Holiday;
 public class ManageHolidays extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-
-    private static String INSERT_OR_EDIT = "/create_holiday.jsp";
-    private static String LIST_Holiday = "/manage_holiday.jsp";
-    private HolidayDao dao;
+    private JSONConverter json;
+       public HolidayDao dao;
+    PrintWriter out;
+    String holiday_name, start_date, end_date, no_of_days, comment = "";
 
     public ManageHolidays() {
         super();
         dao = new HolidayDao();
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-     * response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String forward = "";
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, ParseException {
+        out = response.getWriter();
+        // setting the response type
+        response.setContentType("application/json");
         String action = request.getParameter("action");
-
         if (action.equalsIgnoreCase("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
             dao.deleteHoliday(id);
-            forward = LIST_Holiday;
-            request.setAttribute("holidays", dao.getAllHolidays());
+
         } else if (action.equalsIgnoreCase("edit")) {
-            forward = INSERT_OR_EDIT;
+
             int id = Integer.parseInt(request.getParameter("id"));
             Holiday holiday = dao.getHolidayById(id);
-            request.setAttribute("holiday", holiday);
+
         } else if (action.equalsIgnoreCase("listHolidays")) {
-            forward = LIST_Holiday;
-            request.setAttribute("holidays", dao.getAllHolidays());
-        } else {
-            forward = INSERT_OR_EDIT;
-        }
+            String holidays = json.convert(dao.getAllHolidays());
+            out.println(holidays);
 
-        RequestDispatcher view = request.getRequestDispatcher(forward);
-        view.forward(request, response);
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-     * response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        Holiday holiday = new Holiday();
-
-        try {
+        } else if (action.equalsIgnoreCase("save")) {
+            Holiday holiday = new Holiday();
             DateFormat formatter;
 
             formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -100,10 +83,38 @@ public class ManageHolidays extends HttpServlet {
                 holiday.setId(Integer.parseInt(id));
                 dao.updateHoliday(holiday);
             }
+
+        } else {
+            String holidays = json.convert(dao.getAllHolidays());
+            out.println(holidays);
+        }
+
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
         } catch (ParseException ex) {
             Logger.getLogger(ManageHolidays.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
 
+    /**
+     * @throws javax.servlet.ServletException
+     * @throws java.io.IOException
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
+        } catch (ParseException ex) {
+            Logger.getLogger(ManageHolidays.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

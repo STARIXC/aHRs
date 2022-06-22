@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="assets/vendor/DataTables/datatables.css">
 
         <script defer src="assets/fontawesome/js/all.min.js"></script>
+        !-- Date Picker -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
         <link rel="stylesheet"
               href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -27,93 +30,15 @@
     </head>
 
     <body>
-        <div id="app">
+        <div id="app" onload="getDefaultMonth();">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper active">
                     <div class="sidebar-header" style="height: 50px; margin-top: -30px">
                         <i class="fa fa-users text-success me-4"></i> <span>HRH</span>
                     </div>
-                    <div class="sidebar-menu">
-                        <ul class="menu">
-                            <li class="sidebar-item  "><a href="index.jsp"
-                                                          class='sidebar-link'> <i class="fa fa-home text-success"></i>
-                                    <span>Dashboard</span>
-                                </a></li>
-
-                            <li class="sidebar-item active  has-sub"><a href="#"
-                                                                        class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Designation</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="manage_carder_type.jsp">Carder Type</a></li>
-                                    <li><a href="manage_carder_category.jsp">Carder Category</a></li>
-                                    <li><a href="manage_standardised_carder.jsp">Standardized Carder</a></li>
-                                    <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-users text-success"></i>
-                                    <span>Employees</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_employee.jsp">Add Employee</a></li>
-                                    <li><a href="manage_employee.jsp">Manage Employee</a></li>
-                                    <li><a href="manage_termination.jsp">Termination</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Type</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_leave_type.jsp">Add Leave Type</a></li>
-                                    <li><a href="manage_leave_type.jsp">Manage Leave Type</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Management</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="all_leave.jsp">All Leaves</a></li>
-                                    <li><a href="pending_leave.jsp">Pending Leaves</a></li>
-                                    <li><a href="approve_leave.jsp">Approve Leaves</a></li>
-                                    <li><a href="not_approve_leave.jsp">Not Approve Leaves</a>
-                                    </li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="javascript:void(0)" class='sidebar-link'>
-                                    <i class="fa fa-user text-success"></i> <span>Attendance</span></i>
-                                    </span>
-                                </a>
-
-                                <ul class="submenu" style="display: block;">
-                                    <li class=""><a
-                                            href="monthly_manual_attendance.jsp">Monthly
-                                            Attendance</a></li>
-
-                                    <li class=""><a
-                                            href="missing_attendance">Missing
-                                            Attendance</a></li>
-
-
-                                    <!-- single level menu/link -->
-                                    <li class=""><a
-                                            href="att_log_report">Attendance
-                                            Log</a></li>
-
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-user text-success"></i>
-                                    <span>Users</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_user.jsp">Add User</a></li>
-                                    <li><a href="manage_user.jsp">Manage Users</a></li>
-                                </ul></li>
-                            <li class="sidebar-item "><a href="reports.jsp"
-                                                         class='sidebar-link'> <i class="fa fa-chart-bar text-success"></i>
-                                    <span>Reports</span>
-                                </a></li>
-                        </ul>
-                    </div>
+                    <!-- BEGIN SIDEBAR MENU -->         
+                    <%@include file="/_includes/sidebar_menu.jsp"%>
+                    <!-- END SIDEBAR MENU -->
                     <button class="sidebar-toggler btn x">
                         <i data-feather="x"></i>
                     </button>
@@ -199,89 +124,40 @@
                                     Attendance Summary Report
                                 </div>
                                 <div class="card-body pt-3">
-                                    <div class="row">
-                                        <div id="searchBox">
-                                            <form method="POST" action="https://hrms.braintricker.com/attendanceSummaryReport" accept-charset="UTF-8" id="attendanceSummaryReport"><input name="_token" type="hidden" value="VC2IFNCl30Tfr3xoVjBa8kWDFS4v8non1posxvty">
-                                                <div class="col-md-3"></div>
+                                    <form accept-charset="UTF-8" id="attendanceSummaryReport" >
+                                        <div class="row">
 
-                                                <div class="col-md-4">
+                                            <div class="col-6">
+                                                <div class="form-group">
                                                     <label class="control-label" for="email">Month<span class="validateRq">*</span></label>
                                                     <div class="input-group">
                                                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                        <input type="text" class="form-control monthField required" readonly placeholder="Month"  name="month" value=" 2022-06">
+                                                        <input type="text" class="form-control monthField required" readonly placeholder="Month"  name="month" id="month" />
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <input type="submit" id="filter" style="margin-top: 25px; width: 100px;" class="btn btn-info " value="Filter">
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            </div>
+                                            <div class="col-2">
+
+
+                                                <input type="submit" id="filter"  class="btn btn-info " value="Filter"/>
+
+                                            </div>
+
+
                                         </div>
-                                    </div>
+                                    </form>
                                     <h4 class="text-end">
                                         <a target="_blank" class="btn btn-success" style="color: #fff" href="https://hrms.braintricker.com/downloadAttendanceSummaryReport/2022-06"><i class="fa fa-download fa-lg" aria-hidden="true"></i> Download PDF</a>
                                     </h4>
                                     <div class="table-responsive">
-                                        <table id="timesheet_table" class="table mt-3">
-                                            <thead>
-                                                <tr>
-                                                    <th>S/L</th>
-                                                    <th>year</th>
-                                                    <th colspan="0" class="totalCol">Month</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th> 2022 </th>
-                                                    <th>June</th>
-                                                    <th>Wed</th>
-                                                    <th>Thu</th>
-                                                    <th>Fri</th>
-                                                    <th>Sat</th>
-                                                    <th>Sun</th>
-                                                    <th>Mon</th>
-                                                    <th>Tue</th>
-                                                    <th>Wed</th>
-                                                    <th>Thu</th>
-                                                    <th>Fri</th>
-                                                    <th>Sat</th>
-                                                    <th>Sun</th>
-                                                    <th>Mon</th>
-                                                    <th>Tue</th>
-                                                    <th>Wed</th>
-                                                    <th>Thu</th>
-                                                    <th>Fri</th>
-                                                    <th>Sat</th>
-                                                    <th>Sun</th>
-                                                    <th>Mon</th>
-                                                    <th>Tue</th>
-                                                    <th>Wed</th>
-                                                    <th>Thu</th>
-                                                    <th>Fri</th>
-                                                    <th>Sat</th>
-                                                    <th>Sun</th>
-                                                    <th>Mon</th>
-                                                    <th>Tue</th>
-                                                    <th>Wed</th>
-                                                    <th>Thu</th>
-                                                    <th>Day off worked</th>
-                                                    <th>Gov. Day Worked </th>
-                                                    <th>Earn Leave</th>
-                                                    <th>Casual Leave</th>
-                                                    <th>Sick Leave</th>
-                                                    <th>Vacation</th>
-                                                    <th>MEDICAL LEAVE</th>
-                                                    <th>Maternity Leave</th>
-                                                    <th>WFH</th>
-                                                    <th>Touqeer</th>
-                                                    <th>abc</th>
-                                                </tr>
-                                            </thead>
-                                            </thead>
-                                            <tbody id="timesheet_table_data">
+
+                                        <table  class="table table-bordered table-striped table-hover" id="timesheet_table" >
 
 
-                                            </tbody>
+                                            <script>
+                                                $('.totalCol').attr('colspan', 39 + 3);
+                                            </script>
+
                                         </table>
                                     </div>
                                 </div>
@@ -299,10 +175,13 @@
         <script src="assets/js/app.js"></script>
 
         <script src="assets/vendor/DataTables/datatables.js"></script>
-        <script src="assets/js/pages/attendace.js"></script>  
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
 
         <script src="assets/js/main.js"></script>
-        <script src="assets/js/pages/position.js"></script>
+
+        <script src="assets/js/pages/attendace.js"></script>  
     </body>
 
 </html>

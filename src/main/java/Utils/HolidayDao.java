@@ -20,7 +20,8 @@ public class HolidayDao {
     }
 
     @SuppressWarnings("static-access")
-    public void addHoliday(Holiday holiday) {
+    public int addHoliday(Holiday holiday) {
+        int save=0;
         try {
             String sql = "INSERT INTO holidays (holiday_name,start_date, end_date,no_of_days,comment) VALUES (?, ?, ?,?,?)";
             conn.pst = conn.conn.prepareStatement(sql);
@@ -30,11 +31,12 @@ public class HolidayDao {
 
             conn.pst.setString(4, holiday.getNo_of_days());
             conn.pst.setString(5, holiday.getComment());
-            conn.pst.executeUpdate();
+           save= conn.pst.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return save;
     }
 
     @SuppressWarnings("static-access")
@@ -97,6 +99,7 @@ public class HolidayDao {
                 holiday.setStart_date(conn.rs.getDate("start_date"));
                 holiday.setEnd_date(conn.rs.getDate("end_date"));
                 holiday.setNo_of_days(conn.rs.getString("no_of_days"));
+                holiday.setComment(conn.rs.getString("comment"));
 
                 holidays.add(holiday);
             }

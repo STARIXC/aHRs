@@ -3,6 +3,7 @@
  */
 jQuery(document).ready(function () {
     var jsonData;
+
     var i = 1;
     $('.datatable').DataTable({
         responsive: true,
@@ -38,7 +39,7 @@ jQuery(document).ready(function () {
         },
         "columns": [
             {
-                "data":null,
+                "data": null,
                 "render": function (data, type, row, meta) {
                     return i++;
                 }
@@ -46,8 +47,7 @@ jQuery(document).ready(function () {
             {
                 "data": "full_name"
             },
-            
-            
+
             {
                 "data": "emp_no"
             },
@@ -60,64 +60,39 @@ jQuery(document).ready(function () {
             {
                 "data": "email"
             },
-             {
+            {
                 "data": "nationality"
             },
             {
-              
+
                 "data": "active",
                 "render": function (data, type, row, meta) {
                     if (data === 1) {
-                        return '<div class="toggle-example" ><div class="toggle btn btn-success" data-toggle="toggle" style="width: 89.375px; height: 34px;"><input type="checkbox" checked="" data-toggle="toggle" data-on="Active" data-off="Inactive" data-onstyle="success" data-offstyle="danger"><div class="toggle-group"><label class="btn btn-success toggle-on">Active</label><label class="btn btn-danger active toggle-off">Inactive</label><span class="toggle-handle btn btn-default"></span></div></div></div>';
+                        return '<span class="label label-success">Active</span>';
                     } else {
-                        return '<div class="toggle-example" ><div class="toggle btn btn-danger" data-toggle="toggle" style="width: 92px; height: 34px;"><input type="checkbox" checked="" data-toggle="toggle" data-on="Inactive" data-off="Active" data-onstyle="success" data-offstyle="danger"><div class="toggle-group"><label class="btn btn-danger toggle-on">Inactive</label><label class="btn btn-danger active toggle-off">Active</label><span class="toggle-handle btn btn-default"></span></div></div></div>';
+                        return '<span class="label label-danger">In Active</span>';
                     }
                 }
             }, {
-               
+
                 "data": "emp_no",
                 "render": function (data, type, row, meta) {
-                    return 	'<td class="center"><a href="update_employee_form.jsp?employee_id='+data+'" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a><a href="Employee/Delete/" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a><a href="/employee/Employees/cv/" class="btn btn-default btn-xs"><i class="fa fa-user"></i></a></td>';
+                    var edit_tr = '<td style="width: 150px">'
+                            + '<a title="Profile" href="employee_view.jsp?id=' + data + '" class="btn btn-primary btn-xs btnColor">'
+                            + '<i class="glyphicon glyphicon-th-large" aria-hidden="true"></i>'
+                            + '</a>'
+                            + ' <a href="update_employee_form.jsp?employee_id='+data+'" class="btn btn-success btn-xs btnColor">'
+                            + '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
+                            + ' </a>'
+                            + ' <a href="javascript:void(0);"  data-id="' + data + '" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o"'
+                            + '        aria-hidden="true"></i></a>'
+                            + ' </td>';
+                    return 	edit_tr;
                 }
             }]
 
     });
-    /*$.ajax({
-     url: './EmployeesController',
-     type: 'get',
-     dataType: 'html',
-     success: function(response) {
-     
-     
-     },
-     error: function(e) {
-     alert('Error: ' + e);
-     }
-     
-     <tr class="gradeX odd" role="row">
-     <td class="sorting_1" tabindex="0">1</td>
-     <td><img src="https://newhrm.bdtask.com/hrm_v4.4_demo/./application/modules/employee/assets/images/2021-07-03/fm1.jpg" alt="Image" height="64"></td>
-     <td>lorem</td>
-     <td>ipsom</td>
-     <td>14</td>
-     <td>0864515651</td>
-     <td>lorem@email.com</td>
-     <td>Australia</td>
-     <td>No</td>
-     <td align="center">
-     <div class="toggle-example" onclick="alert('Your Are In Demo Mode')">
-     <div class="toggle btn btn-success" data-toggle="toggle" style="width: 90.0977px; height: 34.4922px;"><input type="checkbox" checked="" data-toggle="toggle" data-on="Active" data-off="Inactive" data-onstyle="success" data-offstyle="danger"><div class="toggle-group"><label class="btn btn-success toggle-on">Active</label><label class="btn btn-danger active toggle-off">Inactive</label><span class="toggle-handle btn btn-default"></span></div></div>
-     </div>
-     </td>
-     <td class="center">
-     <a href="https://newhrm.bdtask.com/hrm_v4.4_demo/employee/Employees/update_employee_form/14" class="btn btn-xs btn-success"><i class="fa fa-pencil"></i></a> 
-     <a onclick="alert('You Are In Demo Mode')" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a> 
-     <a href="https://newhrm.bdtask.com/hrm_v4.4_demo/employee/Employees/cv/14" class="btn btn-default btn-xs"><i class="fa fa-user"></i></a>
-     
-     </td>
-     </tr>
-     });
-     */
+ 
 
 
 
