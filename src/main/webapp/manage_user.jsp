@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manage User</title>
+        <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
 
         <link rel="stylesheet" href="assets/css/bootstrap.css">
 
@@ -24,10 +25,7 @@
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper active">
-                    <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                        <i class="fa fa-users text-success me-4"></i>
-                        <span>HRH</span>
-                    </div>
+
                     <!-- BEGIN SIDEBAR MENU -->         
                     <%@include file="/_includes/sidebar_menu.jsp"%>
                     <!-- END SIDEBAR MENU --><button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -90,65 +88,76 @@
                         </ul>
                     </div>
                 </nav>
-
                 <div class="main-content container-fluid">
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Manage User</h3>
-                            </div>
-                            <div class="col-12 col-md-6 order-md-2 order-first">
+                    <div class="container-fluid">
+                        <div class="row bg-title">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.jsp" class="text-success">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Manage User</li>
+                                        <li class="breadcrumb-item"><a href="index.jsp" class="text-info"><i class="fa fa-home"></i> Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Manage Users</li>
                                     </ol>
                                 </nav>
                             </div>
-                        </div>
-                    </div>
-                    <section class="section">
-                        <div class="card">
-                            <div class="card-body">
-                                <table class='table' id="table1">
-                                    <thead>
-                                        <tr>
-                                            <th>Full Name</th>
-                                            <th>Contact</th>
-                                            <th>Category</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Admin Admin</td>
-                                            <td>09123456789</td>
-                                            <td>Admin</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td>09123456789</td>
-                                            <td>Staff</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jane Doe</td>
-                                            <td>09123456789</td>
-                                            <td>Staff</td>
-                                            <td><span class="badge bg-danger">Deactivated</span></td>
-                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                <a href="add_user.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light"><i class="fa fa-plus" aria-hidden="true"></i>  New User</a>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card text-white">
+                                    <div class="card-header bg-info"><i class="fa fa-list-ul fa-fw"></i>  User List
+                                    </div>
+                                    <div class="card-wrapper" >
+                                        <div class="card-body card-body">
+                                            <div class="card-body">
+                                                <table class='table' id="table1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Full Name</th>
+                                                            <th>Contact</th>
+                                                            <th>Category</th>
+                                                            <th>Status</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Admin Admin</td>
+                                                            <td>09123456789</td>
+                                                            <td>Admin</td>
+                                                            <td><span class="badge bg-success">Active</span></td>
+                                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>John Doe</td>
+                                                            <td>09123456789</td>
+                                                            <td>Staff</td>
+                                                            <td><span class="badge bg-success">Active</span></td>
+                                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Jane Doe</td>
+                                                            <td>09123456789</td>
+                                                            <td>Staff</td>
+                                                            <td><span class="badge bg-danger">Deactivated</span></td>
+                                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
 
-                    </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- // Basic multiple Column Form section start -->
+
                 </div>
+
             </div>
         </div>
         <script src="assets/js/feather-icons/feather.min.js"></script>

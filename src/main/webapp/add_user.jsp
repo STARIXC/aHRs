@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Add User</title>
-
+        <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
 
         <script defer src="assets/fontawesome/js/all.min.js"></script>
@@ -20,10 +20,7 @@
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper active">
-                    <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                        <i class="fa fa-users text-success me-4"></i>
-                        <span>HRH</span>
-                    </div>
+
                     <!-- BEGIN SIDEBAR MENU -->         
                     <%@include file="/_includes/sidebar_menu.jsp"%>
                     <!-- END SIDEBAR MENU -->		
@@ -88,41 +85,64 @@
                 </nav>
 
                 <div class="main-content container-fluid">
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Add User</h3>
-                            </div>
-                            <div class="col-12 col-md-6 order-md-2 order-first">
+                    <div class="container-fluid">
+                        <div class="row bg-title">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.jsp" class="text-success">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Add User</li>
+                                        <li class="breadcrumb-item"><a href="index.jsp" class="text-info"><i class="fa fa-home"></i> Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Add Users</li>
                                     </ol>
                                 </nav>
                             </div>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                <a href="manage_user.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light"><i class="fa fa-list-ul" aria-hidden="true"></i>  View Users</a>
+                            </div>
                         </div>
-
-                    </div>
-
-
-                    <!-- // Basic multiple Column Form section start -->
-                    <section id="multiple-column-form">
-                        <div class="row match-height">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card text-white">
+                                    <div class="card-header bg-info"><i class="mdi mdi-clipboard-text fa-fw"></i>	Add User
+                                    </div>
+                                    <div class="card-wrapper" >
+                                        <div class="card-body card-body">
                                             <form class="form">
                                                 <div class="row">
-                                                    <div class="col-md-12 col-12">
-                                                        <div class="form-group has-icon-left">
-                                                            <label for="first-name-icon">Full Name</label>
-                                                            <div class="position-relative">
-                                                                <input type="text" class="form-control" placeholder="full name" id="first-name-icon">
-                                                                <div class="form-control-icon">
-                                                                    <i class="fa fa-user"></i>
-                                                                </div>
+                                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label class="col-md-12 control-label">
+                                                                Surname <span class="required">*</span>
+                                                            </label>
+                                                            <div class="col-md-12">
+                                                                <input name="txtSurname" type="text" value=""
+                                                                       maxlength="50" id="txtSurname"
+                                                                       class="form-control input-width-xlarge" /> <span
+                                                                       id="rfvSurname" class="required"
+                                                                       style="display: none">Please enter Last
+                                                                    Name.</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                                        <div class="form-group efirst">
+                                                            <label class="col-md-12 control-label">
+                                                                First Name <span class="required">*</span>
+                                                            </label>
+                                                            <div class="col-md-12">
+                                                                <input name="txtFirstName" type="text" value=""
+                                                                       maxlength="50" id="txtFirstName"
+                                                                       class="form-control input-width-xlarge" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label class="col-md-12 control-label">
+                                                                Middle Name </label>
+                                                            <div class="col-md-12">
+                                                                <input name="txtMiddleName" type="text" value=""
+                                                                       maxlength="50" id="txtMiddleName"
+                                                                       class="form-control input-width-xlarge" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -147,7 +167,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 col-12">
+                                                    <div class="col-md-6 col-12">
                                                         <div class="form-group has-icon-left">
                                                             <label for="first-name-icon">Username</label>
                                                             <div class="position-relative">
@@ -158,7 +178,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 col-12">
+                                                    <div class="col-md-6 col-12">
                                                         <div class="form-group has-icon-left">
                                                             <label for="first-name-icon">Password</label>
                                                             <div class="position-relative">
@@ -182,18 +202,47 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-4 col-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="first-name-icon">User Category</label>
+                                                            <div class="position-relative">
+                                                                <fieldset class="form-group">
+                                                                    <select class="form-select" id="basicSelect">
+                                                                        <option>Admin</option>
+                                                                        <option>Staff</option>
+                                                                    </select>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-12">
+                                                        <div class="form-group has-icon-left">
+                                                            <label for="first-name-icon">User Category</label>
+                                                            <div class="position-relative">
+                                                                <fieldset class="form-group">
+                                                                    <select class="form-select" id="basicSelect">
+                                                                        <option>Admin</option>
+                                                                        <option>Staff</option>
+                                                                    </select>
+                                                                </fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="col-12 d-flex justify-content-end">
                                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                                     </div>
                                                 </div>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <!-- // Basic multiple Column Form section end -->
+                    </div>
+
+                    <!-- // Basic multiple Column Form section start -->
+
                 </div>
 
             </div>

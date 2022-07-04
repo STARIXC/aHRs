@@ -19,15 +19,7 @@ jQuery(document).ready(function () {
     });
     $('#employee_table').DataTable({
         responsive: true,
-        dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        buttons: [
-            {extend: 'copy', className: 'btn-sm'},
-            {extend: 'csv', title: 'ExampleFile', className: 'btn-sm'},
-            {extend: 'excel', title: 'exportTitle', className: 'btn-sm'},
-            {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
-            {extend: 'print', className: 'btn-sm'}
-        ],
+      
         "ajax": {
             "url": './AllStaffServlet?action=allStaff',
             "type": "GET",
@@ -77,16 +69,16 @@ jQuery(document).ready(function () {
 
                 "data": "emp_no",
                 "render": function (data, type, row, meta) {
-                    var edit_tr = '<td style="width: 150px">'
-                            + '<a title="Profile" href="employee_view.jsp?id=' + data + '" class="btn btn-primary btn-xs btnColor">'
-                            + '<i class="glyphicon glyphicon-th-large" aria-hidden="true"></i>'
+                    var edit_tr = '<div class="d-flex" style="width: 150px;">'
+                            + '<a title="Profile" href="employee_view.jsp?id=' + data + '" class="btn btn-primary btn-xs btnColor ms-1">'
+                            + '<i class="fa fa-th-large" aria-hidden="true"></i>'
                             + '</a>'
-                            + ' <a href="update_employee_form.jsp?employee_id='+data+'" class="btn btn-success btn-xs btnColor">'
-                            + '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
+                            + ' <a href="update_employee_form.jsp?employee_id='+data+'" class="btn btn-success btn-xs btnColor ms-1">'
+                            + '<i class="fa fa-edit" aria-hidden="true"></i>'
                             + ' </a>'
-                            + ' <a href="javascript:void(0);"  data-id="' + data + '" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o"'
+                            + ' <a href="javascript:void(0);"  data-id="' + data + '" class="delete btn btn-danger btn-xs deleteBtn btnColor ms-1"><i class="fa fa-trash"'
                             + '        aria-hidden="true"></i></a>'
-                            + ' </td>';
+                            + ' </div>';
                     return 	edit_tr;
                 }
             }]

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Holiday;
+import org.json.JSONObject;
 
 /**
  * Servlet implementation class ManageHolidays
@@ -29,10 +30,11 @@ public class ManageHolidays extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private JSONConverter json;
-       public HolidayDao dao;
+    public HolidayDao dao;
     PrintWriter out;
     String holiday_name, start_date, end_date, no_of_days, comment = "";
-
+    int respond, results = 0;
+  
     public ManageHolidays() {
         super();
         dao = new HolidayDao();
@@ -49,36 +51,56 @@ public class ManageHolidays extends HttpServlet {
             dao.deleteHoliday(id);
 
         } else if (action.equalsIgnoreCase("edit")) {
-
-            int id = Integer.parseInt(request.getParameter("id"));
+            String hol_id=request.getParameter("id");
+            int id = Integer.parseInt(hol_id);
             Holiday holiday = dao.getHolidayById(id);
+            String result = JSONConverter.convert(holiday);
+            out.println(result);
 
         } else if (action.equalsIgnoreCase("listHolidays")) {
             String holidays = json.convert(dao.getAllHolidays());
             out.println(holidays);
 
-        } else if (action.equalsIgnoreCase("save")) {
+        } else if (action.equalsIgnoreCase("submit")) {
             Holiday holiday = new Holiday();
             DateFormat formatter;
 
             formatter = new SimpleDateFormat("dd/MM/yyyy");
-            Date start_ = new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("from_date"));
-            Date end_ = new SimpleDateFormat("yyyy-mm-dd").parse(request.getParameter("to_date"));
+            String start = request.getParameter("from_date");
+            String end = request.getParameter("to_date");
+            String holiday_name = request.getParameter("holiday_name");
+           
+            Date start_ = new SimpleDateFormat("yyyy-mm-dd").parse(start);
+            Date end_ = new SimpleDateFormat("yyyy-mm-dd").parse(end);
             holiday.setEnd_date(end_);
             holiday.setStart_date(start_);
             holiday.setHoliday_name(request.getParameter("holiday_name"));
             holiday.setNo_of_days(request.getParameter("no_of_days"));
             holiday.setComment(request.getParameter("comment"));
             String id = request.getParameter("id");
+            String isHoliday = "1";
             if (id == null || id.isEmpty()) {
-                List<Date> dates = dao.getDaysBetweenDates(start_, end_);
-                System.out.println(" Date is ..." + dates);
-                for (int i = 0; i < dates.size(); i++) {
-                    Date lDate = (Date) dates.get(i);
-                    String ds = formatter.format(lDate);
-                    System.out.println(" Date is ..." + ds);
+                List<String> dateList = dao.getDaysBetweenDates(start, end);
+
+                for (int i = 0; i < dateList.size(); i++) {
+                    String date=dateList.get(i);
+                 dao.updateCHoliday(date, isHoliday, holiday_name);
                 }
-                // dao.addHoliday(holiday);
+
+                respond = dao.addHoliday(holiday);
+                JSONObject obj = new JSONObject();   //create globally JSONObject and name is "obj"
+
+                if (respond != 0) {   //check if condition variable "i" not equal to zero after continue
+
+                    obj.put("status", "success");
+                    obj.put("message", " Successfully");    //create json object "status","message" and apply custome messages for "delete data"
+                } else {
+
+                    obj.put("status", "error");
+                    obj.put("message", "Unable to submit request....");   //create json object "status","message" and apply custome messages for "unable to delete data"
+                }
+
+                out.print(obj);
             } else {
                 holiday.setId(Integer.parseInt(id));
                 dao.updateHoliday(holiday);

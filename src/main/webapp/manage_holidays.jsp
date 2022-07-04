@@ -12,7 +12,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Holidays</title>
-
+<link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
         <script defer src="assets/fontawesome/js/all.min.js"></script>
@@ -23,17 +23,18 @@
             .notif:hover{
                 background-color: rgba(0,0,0,0.1);
             }
-        </style>
 
+        </style>
+        <link rel="stylesheet" href="assets/vendor/calender/lib/jquery-ui.min.css" />
+        <link rel="stylesheet"
+              href="assets/vendor/calender/lib/bootstrap-datepicker.css" />
+        <link rel="stylesheet" href="assets/css/select2.min.css" />
     </head>
     <body>
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper active">
-                    <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                        <i class="fa fa-users text-success me-4"></i>
-                        <span>HRH</span>
-                    </div>
+                    
                     <!-- BEGIN SIDEBAR MENU -->         
                     <%@include file="/_includes/sidebar_menu.jsp"%>
                     <!-- END SIDEBAR MENU -->
@@ -109,7 +110,7 @@
                                 </nav>
                             </div>	
                             <div class="col-lg-7 col-sm-8 col-md-8 col-xs-12">
-                                <a href="/publicHoliday/create" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Public Holiday</a>
+                                <a href="add_holidays.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add Public Holiday</a>
                             </div>	
                         </div>
 
@@ -133,27 +134,6 @@
                                                         </thead>
                                                         <tbody id="tbl_holidays">
 
-
-
-
-
-
-
-
-
-                                                            <tr class="8  success               odd" role="row">
-                                                                <td style="width: 100px;">1</td>
-                                                                <td>National Day</td>
-                                                                <td>22/06/2022</td>
-                                                                <td>23/06/2022</td>
-                                                                <td>adfads</td>
-                                                                <td style="width: 100px;">
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/8/edit" class="btn btn-success btn-xs btnColor">
-                                                                        <i class="fa fa-pencil-square-o" ></i>
-                                                                    </a>
-                                                                    <a href="http://hrms.braintricker.com/publicHoliday/8/delete" data-token="ompkBhUZYa88ZxrlrktnXbR0XaqN379XNryZ5puB" data-id="8" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash-o" ></i></a>
-                                                                </td>
-                                                            </tr>
                                                         </tbody>
                                                     </table>
 
@@ -164,6 +144,90 @@
                                 </div>
                             </div>
 
+                        </div>
+                        <div id="simpleModal" class="modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Holiday Update Form</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                                        </button>
+                                    </div>
+                                    <form method="POST"  enctype="multipart/form-data" id="publicHolidayForm" class="form-horizontal" autocomplete="off">
+                                        <div class="modal-body">
+
+
+                                            <div class="form-body">
+                                                <div class="row">
+                                                    <div class="offset-md-2 col-md-6">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-4">Holy Day Name<span class="validateRq">*</span></label>
+                                                            <div class="col-md-12">
+                                                                <input class="form-control required " id="e_no_of_days"   name="no_of_days" type="hidden">
+                                                                <input class="form-control required " id="e_holiday_name"  placeholder="Holiday Name" name="holiday_name" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-4">From Date<span class="validateRq">*</span></label>
+                                                            <div class="col-md-12">
+                                                                <input class="form-control required datepicker" id="e_from_date" readonly="readonly" placeholder="From Date" name="from_date" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-4">To Date<span class="validateRq">*</span></label>
+                                                            <div class="col-md-12">
+                                                                <input class="form-control required datepicker dateField" id="e_to_date" readonly="readonly" placeholder="To Date" name="to_date" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-4">Comment</label>
+                                                            <div class="col-md-12">
+                                                                <textarea class="form-control comment" id="e_comment" placeholder="Comment" cols="30" rows="2" name="comment"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-actions">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-offset-4 col-md-8">
+                                                                <button type="submit" class="btn btn-info btn_style"><i class="fa fa-check"></i> Save</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                    <div class="modal-footer">
+<!--                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,7 +241,43 @@
                 <script src="assets/js/main.js"></script>
                 <script src="assets/js/pages/holiday.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-         
+                <script type="text/javascript">
+                    $(document).ready(function () {
+
+                        $(document).on('click', '.edit-hols', function (e) {
+                            e.preventDefault();
+                            var typeId = $(this).data('id');
+                            console.log("Type id: " + typeId);
+                            OpenBootstrapPopup(typeId);
+
+                        });
+
+                    });
+                    function OpenBootstrapPopup(id) {
+                        var holiday_id = id;
+                        $.ajax({
+                            type: "GET",
+                            url: './ManageHolidays?action=edit&id=' + holiday_id,
+                            contentType: "application/json; charset-utf-8",
+                            dataType: "json",
+//                            data: {
+//                                'id': holiday_id
+//                            },
+                            success: function (data) {
+                                console.log(eval(data));
+                                document.getElementById('e_holiday_name').value = data.holiday_name;
+                                document.getElementById('e_from_date').value = data.start_date;
+                                document.getElementById('e_to_date').value = data.end_date;
+                                document.getElementById('e_no_of_days').value = data.no_of_days;
+                                document.getElementById('e_comment').value = data.comment;
+                            },
+                            complete: function () {
+                              $("#simpleModal").modal('show');
+                            }
+                        });
+
+                    }
+                </script>
                 </body>
                 </html>
 

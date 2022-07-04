@@ -11,7 +11,7 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Carder Type</title>
+        <title>Warning</title>
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
         <link rel="stylesheet" href="assets/css/toggle.css">
@@ -34,17 +34,14 @@
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper ">
-                    <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                        <i class="fa fa-users text-success me-4"></i>
-                        <span>HRH</span>
-                    </div>
+                 
                     <!-- BEGIN SIDEBAR MENU -->         
                     <%@include file="/_includes/sidebar_menu.jsp"%>
                     <!-- END SIDEBAR MENU -->
                     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
                 </div>
             </div>
-             <div id="main">
+            <div id="main">
                 <nav class="navbar navbar-header navbar-expand navbar-light">
                     <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
                     <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -118,40 +115,64 @@
                         </div>
                     </div>
 
-
-                    <!-- Basic Vertical form layout section start -->
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header bg-success text-white">
-                                    <i class="mdi mdi-table fa-fw"></i> 
-                                    Carder Category List
-                                </div>
-                                <div class="card-body pt-3">
-                                    <div class="table-responsive">
-                                        <table id="cadre_category_table" class="table mt-3">
-                                            <thead>
-                                                <tr>
-                                                    <th>S/L</th>
-                                                    <th>Carder Name</th>
-                                                     <th style="text-align: center;">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="cadre_category_data">
+                        <div class="col-sm-12">
+                            <div class="card text-white">
+                                <div class="card-header bg-success"><i class="mdi mdi-table fa-fw"></i> Warning List</div>
+                                <div class="card-wrapper " aria-expanded="true">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="myTable" class="table table-bordered dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                                                <thead>
+                                                    <tr class="tr_header" \>
+                                                        <th >S/L</th>
+                                                        <th >Employee Name</th>
+                                                        <th >Warning Date</th>
+                                                        <th>subject</th>
+                                                        <th class="sorting_disabled" rowspan="1" colspan="1" style="width: 192px;">Warning Type</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 230px;">Warning By</th><th style="text-align: center; width: 84px;" class="sorting_disabled" rowspan="1" colspan="1">Action</th></tr>
+                                                </thead>
+                                                <tbody>
 
 
-                                            </tbody>
-                                        </table>
+
+
+
+
+
+
+
+
+
+                                                    <tr class="1 odd" role="row">
+                                                        <td style="width: 100px;">1</td>
+                                                        <td> Rahat Fateh Ali Khan </td>
+                                                        <td>27/05/2021</td>
+                                                        <td>late</td>
+                                                        <td>late</td>
+                                                        <td> Fatima Carson </td>
+                                                        <td style="width: 100px;">
+                                                            <a title="View Details" href="warning/1" class="btn btn-primary btn-xs btnColor">
+                                                                <i class="fa fa-th-large" aria-hidden="true"></i>
+                                                            </a>
+                                                            <a href="https://hrms.braintricker.com/warning/1/edit" class="btn btn-success btn-xs btnColor">
+                                                                <i class="fa fa-edit-square" aria-hidden="true"></i>
+                                                            </a>
+                                                            <a href="javascript:void(0);"  data-id="1" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-                    <!-- // Basic Vertical form layout section end -->
+                    <!-- Basic Vertical form layout section start -->
+               
                 </div>
             </div>
-       </div>
+        </div>
         <!--        <script src="assets/vendor/jquery/jquery.min.js"></script>
                 <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>-->
 

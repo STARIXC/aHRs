@@ -22,14 +22,29 @@
         </script>
     </head>
     <body>
+        <div class="sidebar-header" >
+            <div class="top-left-part">
+                <!-- Logo -->
+                <a class="logo me-4" href="index.jsp">
+                    <!-- Logo icon image, you can use font-icon also --><b>
+                        <!--This is dark logo icon-->
+                        <img  src="assets/img/logo_.png" alt="home" class="dark-logo img-fluid img-responsive">
+                    </b>
+                    <!-- Logo text image you can use text also -->
+                    <span class="hidden-xs">
+
+                    </span> </a>
+            </div>
+
+        </div>
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-item  ">
-                    <a href="index.jsp" class='sidebar-link'> <i class="fa fa-home text-success"></i>
+                    <a href="index.jsp" class='sidebar-link'> <i class="fa fa-home breadcrumbColor"></i>
                         <span>Dashboard</span>
                     </a></li>
                 <li class="sidebar-item  has-sub">
-                    <a href="javascript:void(0)" class='sidebar-link'> <i class="fa fa-user text-success"></i>
+                    <a href="javascript:void(0)" class='sidebar-link'> <i class="fa fa-user breadcrumbColor"></i>
                         <span>Administration</span>
                     </a>
                     <ul class="submenu ">
@@ -42,7 +57,7 @@
                 </li>
 
                 <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'> <i class="fa fa-users text-success"></i>
+                    <a href="#" class='sidebar-link'> <i class="fa fa-users breadcrumbColor"></i>
                         <span>Employee Management</span>
                     </a>
                     <ul class="submenu ">
@@ -56,7 +71,7 @@
                     </ul></li>
 
                 <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'> <i class="fa fa-table text-success"></i>
+                    <a href="#" class='sidebar-link'> <i class="fa fa-table breadcrumbColor"></i>
                         <span>Leave Management</span>
                     </a>
                     <ul class="submenu" style="display: block;">
@@ -70,7 +85,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item  has-sub"><a href="javascript:void(0)" class='sidebar-link'>
-                        <i class="fa fa-user text-success"></i> <span>Attendance</span></i>
+                        <i class="fa fa-user breadcrumbColor"></i> <span>Attendance</span></i>
                         </span>
                     </a>
 
@@ -84,24 +99,24 @@
 
                     </ul></li>
                 <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'> <i class="fa fa-user text-success"></i>
+                    <a href="#" class='sidebar-link'> <i class="fa fa-user breadcrumbColor"></i>
                         <span>Payroll</span>
                     </a>
                     <ul class="submenu ">
-                        <li><a href="manage_tax_rule_setup.jsp"> <i class="fa fa-circle-notch"> </i>Tax Rule Setup</a></li>
-                        <li><a href="manage_allowance.jsp"> <i class="fa fa-circle-notch"> </i>Allowance</a></li>
-                        <li><a href="manage_payment_history.jsp"> <i class="fa fa-circle-notch"> </i>Payment History</a></li>
-                        <li><a href="manage_monthly_pay_grade.jsp"> <i class="fa fa-circle-notch"> </i>Monthly Pay Grade</a></li>
-                        <li><a href="manage_deduction.jsp"> <i class="fa fa-circle-notch"> </i>Deduction</a></li>
-                        <li><a href="manage_approve_work_hour.jsp"> <i class="fa fa-circle-notch"> </i>Approve Work Hour</a></li>
-                        <li><a href="manage_hourly_pay_grade.jsp"> <i class="fa fa-circle-notch"> </i>Hourly Pay Grade</a></li>
-                        <li><a href="manage_generate_salary_sheet.jsp"> <i class="fa fa-circle-notch"> </i>Generate Salary Sheet</a></li>
+                        <li><a href="manage_tax_rule_setup.jsp"> <i class="fa fa-circle-notch"> </i> Tax Rule Setup</a></li>
+                        <li><a href="manage_allowance.jsp"> <i class="fa fa-circle-notch"> </i> Allowance</a></li>
+                        <li><a href="manage_payment_history.jsp"> <i class="fa fa-circle-notch"> </i> Payment History</a></li>
+                        <li><a href="manage_monthly_pay_grade.jsp"> <i class="fa fa-circle-notch"> </i> Monthly Pay Grade</a></li>
+                        <li><a href="manage_deduction.jsp"> <i class="fa fa-circle-notch"> </i> Deduction</a></li>
+                        <li><a href="manage_approve_work_hour.jsp"> <i class="fa fa-circle-notch"> </i> Approve Work Hour</a></li>
+                        <li><a href="manage_hourly_pay_grade.jsp"> <i class="fa fa-circle-notch"> </i> Hourly Pay Grade</a></li>
+                        <li><a href="manage_generate_salary_sheet.jsp"> <i class="fa fa-circle-notch"> </i> Generate Salary Sheet</a></li>
 
 
                     </ul>
                 </li>
                 <li class="sidebar-item "><a href="reports.jsp"
-                                             class='sidebar-link'> <i class="fa fa-chart-bar text-success"></i>
+                                             class='sidebar-link'> <i class="fa fa-chart-bar breadcrumbColor"></i>
                         <span>Reports</span>
                     </a></li>
             </ul>

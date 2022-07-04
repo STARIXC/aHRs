@@ -18,9 +18,9 @@ function get_holidays() {
 
             $.each(data, function (key, value)
             {
-                $('#tbl_holidays').append('<tr><td>' + i++ + '</td><td>' + value.holiday_name + '</td>  <td>' + value.start_date + '</td> <td>' + value.end_date + '</td> <td>' + value.no_of_days + '</td> <td>  <a href="'+value.id+'" class="btn btn-success btn-xs btnColor"> <i class="fa fa-edit" ></i></a> <a href="javascript:void(0);"  data-id="'+value.id+'" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash" aria-hidden="true" title="Delete" ></i></a> </td></tr>');
+                $('#tbl_holidays').append('<tr><td>' + i++ + '</td><td>' + value.holiday_name + '</td>  <td>' + value.start_date + '</td> <td>' + value.end_date + '</td> <td>' + value.no_of_days + '</td> <td>  <a href="javascript:void(0);"  data-id="' + value.id + '" class="btn btn-success btn-xs btnColor edit-hols"> <i class="fa fa-edit" ></i></a> <a href="javascript:void(0);"  data-id="' + value.id + '" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash" aria-hidden="true" title="Delete" ></i></a> </td></tr>');
             });
-           
+
         },
         complete: function () {
 
@@ -128,9 +128,9 @@ $("#publicHolidayForm").submit(function (e) {
         dataType: "json",
         //if received a response from the server
         success: function (data, textStatus, jqXHR) {
-            //our country code was correct so we have some information to display
             if (data.success) {
-
+                var url_ = "manage_leave_type.jsp";
+                $(location).attr('href', url_);
             }
             //display error message
             else {
@@ -140,20 +140,17 @@ $("#publicHolidayForm").submit(function (e) {
         //If there was no resonse from the server
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("Something really bad happened " + textStatus);
-            // $("#ajaxResponse").html(jqXHR.responseText);
+
         },
         //capture the request before it was sent to server
         beforeSend: function (jqXHR, settings) {
             //adding some Dummy data to the request
             settings.data += "&dummyData=whatever";
-            //disable the button until we get the response
-//                                $('#myButton').attr("disabled", true);
+
         },
-        //this is called after the response or error functions are finsihed
-        //so that we can take some action
+
         complete: function (jqXHR, textStatus) {
-            //enable the button 
-//                        $('#myButton').attr("disabled", false);
+
         }
     });
 });

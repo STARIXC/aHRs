@@ -11,7 +11,8 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Carder Type</title>
+        <title>Roles</title>
+        <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
         <link rel="stylesheet" href="assets/css/toggle.css">
@@ -39,10 +40,7 @@
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper ">
-                    <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                        <i class="fa fa-users text-success me-4"></i>
-                        <span>HRH</span>
-                    </div>
+                    
                     <!-- BEGIN SIDEBAR MENU -->         
                     <%@include file="/_includes/sidebar_menu.jsp"%>
                     <!-- END SIDEBAR MENU -->

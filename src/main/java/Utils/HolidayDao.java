@@ -21,7 +21,7 @@ public class HolidayDao {
 
     @SuppressWarnings("static-access")
     public int addHoliday(Holiday holiday) {
-        int save=0;
+        int save = 0;
         try {
             String sql = "INSERT INTO holidays (holiday_name,start_date, end_date,no_of_days,comment) VALUES (?, ?, ?,?,?)";
             conn.pst = conn.conn.prepareStatement(sql);
@@ -31,7 +31,7 @@ public class HolidayDao {
 
             conn.pst.setString(4, holiday.getNo_of_days());
             conn.pst.setString(5, holiday.getComment());
-           save= conn.pst.executeUpdate();
+            save = conn.pst.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,15 +54,20 @@ public class HolidayDao {
 
     }
 
-    public static List<Date> getDaysBetweenDates(Date startdate, Date enddate) {
-        List<Date> dates = new ArrayList<Date>();
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(startdate);
+    public List<String> getDaysBetweenDates(String startdate, String enddate) {
+        List<String> dates = new ArrayList<>();
 
-        while (calendar.getTime().before(enddate)) {
-            Date result = calendar.getTime();
-            dates.add(result);
-            calendar.add(Calendar.DATE, 1);
+        String SELECT_ALL_DATES = " SELECT a.dt as date_field FROM calendar_table a  WHERE cast(a.dt as date) BETWEEN '" + startdate + "' AND '" + enddate + "' ";
+
+        try {
+            conn.rs = conn.st.executeQuery(SELECT_ALL_DATES);
+            while (conn.rs.next()) {
+                String date=conn.rs.getString("date_field");
+                dates.add(date);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
         return dates;
     }
@@ -83,6 +88,20 @@ public class HolidayDao {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public int updateCHoliday(String date, String isHoliday, String holidayDescr) {
+        int success = 0;
+        try {
+            String sql = "update calendar_table set isHoliday='" + isHoliday + "',holidayDescr='" + holidayDescr + "' where dt=cast('"+date+"' AS DATE)";
+            conn.pst = conn.conn.prepareStatement(sql);
+
+            success = conn.pst.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return success;
     }
 
     @SuppressWarnings("static-access")
@@ -115,7 +134,7 @@ public class HolidayDao {
         Holiday holiday = new Holiday();
 
         try {
-            String sql = "SELECT * FROM holidays where id=?";
+            String sql = "SELECT id,ifnull(holiday_name,'') as holiday_name,ifnull(start_date,'') as start_date,ifnull(end_date,'') as end_date,ifnull(no_of_days,'') as no_of_days ,ifnull(comment,'') as comment FROM holidays where id=?";
             conn.pst = conn.conn.prepareStatement(sql);
             conn.pst.setInt(1, id);
             conn.rs = conn.pst.executeQuery();
@@ -126,6 +145,7 @@ public class HolidayDao {
                 holiday.setStart_date(conn.rs.getDate("start_date"));
                 holiday.setEnd_date(conn.rs.getDate("end_date"));
                 holiday.setNo_of_days(conn.rs.getString("no_of_days"));
+                holiday.setComment(conn.rs.getString("comment"));
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block

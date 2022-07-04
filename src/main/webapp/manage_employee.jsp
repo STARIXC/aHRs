@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manage Employee</title>
-
+<link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
         <link rel="stylesheet" href="assets/css/toggle.css">
@@ -28,10 +28,8 @@
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper ">
-                    <div class="sidebar-header" style="height: 50px; margin-top: -30px">
-                        <i class="fa fa-users text-success me-4"></i> <span>HRH</span>
-                    </div>
-                  <!-- BEGIN SIDEBAR MENU -->         
+                    
+                    <!-- BEGIN SIDEBAR MENU -->         
                     <%@include file="/_includes/sidebar_menu.jsp"%>
                     <!-- END SIDEBAR MENU -->
                     <button class="sidebar-toggler btn x">
@@ -98,56 +96,58 @@
                 </nav>
 
                 <div class="main-content container-fluid">
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h4>Manage Employee</h4>
-                            </div>
-                            <div class="col-12 col-md-6 order-md-2 order-first">
-                                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.jsp"
-                                                                       class="text-success">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Manage
-                                            Employee</li>
-                                    </ol>
-                                </nav>
-                            </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-8 order-md-1 order-last">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.jsp" class="text-success"><i class="fa fa-home"></i> Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Manage Employees</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-md-4 order-md-2 order-first">
+                            <a href="bulk_upload.jsp" class="btn btn-success float-end ms-2 hidden-xs hidden-sm waves-effect waves-light">
+                                <i class="fa fa-plus" aria-hidden="true"></i>Bulk Upload</a>
+
+                            <a href="add_employee.jsp" class="btn btn-success float-end ms-2 hidden-xs hidden-sm waves-effect waves-light">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Add Employee</a>
                         </div>
                     </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <!--  table area -->
-                            <div class="col-sm-12">
 
-                                <div class="card card-bd"> 
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card text-white">
+                                <div class="card-header bg-success"><i class="fa fa-table fa-fw"></i> Staff List</div>
+                                <div class="card-wrapper " aria-expanded="true">
+                                    <div class="card-body">
+                                        <div class="table-responsive ">
+                                            <table width="100%" class="employee_table table table-striped table-bordered table-hover " id="employee_table">
+                                                <thead class='mt-3'>
+                                                    <tr>
+                                                        <th>SL No</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Employee PF_NO</th>
+                                                        <th>Position</th>
+                                                        <th>Phone</th>
+                                                        <th>Email Address</th>
+                                                        <th>Country</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="employee-table-data">
 
-
-                                    <div class="card-body table-responsive">
-                                        <table width="100%" class="employee_table table table-striped table-bordered table-hover" id="employee_table">
-                                            <thead>
-                                                <tr>
-                                                    <th>SL No</th>
-                                                    <th>Employee Name</th>
-                                                    <th>Employee PF_NO</th>
-                                                    <th>Position</th>
-                                                    <th>Phone</th>
-                                                    <th>Email Address</th>
-                                                    <th>Country</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="employee-table-data">
-
-                                            </tbody>
-                                        </table>
-
-                                    </div>  <!-- /.table-responsive -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
 
 
