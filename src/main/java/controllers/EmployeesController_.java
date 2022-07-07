@@ -15,7 +15,6 @@ import java.sql.SQLException;
 /**
  * Servlet implementation class EmployeesController_
  */
-
 public class EmployeesController_ extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -92,41 +91,20 @@ public class EmployeesController_ extends HttpServlet {
 //            contract_end_date = request.getParameter("date_");
 //            expected_months = request.getParameter("date_");
 //  status = request.getParameter("date_");
-kra_pin = request.getParameter("txtPinCode");
-nssf_no = request.getParameter("txtNSSF");
-nhif_no = request.getParameter("txtNHIF");
-cert_good_conduct_no = request.getParameter("txtGoodConduct");
-helb_clearance_no = request.getParameter("txtHelbClearance");
-helb_benefitiary = Integer.parseInt(request.getParameter("rbtnHelb"));
+        kra_pin = request.getParameter("txtPinCode");
+        nssf_no = request.getParameter("txtNSSF");
+        nhif_no = request.getParameter("txtNHIF");
+        cert_good_conduct_no = request.getParameter("txtGoodConduct");
+        helb_clearance_no = request.getParameter("txtHelbClearance");
+        helb_benefitiary = Integer.parseInt(request.getParameter("rbtnHelb"));
 // active = Integer.parseInt(request.getParameter("shift"));
-position_name = request.getParameter("shift");
-bank_name = request.getParameter("txtBankName");
-branch = request.getParameter("txtBranchName");
-account_name = request.getParameter("txtAccountName");
-acount_number = request.getParameter("txtAccountNumber");
-username = "";
-//  password=md5(national_id);
-//                employee bio query
-String sql_bio = "REPLACE INTO emp_bio(emp_no,first_name,surname,other_name,national_id,gender,phone,email,dob,home_address,postal_code,nationality) VALUES('" + emp_no + "','" + first_name + "','" + surname + "','"+ other_name + "','" + national_id + "','" + gender + "','" + phone + "','" + email + "','" + dob + "','" + home_address + "','" + postal_code + "','" + nationality + "')";
-dao.addEmpBio(sql_bio);
-String sql_hist = "REPLACE INTO employee_hist" + "(emp_no, national_id, mfl," + " position, date_started, "
-        + "date_ended, months_worked, " + "current_contract, contract_period,"
-        + " contract_end_date, expected_months," + " active" + ")" + ""
-        + " VALUES('" + emp_no + "','" + national_id + "','" + mfl + "','" + position + "',"
-        + "'" + date_started + "','" + date_ended + "','" + months_worked + "','" + current_contract + "',"
-        + "'" + contract_period + "','" + contract_end_date + "','" + expected_months + "','" + active + "')";
-dao.addEmpHist(sql_hist);
-String sql_banking_de = "REPLACE INTO banking_det(employee_no,bank_name,branch,account_name,acount_number)"
-        + " VALUES ('" + emp_no + "','" + bank_name + "','" + branch + "',"
-        + "'" + account_name + "','" + acount_number + "')";
-dao.addEmpBank(sql_banking_de);
-String sql_statutory_details = "REPLACE INTO statutory_details(employee_no,kra_pin,nssf_no,nhif_no,cert_good_conduct_no,helb_clearance_no) "
-        + "VALUES ('" + emp_no + "','" + kra_pin + "','" + nssf_no + "','" + nhif_no + "','" + cert_good_conduct_no + "','" + helb_clearance_no + "')";
-dao.addEmpStat(sql_statutory_details);
-String sql_login = "REPLACE INTO login( emp_no, username, password, is_admin)"
-        + "VALUES ('" + emp_no + "',CONCAT( LEFT('" + first_name + "', 1),'" + surname + "'),MD5( '" + password + "'),'" + 0 + "')";
-dao.addEmpAuth(sql_login);
-out.close();
+        position_name = request.getParameter("shift");
+        bank_name = request.getParameter("txtBankName");
+        branch = request.getParameter("txtBranchName");
+        account_name = request.getParameter("txtAccountName");
+        acount_number = request.getParameter("txtAccountNumber");
+        username = "";
+
     }
 
 }

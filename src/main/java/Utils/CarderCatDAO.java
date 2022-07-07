@@ -47,10 +47,10 @@ public class CarderCatDAO {
         return carders;
     }
 
-    public void addCarderCat(String carder_category_name) {
+    public void addCarderCat(CarderCat ccat) {
         try {
             conn.pst = conn.conn.prepareStatement(INSERT_CARDER_CAT);
-            conn.pst.setString(1, carder_category_name);
+            conn.pst.setString(1, ccat.getCadre_category_name());
            
             conn.pst.executeUpdate();
         } catch (SQLException e) {
@@ -58,35 +58,73 @@ public class CarderCatDAO {
         }
     }
 
-    public void updateCarderCat(int ccat_id,String cadre_category_name ) {
+    public void updateCarderCat(CarderCat ccat ) {
 
         try {
             conn.pst = conn.conn.prepareStatement(UPDATE_CARDER_CAT);
-            conn.pst.setString(1, cadre_category_name);
-            conn.pst.setInt(2, ccat_id);
+            conn.pst.setString(1, ccat.getCadre_category_name());
+            conn.pst.setInt(2, ccat.getId());
             conn.pst.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CarderCatDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+//  public void updateCarderType(CarderType ctype) {
+//
+//        try {
+//            conn.pst = conn.conn.prepareStatement(UPDATE_CARDER_TYPE);
+//            conn.pst.setString(1, ctype.getCadre_type_name());
+//            conn.pst.setString(2, ctype.getHrs_per_week());
+//            conn.pst.setInt(3, ctype.getId());
+//            conn.pst.executeUpdate();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(CarderTypeDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
+
 
     public CarderCat getCarderCatById(int carder_id) {
-        CarderCat ctype = new CarderCat();
+        CarderCat ccat = new CarderCat();
         try {
             String SELECT_CARDER_CAT_ID = "SELECT * from cadre_category where id='" + carder_id + "'";
             conn.rs = conn.st.executeQuery(SELECT_CARDER_CAT_ID);
             while (conn.rs.next()) {
-                ctype.setId(conn.rs.getInt("id"));
-                ctype.setCadre_category_name(conn.rs.getString("cadre_category_name"));
+                ccat.setId(conn.rs.getInt("id"));
+                ccat.setCadre_category_name(conn.rs.getString("cadre_category_name"));
            
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(CarderCatDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ctype;
+        return ccat;
     }
+
+    public int deleteCarderCat(int cat_id) {
+             
+        int i = 0;
+        try {
+            String sql = "DELETE from cadre_category where id=?";
+            conn.pst = conn.conn.prepareStatement(sql);
+            conn.pst.setInt(1, cat_id);
+            //  conn.pst.executeUpdate();
+            int submit = conn.pst.executeUpdate();
+
+            if (submit > 0) {
+                i = +1;
+            } else {
+                System.out.println(submit);
+                i = +submit;
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return i;
+   }
 
 
 

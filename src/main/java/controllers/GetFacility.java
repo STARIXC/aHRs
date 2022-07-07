@@ -4,69 +4,41 @@
  */
 package controllers;
 
-import Utils.EmployeesRepo;
+import Utils.FacilityDAO;
 import Utils.JSONConverter;
-import com.hris.db.DatabaseConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONObject;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author CBWAHYI
+ * @author UTJ
  */
-public class Dashboard extends HttpServlet {
+public class GetFacility extends HttpServlet {
 
-    //HttpSession session;
-    String query;
-    //private final DatabaseConnection conn;
-    String message;
+    private static final long serialVersionUID = 1L;
+    HttpSession session = null;
     PrintWriter out;
-    private JSONConverter json;
-    public EmployeesRepo dao;
+    public JSONConverter json;
+    public FacilityDAO dao;
 
-    int active_staff, onleave, pending_leave_applications, approvedleaves, execute_activity = 0;
-
-    public Dashboard() {
+    public GetFacility() {
         super();
-        dao = new EmployeesRepo();
+        dao = new FacilityDAO();
     }
 
-    int row;
-    int errors;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         out = response.getWriter();
-
-        response.setContentType("application/json");
-        String action = request.getParameter("action");
-
-        if (action.equalsIgnoreCase("staff")) {
-            int get_all_active = dao.get_all_active_staff();
-            // active_staff=dao.get_all_active_staff();
-            active_staff = get_all_active;
-            System.out.println("Number of active staff: " + active_staff);
-           JSONObject obj = new JSONObject();
-           obj.put("staff", new Integer(active_staff));
-
-            out.println(obj);
-        } else if (action.equalsIgnoreCase("leave")) {
-
-        } else if (action.equalsIgnoreCase("approvedleaves")) {
-
-        } else if (action.equalsIgnoreCase("pendingapproval")) {
-            // getPendingLeaves();
-
-        }
+        String district_id, current_facilities;
+        district_id = request.getParameter("subcounty");
+        current_facilities = json.convert(dao.getFacilityByCountyId(district_id));
+        System.out.println(current_facilities);
+        out.println(current_facilities);
 
     }
 
@@ -82,11 +54,7 @@ public class Dashboard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -100,11 +68,7 @@ public class Dashboard extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

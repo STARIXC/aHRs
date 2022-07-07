@@ -231,6 +231,7 @@
                         </div>
                     </div>
                 </div>
+                 <%@include file="/_includes/footer.jsp"%>
                 <script src="assets/vendor/jquery/jquery.min.js"></script>
                 <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
                 <script src="assets/vendor/DataTables/datatables.js"></script>

@@ -70,12 +70,12 @@ $("#ddlFacility").on('change', function () {
         return;
     document.getElementById("ddlFacility").style.borderColor = "green";
 });
-$("#ddlDesignation").on('change', function () {
-    var inputdesignaiton = document.getElementById('ddlDesignation');
-    if (inputdesignaiton.value.length === 0)
-        return;
-    document.getElementById("ddlDesignation").innerHTML = "";
-});
+//$("#ddlDesignation").on('change', function () {
+//    var inputdesignaiton = document.getElementById('ddlDesignation');
+//    if (inputdesignaiton.value.length === 0)
+//        return;
+//    document.getElementById("ddlDesignation").innerHTML = "";
+//});
 $("#txtEmployeeNumber").on('change', function () {
     var inputdivision = document.getElementById('txtEmployeeNumber');
     if (inputdivision.value.length === 0)
@@ -162,17 +162,17 @@ function valid_inf2() {
         });
 
     }
-    if (designation === "") {
-        document.getElementById("ddlDesignation").style.color = "red";
-        document.getElementById("desig").innerHTML = 'Position /Designation Field is Required';
-
-    } else {
-        $("#ddlDesignation").on('keyup', function () {
-            document.getElementById("ddlDesignation").style.color = "green";
-
-        });
-
-    }
+//    if (designation === "") {
+//        document.getElementById("ddlDesignation").style.color = "red";
+//        document.getElementById("desig").innerHTML = 'Position /Designation Field is Required';
+//
+//    } else {
+//        $("#ddlDesignation").on('keyup', function () {
+//            document.getElementById("ddlDesignation").style.color = "green";
+//
+//        });
+//
+//    }
 
     if (hiredate === "") {
         document.getElementById("hiredate").style.borderColor = "red";
@@ -196,7 +196,7 @@ function valid_inf2() {
 
 
 
-    if (division !== "" && designation !== "" && hiredate !== "" && employeeno !== "") {
+    if (division !== "" &&  hiredate !== "" && employeeno !== "") {
         //  alert("active");
         const nextTabLinkEl = $('.nav-tabs .active').closest('li').next('li').find('a')[0];
         const nextTab = new bootstrap.Tab(nextTabLinkEl);

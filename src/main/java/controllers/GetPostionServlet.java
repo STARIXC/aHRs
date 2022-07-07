@@ -20,100 +20,89 @@ import com.hris.db.DatabaseConnection;
  */
 @WebServlet("/GetPostionServlet")
 public class GetPostionServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	HttpSession session = null;
+
+    private static final long serialVersionUID = 1L;
+    HttpSession session = null;
+    public DatabaseConnection conn;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
     public GetPostionServlet() {
         super();
-        // TODO Auto-generated constructor stub
+       conn = new DatabaseConnection();
     }
-	@SuppressWarnings("static-access")
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		try {
-			response.setContentType("text/html;charset=UTF-8");
 
-			session = request.getSession();
+    @SuppressWarnings("static-access")
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        session = request.getSession();
+        String positiononsession = "";
+        String standard_id = "";
+        standard_id = request.getParameter("standard_id");
+        //disttrict is same as subcounty
+        if (session.getAttribute("positionid") != null) {
+            positiononsession = session.getAttribute("positionid").toString();
+        }
+        System.out.println("position on session__" + positiononsession);
+        PrintWriter out = response.getWriter();
+        try {
 
-			String sessionPosition = "";
+            String pos = "<option value=''>Select Position</option>";
+            String getpos = "";
 
-			session.getAttribute("positionid");
+            if (standard_id != null) {
+                getpos = "Select * from cadre_positions WHERE standardized_cadre_id='" + standard_id + "'";
+            } else {
+                getpos = "select id,position_title from cadre_positions  order by position_title ";
 
-			if (session.getAttribute("positionid") != null) {
+            }
+            conn.rs = conn.st.executeQuery(getpos);
+            System.out.println(getpos);
+            while (conn.rs.next()) {
+                //if the current position on loop is same as the position on session, then make it selected
+                if (positiononsession.equalsIgnoreCase(conn.rs.getString(1).trim())) {
 
-				sessionPosition = session.getAttribute("positionid").toString();
+                    pos += "<option selected value='" + conn.rs.getString(1) + "'> " + conn.rs.getString(2) + " </option>";
+                } else {
+                    pos += "<option value='" + conn.rs.getString(1) + "'> " + conn.rs.getString(2) + " </option>";
+                }
+                // System.out.println("~~"+conn.rs.getString(2));
 
-			}
-			System.out.println("current position ___" + sessionPosition);
+            }
 
-			String standard_id, current_positions;
+            out.println(pos);
+        } catch (SQLException ex) {
+            Logger.getLogger(GetPostionServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                conn.conn.close();
+                conn.rs.close();
+                conn.st.close();
+                out.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(GetPostionServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
-			standard_id = request.getParameter("cadre");
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        processRequest(request, response);
+    }
 
-			// System.out.println(" County:"+ county_name);
-			current_positions = "";
-
-			String positions = "Select * from cadre_positions WHERE standardized_cadre_id='" + standard_id + "'";
-
-			DatabaseConnection conn = new DatabaseConnection();
-
-			conn.rs = conn.st.executeQuery(positions);
-
-			current_positions = "<option value=\"\">Select Employee Designation</option>";
-
-			while (conn.rs.next()) {
-				if (sessionPosition.equalsIgnoreCase(conn.rs.getString("id"))) {
-
-					current_positions = current_positions + "<option selected value=\""
-							+ conn.rs.getString("id") + "\">" + conn.rs.getString("position_title") + "</option>";
-
-				} else {
-					current_positions = current_positions + "<option value=\"" + conn.rs.getString("id") + "\">"
-							+ conn.rs.getString("position_title") + "</option>";
-
-				}
-
-			}
-
-			PrintWriter out = response.getWriter();
-
-			try {
-				out.println(current_positions);
-
-			} finally {
-				if (conn.conn != null) {
-					conn.conn.close();
-				}
-				if (conn.rs != null) {
-					conn.rs.close();
-				}
-				if (conn.st != null) {
-					conn.st.close();
-				}
-				out.close();
-			}
-		} catch (SQLException ex) {
-			Logger.getLogger(GetPostionServlet.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		processRequest(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }

@@ -28,7 +28,7 @@ jQuery(document).ready(function () {
                 "targets": 0,
                 "data": "id",
                 "render": function (data, type, row, meta) {
-                    return '<div class="d-flex"><a href="edit_designation.jsp?id=' + data + '" class="btn btn-md btn-success ms-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="fa fa-pen text-white"></i></a> <a id="delete_leave_type" data-id="' + data + '" href="javascript:void(0)" class="btn btn-md btn-danger ms-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"><i class="fa fa-trash text-white"></i></a></div>';
+                    return '<div class="d-flex"><a id="edit-hols" data-id="' + data + '" href="javascript:void(0)" class="edit-hols btn btn-md btn-success ms-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit"><i class="fa fa-pen text-white"></i></a> <a id="delete_leave_type" data-id="' + data + '" href="javascript:void(0)" class="btn btn-md btn-danger ms-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"><i class="fa fa-trash text-white"></i></a></div>';
                 }
             }]
     });

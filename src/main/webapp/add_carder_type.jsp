@@ -127,13 +127,13 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group ">
                                                         <label for="carder_name">Carder Name </label>
-                                                        <input type="text" class="form-control carder_name input-width-xlarge" name="carder_name" id="carder_name" placeholder="Carder Name" autocomplete="off">
+                                                        <input type="text" class="form-control carder_name input-width-xlarge" name="e_carder_name" id="carder_name" placeholder="Carder Name" autocomplete="off">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="form-group ">
                                                         <label for="hrs_per_week">Hours per Week </label>
-                                                        <input type="text" class="form-control hrs_per_week input-width-xlarge" name="hrs_per_week" id="hrs_per_week" placeholder="Expected Work Hours Per Week" autocomplete="off">
+                                                        <input type="text" class="form-control hrs_per_week input-width-xlarge" name="e_hrs_per_week" id="hrs_per_week" placeholder="Expected Work Hours Per Week" autocomplete="off">
                                                     </div>
                                                 </div>
 

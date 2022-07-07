@@ -1,54 +1,30 @@
 jQuery(document).ready(function () {
     var jsonData;
+
+    
     var i = 1;
-    $('#cadre_category_table').DataTable({
-        "ajax": {
-            "url": './CarderCat?action=all',
-            "type": "GET",
-            dataType: "json",
-            dataSrc: "",
-            "data": function (d) {
-                $("#cadre_category_data").html(d);
-            }
+get_carder_cat();
+function get_carder_cat() {
+    $.ajax({
+        type: "GET",
+        url: './CarderCat?action=all',
+        contentType: "application/json; charset-utf-8",
+        dataType: "json",
+        success: function (data) {
+            $('#cadre_category_data').empty();
+            $.each(data, function (key, value)
+            {
+                $('#cadre_category_data').append('<tr><td>' + i++ + '</td><td>' + value.cadre_category_name + '</td> <td>  <a  href="javascript:void(0);"  data-id="' + value.id + '" class="btn btn-success btn-xs btnColor edit-hols"> <i class="fa fa-edit" ></i></a> <a id="delete_carder_cat" href="javascript:void(0);"  data-id="' + value.id + '" class="delete btn btn-danger btn-xs deleteBtn btnColor"><i class="fa fa-trash" aria-hidden="true" title="Delete" ></i></a> </td></tr>');
+            });
+
         },
-       "columns": [
-            {
-                "data": null,
-                "render": function (data, type, row, meta) {
-                    return i++;
-                }
-            },
-            {
-                "data": "cadre_category_name"
-            },
-            {
-                "targets": 0,
-                "data": "id",
-                "render": function (data, type, row, meta) {
-                    return 	'<div class="d-flex m-2"><a  class="btn btn-sm bg-success" href="edit_carder_category.jsp?id=' + data + '&action=edit"><i class="fa fa-pen text-white"></i></a><a class="btn btn-sm bg-danger" href="./CarderCat?id=' + data + '&action=delete"><i class="fa fa-trash text-white"></i></a></div>';
-                }
-            }]
+        complete: function () {
 
+        }
     });
-    /*$.ajax({
-     url: './EmployeesController',
-     type: 'get',
-     dataType: 'html',
-     success: function(response) {
-     
-     
-     },
-     error: function(e) {
-     alert('Error: ' + e);
-     }
-     
-     
-     });
-     */
 
-
-
-    // jQuery ajax form submit example, runs when form is submitted
+}
+ // jQuery ajax form submit example, runs when form is submitted
     $("#positionForm").submit(function (e) {
         e.preventDefault(); // prevent actual form submit
         var form = $("#timesheetForm");
@@ -78,47 +54,16 @@ jQuery(document).ready(function () {
         });
 
     });
-//        carder pype
-    $('#cadre_type_table').DataTable({
-        "ajax": {
-            "url": './CadreTypeServlet',
-            "type": "GET",
-            dataType: "json",
-            dataSrc: "",
-            "data": function (d) {
-                $("#carder-table-data").html(d);
-            }
-        },
-        "columns": [
-            {
-                "data": null,
-                "render": function (data, type, row, meta) {
-                    return i++;
-                }
-            },
-            {
-                "data": "cadre_type_name"
-            }, {
-                "data": "hrs_per_week"
-            },
-            {
-                "targets": 0,
-                "data": "id",
-                "render": function (data, type, row, meta) {
-                    return 	'<div class="d-flex m-2"><a  class="btn btn-sm bg-success" href="edit_carder_type.jsp?id=' + data + '&action=edit"><i class="fa fa-pen text-white"></i></a><a class="btn btn-sm bg-danger" href="./CarderTypeServlet?id=' + data + '&action=delete"><i class="fa fa-trash text-white"></i></a></div>';
-                }
-            }]
-
-    });
+    
 
 //    save carder
     $("#carderForm_").submit(function (e) {
         alert("submited");
         e.preventDefault(); // prevent actual form submit
         var form = $("#carderForm_");
-        var action = "save_carder";
+        var action = "update_carder";
         var data = form.serialize() + "&action=" + action;
-        var url = './CadreTypeServlet';
+        var url = './CarderTypeUpdates';
         // screenLock();
         $.ajax({
             type: "POST",
@@ -147,9 +92,9 @@ jQuery(document).ready(function () {
       //  alert("submited");
         e.preventDefault(); // prevent actual form submit
         var form = $("#carder_cat_Form_");
-        var action = "save_carder_cat";
+        var action = "update_carder_cat";
         var data = form.serialize() + "&action=" + action;
-        var url = './CarderCat';
+        var url = './CarderCatUpdate';
         // screenLock();
         $.ajax({
             type: "POST",

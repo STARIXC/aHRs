@@ -85,4 +85,29 @@ public class CarderTypeDAO {
         }
         return ctype;
     }
+
+    public int deleteCtype(int cat_type_id) {
+       
+        int i = 0;
+        try {
+            String sql = "DELETE from cadre_type where id=?";
+            conn.pst = conn.conn.prepareStatement(sql);
+            conn.pst.setInt(1, cat_type_id);
+            //  conn.pst.executeUpdate();
+            int submit = conn.pst.executeUpdate();
+
+            if (submit > 0) {
+                i = +1;
+            } else {
+                System.out.println(submit);
+                i = +submit;
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return i;
+    }
+ 
 }

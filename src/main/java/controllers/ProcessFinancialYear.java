@@ -4,7 +4,7 @@
  */
 package controllers;
 
-import Utils.CarderCatDAO;
+import Utils.FyDAO;
 import Utils.JSONConverter;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -14,76 +14,45 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import models.CarderCat;
+import models.FY;
 import org.json.JSONObject;
 
 /**
  *
  * @author UTJ
  */
-public class CarderCatUpdate extends HttpServlet {
+public class ProcessFinancialYear extends HttpServlet {
 
-     HttpSession session = null;
+    HttpSession session = null;
     Gson gson = new Gson();
     public JSONConverter json;
-    public CarderCatDAO dao;
+    public FyDAO dao;
     PrintWriter out;
-    int status=0;
+    int status = 0;
 
-    public CarderCatUpdate() {
-         super();
-        dao =new CarderCatDAO();
+    public ProcessFinancialYear() {
+        super();
+        dao = new FyDAO();
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         // response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         out = response.getWriter();
         String action = request.getParameter("action");
-           String deleteId = request.getParameter("deleteId");
-        if (action.equalsIgnoreCase("delete")) {
-
-            int cat_type_id = Integer.parseInt(deleteId);
-            System.out.println(cat_type_id);
-            status = dao.deleteCarderCat(cat_type_id);
-            JSONObject obj = new JSONObject();   //create globally JSONObject and name is "obj"
-
-            if (status != 0) {   //check if condition variable "i" not equal to zero after continue
-
-                obj.put("status", "success");
-                obj.put("message", "Leave Type Delete Successfully");    //create json object "status","message" and apply custome messages for "delete data"
-            } else {
-
-                obj.put("status", "error");
-                obj.put("message", "Unable to delete Leave Type....");   //create json object "status","message" and apply custome messages for "unable to delete data"
-            }
-
-            out.print(obj); //finally print the "obj" object
-
-        } else if (action.equalsIgnoreCase("edit")) {
-             String carder_id = request.getParameter("carder_id");
-            int id = Integer.parseInt(carder_id);
-            CarderCat ccat = dao.getCarderCatById(id);
-            String result = JSONConverter.convert(ccat);
+        String deleteId = request.getParameter("deleteId");
+        
+       if (action.equalsIgnoreCase("get_year_details")) {
+            String year_id = request.getParameter("year_id");
+            int id = Integer.parseInt(year_id);
+            FY fy_ = dao.geFYById(id);
+            String result = JSONConverter.convert(fy_);
             out.println(result);
-            
-        } else if (action.equalsIgnoreCase("update_carder_cat")) {
-            
-           CarderCat ccat = new CarderCat();
-           String cadre_category_name=request.getParameter("carder_category_name");
-          
-            String id = request.getParameter("e_cadre_category_id");
-            ccat.setCadre_category_name(cadre_category_name);
-           
-            if (id == null || id.isEmpty()) {
-                dao.addCarderCat(ccat);
-            } else {
-                ccat.setId(Integer.parseInt(id));
-                               dao.updateCarderCat(ccat);
-            }
-        }
-         else {
 
+        }  else {
+            String financialyear = json.convert(dao.getAllFY());
+            System.out.println(financialyear);
+            out.println(financialyear);
         }
     }
 
@@ -125,7 +94,5 @@ public class CarderCatUpdate extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-
 
 }

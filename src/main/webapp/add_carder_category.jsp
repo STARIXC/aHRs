@@ -7,20 +7,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Add Carder Type</title>
-        <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+         <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
         <link rel="stylesheet" href="assets/css/toggle.css">
         <link rel="stylesheet" href="assets/vendor/DataTables/datatables.css">
+        <link href="assets/vendor/swal2/sweetalert2.min.css" rel="stylesheet" type="text/css">
         <script defer src="assets/fontawesome/js/all.min.js"></script>
-        <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+        <link rel="stylesheet"
+              href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="assets/vendor/jquery/jquery.min.js"></script>
         <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
+        <script src="assets/vendor/swal2/sweetalert2.min.js" type="text/javascript"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
         <style type="text/css">
             .notif:hover{
                 background-color: rgba(0,0,0,0.1);
+            }
+            .fade:not(.show) {
+                opacity: 1 !important;
             }
         </style>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -162,15 +168,16 @@
             </div>
 
         </div>
+          <%@include file="/_includes/footer.jsp"%>
+        <script src="assets/vendor/jquery/jquery.min.js"></script>
+        <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
         <script src="assets/vendor/DataTables/datatables.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather-icons/feather.min.js"></script>
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/js/app.js"></script>
-        <script src="assets/js/pages/cader.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/pages/cader.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-
     </body>
 </html>

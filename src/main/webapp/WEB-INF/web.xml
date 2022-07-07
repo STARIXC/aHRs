@@ -77,9 +77,29 @@
         <servlet-name>Roles</servlet-name>
         <servlet-class>controllers.Roles</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>earnLeaveConfigure</servlet-name>
+        <servlet-class>controllers.earnLeaveConfigure</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageUsers</servlet-name>
+        <servlet-class>controllers.ManageUsers</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StandardizedCarder</servlet-name>
+        <servlet-class>controllers.StandardizedCarder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessFinancialYear</servlet-name>
+        <servlet-class>controllers.ProcessFinancialYear</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetFacility</servlet-name>
+        <servlet-class>controllers.GetFacility</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProcessEmployee</servlet-name>
-        <url-pattern>/Employee/create_employee</url-pattern>
+        <url-pattern>/ProcessEmployee</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Dashboard</servlet-name>
@@ -157,6 +177,26 @@
     <servlet-mapping>
         <servlet-name>Roles</servlet-name>
         <url-pattern>/Roles</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>earnLeaveConfigure</servlet-name>
+        <url-pattern>/earnLeaveConfigure</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageUsers</servlet-name>
+        <url-pattern>/ManageUsers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StandardizedCarder</servlet-name>
+        <url-pattern>/StandardizedCarder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessFinancialYear</servlet-name>
+        <url-pattern>/ProcessFinancialYear</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetFacility</servlet-name>
+        <url-pattern>/GetFacility</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

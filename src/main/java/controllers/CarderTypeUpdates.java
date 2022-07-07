@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import models.CarderType;
+import org.json.JSONObject;
 
 /**
  *
@@ -27,7 +28,7 @@ public class CarderTypeUpdates extends HttpServlet {
     public JSONConverter json;
     public CarderTypeDAO dao;
     PrintWriter out;
-
+    int status=0;
     public CarderTypeUpdates() {
         super();
         dao = new CarderTypeDAO();
@@ -38,21 +39,40 @@ public class CarderTypeUpdates extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         out = response.getWriter();
         String action = request.getParameter("action");
-       
+        //String id = request.getParameter("carder_type_id");
+        String deleteId = request.getParameter("deleteId");
         if (action.equalsIgnoreCase("delete")) {
+
+            int cat_type_id = Integer.parseInt(deleteId);
+            System.out.println(cat_type_id);
+            status = dao.deleteCtype(cat_type_id);
+            JSONObject obj = new JSONObject();   //create globally JSONObject and name is "obj"
+
+            if (status != 0) {   //check if condition variable "i" not equal to zero after continue
+
+                obj.put("status", "success");
+                obj.put("message", "Leave Type Delete Successfully");    //create json object "status","message" and apply custome messages for "delete data"
+            } else {
+
+                obj.put("status", "error");
+                obj.put("message", "Unable to delete Leave Type....");   //create json object "status","message" and apply custome messages for "unable to delete data"
+            }
+
+            out.print(obj); //finally print the "obj" object
+
         } else if (action.equalsIgnoreCase("edit")) {
-            String id =request.getParameter("ctype_id");
-             int carder_id =Integer.parseInt(id);
-            CarderType ctype = dao.getCarderTypeById(carder_id);
-            String details = JSONConverter.convert(ctype);
-            System.out.print(ctype);
-            out.println(details);
+            String ctype_id = request.getParameter("carder_id");
+            int id = Integer.parseInt(ctype_id);
+            CarderType ctype = dao.getCarderTypeById(id);
+            String result = JSONConverter.convert(ctype);
+            out.println(result);
+
         } else if (action.equalsIgnoreCase("update_carder")) {
-            
+
             CarderType ctype = new CarderType();
-            ctype.setCadre_type_name(request.getParameter("carder_name"));
-            ctype.setHrs_per_week(request.getParameter("hrs_per_week"));
-            String id = request.getParameter("carder_id");
+            ctype.setCadre_type_name(request.getParameter("e_carder_name"));
+            ctype.setHrs_per_week(request.getParameter("e_hrs_per_week"));
+            String id = request.getParameter("e_carder_id");
             if (id == null || id.isEmpty()) {
                 dao.addCarderType(ctype);
             } else {
@@ -60,7 +80,9 @@ public class CarderTypeUpdates extends HttpServlet {
                 dao.updateCarderType(ctype);
             }
         } else {
-
+            String ctype = json.convert(dao.getAllCarderType());
+            System.out.println(ctype);
+            out.println(ctype);
         }
     }
 

@@ -1,64 +1,64 @@
+<%-- 
+    Document   : edit_termination
+    Created on : May 18, 2022, 10:36:43 AM
+    Author     : CBWAHYI
+--%>
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html lang="en">
-
     <head>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Manage Designation</title>
+        <title>Carder Type</title>
         <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
-        <link href="assets/vendor/swal2/sweetalert2.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
-
+        <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
+        <link rel="stylesheet" href="assets/css/toggle.css">
         <link rel="stylesheet" href="assets/vendor/DataTables/datatables.css">
-
-        <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-
+        <link href="assets/vendor/swal2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+        <script defer src="assets/fontawesome/js/all.min.js"></script>
+        <link rel="stylesheet"
+              href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="assets/vendor/jquery/jquery.min.js"></script>
         <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
-
-        <script defer src="assets/fontawesome/js/all.min.js"></script>
         <script src="assets/vendor/swal2/sweetalert2.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
         <style type="text/css">
-            .notif:hover {
-                background-color: rgba(0, 0, 0, 0.1);
+            .notif:hover{
+                background-color: rgba(0,0,0,0.1);
             }
             .fade:not(.show) {
                 opacity: 1 !important;
             }
         </style>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     </head>
-
     <body>
         <div id="app">
             <div id="sidebar" class='active'>
-                <div class="sidebar-wrapper active">
-                   
-                   <!-- BEGIN SIDEBAR MENU -->         
+                <div class="sidebar-wrapper ">
+
+                    <!-- BEGIN SIDEBAR MENU -->         
                     <%@include file="/_includes/sidebar_menu.jsp"%>
                     <!-- END SIDEBAR MENU -->
-                    <button class="sidebar-toggler btn x">
-                        <i data-feather="x"></i>
-                    </button>
+                    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
                 </div>
             </div>
             <div id="main">
                 <nav class="navbar navbar-header navbar-expand navbar-light">
-                    <a class="sidebar-toggler" href="#"><span
-                            class="navbar-toggler-icon"></span></a>
-                    <button class="btn navbar-toggler" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
+                    <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                    <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul
-                            class="navbar-nav d-flex align-items-center navbar-light ms-auto">
-                            <li class="dropdown nav-icon"><a href="#"
-                                                             data-bs-toggle="dropdown"
-                                                             class="nav-link  dropdown-toggle nav-link-lg nav-link-user">
+                        <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
+                            <li class="dropdown nav-icon">
+                                <a href="#" data-bs-toggle="dropdown"
+                                   class="nav-link  dropdown-toggle nav-link-lg nav-link-user">
                                     <div class="d-lg-inline-block">
                                         <i data-feather="bell"></i><span class="badge bg-info">2</span>
                                     </div>
@@ -69,50 +69,54 @@
                                         <li class="list-group-item border-0 align-items-start">
                                             <div class="row mb-2">
                                                 <div class="col-md-12 notif">
-                                                    <a href="leave_details.jsp"><h6 class='text-bold'>John
-                                                            Doe</h6>
-                                                        <p class='text-xs'>applied for leave at 05-21-2021</p></a>
+                                                    <a href="leave_details.jsp"><h6 class='text-bold'>John Doe</h6>
+                                                        <p class='text-xs'>
+                                                            applied for leave at 05-21-2021
+                                                        </p></a>
                                                 </div>
                                                 <div class="col-md-12 notif">
-                                                    <a href="leave_details.jsp"><h6 class='text-bold'>Jane
-                                                            Doe</h6>
-                                                        <p class='text-xs'>applied for leave at 05-21-2021</p></a>
+                                                    <a href="leave_details.jsp"><h6 class='text-bold'>Jane Doe</h6>
+                                                        <p class='text-xs'>
+                                                            applied for leave at 05-21-2021
+                                                        </p></a>
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
-                                </div></li>
-                            <li class="dropdown"><a href="#" data-bs-toggle="dropdown"
-                                                    class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-bs-toggle="dropdown"
+                                   class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                                     <div class="avatar me-1">
                                         <img src="assets/images/admin.png" alt="" srcset="">
                                     </div>
                                     <div class="d-none d-md-block d-lg-inline-block">Hi, Admin</div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="#"><i data-feather="user"></i>
-                                        Account</a> <a class="dropdown-item" href="#"><i
-                                            data-feather="settings"></i> Settings</a>
+                                    <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
+                                    <a class="dropdown-item" href="#"><i data-feather="settings"></i> Settings</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="login.jsp"><i
-                                            data-feather="log-out"></i> Logout</a>
-                                </div></li>
+                                    <a class="dropdown-item" href="login.jsp"><i data-feather="log-out"></i> Logout</a>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </nav>
+
                 <div class="main-content container-fluid">
                     <div class="row mb-2">
                         <div class="col-md-8 order-md-1 order-last">
                             <nav aria-label="breadcrumb" class='breadcrumb-header'>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.jsp" class="text-success"><i class="fa fa-home"></i> Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Manage Designation</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Manage Standardized Carders</li>
                                 </ol>
                             </nav>
                         </div>
                         <div class="col-md-4 order-md-2 order-first">
-                            <a href="add_designation.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Add Designation</a>
+                            <a href="add_standardized_carder.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Add Standardized Carder</a>
 
                         </div>
                     </div>
@@ -124,20 +128,21 @@
                             <div class="card">
                                 <div class="card-header bg-success text-white">
                                     <i class="mdi mdi-table fa-fw"></i> 
-                                    Designation/Position List
+                                    Standardized Carders List
                                 </div>
                                 <div class="card-body pt-3">
                                     <div class="table-responsive">
-                                        <table id="position_table" class="table mt-3">
+                                        <table id="s_cadre_table" class="table mt-3">
                                             <thead>
                                                 <tr>
-                                                    <th>Designation Name</th>
-                                                    <th>Description</th>
-                                                    <!-- 	<th>Creation Date</th> -->
-                                                    <th>Action</th>
+                                                    <th>S/L</th>
+                                                    <th>Employee Type</th>
+                                                    <th>Carder Category Name</th>
+                                                    <th>Standardized Carder Name</th>
+                                                    <th style="text-align: center;">Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="position_table_data">
+                                            <tbody id="s_cadre_data">
 
 
                                             </tbody>
@@ -150,31 +155,9 @@
                     </div>
                     <!-- // Basic Vertical form layout section end -->
                 </div>
-
-                <div class="main-content container-fluid">
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3></h3>
-                            </div>
-                            <div class="col-12 col-md-6 order-md-2 order-first">
-                                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.jsp"
-                                                                       class="text-success">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Manage
-                                            Designation</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-               
-                </div>
             </div>
         </div>
-
-         <div id="simpleModal" class="modal" tabindex="-1" role="dialog">
+        <div id="simpleModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
 
                 <div class="modal-content">
@@ -238,7 +221,7 @@
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
         <script src="assets/js/app.js"></script>
         <script src="assets/js/main.js"></script>
-               <script src="assets/js/pages/position.js"></script>
+        <script src="assets/js/pages/scader.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -247,10 +230,10 @@
                     e.preventDefault();
                     var typeId = $(this).data('id');
                     console.log("Type id: " + typeId);
-                  //  OpenBootstrapPopup(typeId);
+                    OpenBootstrapPopup(typeId);
 
                 });
-                    $(document).on('click', '#delete_leave_type', function (e) {
+                $(document).on('click', '#delete_scarder', function (e) {
                     e.preventDefault();
                     var typeId = $(this).data('id');
                     console.log("Type id: " + typeId);
@@ -262,9 +245,9 @@
                     //  alert("submited");
                     e.preventDefault(); // prevent actual form submit
                     var form = $("#carder_cat_EForm_");
-                    var action = "process_position";
+                    var action = "process_Scarder";
                     var data = form.serialize() + "&action=" + action;
-                    var url = './PositionServlet';
+                    var url = './StandardizedCarder';
                     // screenLock();
                     $.ajax({
                         type: "POST",
@@ -290,45 +273,7 @@
                 });
 
             });
-     
-            function SwalDelete(typeId) {
-
-                swal({
-                    title: 'Are you sure?',
-                    text: "It will be deleted permanently",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6', //sweetalert confirm dialouge 
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!',
-                    showLoaderOnConfirm: true,
-
-                    preConfirm: function () {
-                        return new Promise(function (resolve) {    //Promise() function take care delete process done by ajax
-                            var action = "delete";
-                            var data = "deleteId=" + typeId + "&action=" + action;
-                            var url = url;
-                            $.ajax({
-                                url: './PositionServlet', //ajax codes start for delete data
-                                type: 'POST',
-                                data: data,
-                                dataType: 'JSON'
-                            })
-                                    .done(function (response) {
-                                        swal('Deleted!', response.message, response.status);    //after process done on delete.jsp file get JSON response display message "Fruit Delete Successfully"
-                                        var url_ = "manage_designation.jsp";
-                                        $(location).attr('href', url_);
-                                        //  readFruit();
-                                    })
-                                    .fail(function () {
-                                        swal('Oops...', 'Something went wrong with ajax !', 'error');    //if process fail on delete.jsp file get JSON response display message "Unable to delete fruit"
-                                    });
-                        });
-                    },
-                    allowOutsideClick: false
-                });
-            }
-                  function OpenBootstrapPopup(id) {
+            function OpenBootstrapPopup(id) {
                 var carder_id = id;
                 $.ajax({
                     type: "GET",
@@ -350,7 +295,48 @@
                 });
 
             }
-        </script>
-    </body>
+            function SwalDelete(typeId) {
 
+                swal({
+                    title: 'Are you sure?',
+                    text: "It will be deleted permanently",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6', //sweetalert confirm dialouge 
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    showLoaderOnConfirm: true,
+
+                    preConfirm: function () {
+                        return new Promise(function (resolve) {    //Promise() function take care delete process done by ajax
+                            var action = "delete";
+                            var data = "deleteId=" + typeId + "&action=" + action;
+                            var url = url;
+                            $.ajax({
+                                url: './StandardizedCarder', //ajax codes start for delete data
+                                type: 'POST',
+                                data: data,
+                                dataType: 'JSON'
+                            })
+                                    .done(function (response) {
+                                        swal('Deleted!', response.message, response.status);    //after process done on delete.jsp file get JSON response display message "Fruit Delete Successfully"
+                                        var url_ = "manage_standardised_carder.jsp";
+                                        $(location).attr('href', url_);
+                                        //  readFruit();
+                                    })
+                                    .fail(function () {
+                                        swal('Oops...', 'Something went wrong with ajax !', 'error');    //if process fail on delete.jsp file get JSON response display message "Unable to delete fruit"
+                                    });
+                        });
+                    },
+                    allowOutsideClick: false
+                });
+            }
+        </script>
+
+
+
+
+    </body>
 </html>
+

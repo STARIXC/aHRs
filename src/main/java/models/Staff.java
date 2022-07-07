@@ -8,6 +8,7 @@ public class Staff {
     private String first_name;
     private String surname;
     private String other_name;
+    private String national_id;
     private String gender;
     private String phone;
     private String email;
@@ -17,7 +18,15 @@ public class Staff {
     private String nationality;
     private String disability;
     private String disability_explain;
-    private String national_id;
+    private String kra_pin;
+    private String nssf_no;
+    private String nhif_no;
+    private String cert_good_conduct_no;
+    private String helb_clearance_no;
+    private int helb_benefitiary;
+    private String bank_name, branch, account_name, acount_number;
+//    emp_history
+    private String emprecordid;
     private String mfl;
     private String position;
     private String date_started;
@@ -29,60 +38,14 @@ public class Staff {
     private String expected_months;
     private String status;
 
-    private String kra_pin;
-    private String nssf_no;
-    private String nhif_no;
-    private String cert_good_conduct_no;
-    private String helb_clearance_no;
-    private int helb_benefitiary;
+    
     private int active;
     private String position_name;
-    private String bank_name, branch, account_name, acount_number;
+    
 
     public Staff() {
         super();
    }
-
-    public Staff(int id, String emp_no, String full_name, String first_name, String surname, String other_name, String gender, String phone, String email, String dob, String home_address, String postal_code, String nationality, String disability, String disability_explain, String national_id, String mfl, String position, String date_started, String date_ended, String months_worked, String current_contract, String contract_period, String contract_end_date, String expected_months, String status, String kra_pin, String nssf_no, String nhif_no, String cert_good_conduct_no, String helb_clearance_no, int helb_benefitiary, int active, String position_name, String bank_name, String branch, String account_name, String acount_number) {
-        this.id = id;
-        this.emp_no = emp_no;
-        this.full_name = full_name;
-        this.first_name = first_name;
-        this.surname = surname;
-        this.other_name = other_name;
-        this.gender = gender;
-        this.phone = phone;
-        this.email = email;
-        this.dob = dob;
-        this.home_address = home_address;
-        this.postal_code = postal_code;
-        this.nationality = nationality;
-        this.disability = disability;
-        this.disability_explain = disability_explain;
-        this.national_id = national_id;
-        this.mfl = mfl;
-        this.position = position;
-        this.date_started = date_started;
-        this.date_ended = date_ended;
-        this.months_worked = months_worked;
-        this.current_contract = current_contract;
-        this.contract_period = contract_period;
-        this.contract_end_date = contract_end_date;
-        this.expected_months = expected_months;
-        this.status = status;
-        this.kra_pin = kra_pin;
-        this.nssf_no = nssf_no;
-        this.nhif_no = nhif_no;
-        this.cert_good_conduct_no = cert_good_conduct_no;
-        this.helb_clearance_no = helb_clearance_no;
-        this.helb_benefitiary = helb_benefitiary;
-        this.active = active;
-        this.position_name = position_name;
-        this.bank_name = bank_name;
-        this.branch = branch;
-        this.account_name = account_name;
-        this.acount_number = acount_number;
-    }
 
     public String getFull_name() {
         return full_name;

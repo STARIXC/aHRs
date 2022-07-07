@@ -1,15 +1,29 @@
 package Utils;
 
+import static Utils.ScarderDAO.INSERT_S_CARDER;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.hris.db.DatabaseConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import models.Staff;
 
 public class EmployeesRepo {
 
     private DatabaseConnection conn;
+    public static final String INSERT_STAFF_BIO = "REPLACE INTO emp_bio" + "(emp_no,first_name,surname," + "other_name,national_id,"
+                    + "gender,phone,email,dob,home_address," + "postal_code,nationality,"
+                    + "disability,disability_explain)" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    public static final String INSERT_STAFF_HIST = "REPLACE INTO employee_hist" + "(emp_no, national_id, mfl," + " position, date_started, "
+                    + "date_ended, months_worked, " + "current_contract, contract_period,"
+                    + " contract_end_date, expected_months," + " active" + ")" + " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    public static final String INSERT_STAFF_LOGIN = "REPLACE INTO login( emp_no, username, password, is_admin, profile_path)VALUES (?,?,?,?)";
+    public static final String DELETE_STAFF = "DELETE FROM standardized_cadre WHERE id= ?";
+    public static final String UPDATE_STAFF = "UPDATE standardized_cadre SET carder_category_id = ?,SET standardized_cadre_name = ?,SET emp_type = ? WHERE id= ?";
+    public static final String SELECT_ALL_STAFFS = "SELECT sc.id as carderT_id ,sc.carder_category_id as carder_category_id,sc.emp_type as emp_type,cc.cadre_category_name as carder_category,sc.standardized_cadre_name as standardized_cadre_name,ct.cadre_type_name as ctype FROM hrh.standardized_cadre sc Left JOIN cadre_type ct on sc.emp_type=ct.id LEFT JOIN cadre_category cc on sc.carder_category_id=cc.id ";
 
     public EmployeesRepo() {
         conn = new DatabaseConnection();
@@ -35,12 +49,19 @@ public class EmployeesRepo {
         return rowsAffected;
     }
 
-    public int get_all_staff() {
+    public int get_all_staff() throws SQLException {
         int rowsAffected = 1;
-
+   
+      //Retrieving the data
+      conn.rs = conn.st.executeQuery("select count(*) from emp_hist where active =1");
+      conn.rs.next();
+      //Moving the cursor to the last row
+      System.out.println("Table contains "+conn.rs.getInt("count(*)")+" rows");
+      rowsAffected=conn.rs.getInt("count(*)");
         return rowsAffected;
     }
 
+    
     public int get_all_leave() {
         int response = 0;
 
@@ -54,17 +75,31 @@ public class EmployeesRepo {
     }
 
     //sql_bio,sql_hist ,,,	
-    public int addEmpBio(String sql_bio) {
-        int rowsAffected = 0;
-        //write the insert Query
-        try {
-            //	prepare statement
-            conn.pst = conn.conn.prepareStatement(sql_bio);
-            //	execute the satements
-            rowsAffected = conn.pst.executeUpdate();
+    public int addEmpBio(Staff staff) {
+          int rowsAffected = 0;
+          try {
+            conn.pst = conn.conn.prepareStatement(INSERT_STAFF_BIO);
+            conn.pst.setString(1, staff.getEmp_no());
+            conn.pst.setString(2, staff.getFirst_name());
+            conn.pst.setString(3, staff.getSurname());
+            conn.pst.setString(4, staff.getOther_name());
+            conn.pst.setString(5, staff.getNational_id());
+            conn.pst.setString(6, staff.getGender());
+            conn.pst.setString(7, staff.getPhone());
+            conn.pst.setString(8, staff.getEmail());
+            conn.pst.setString(9, staff.getDob());
+            conn.pst.setString(10, staff.getHome_address());
+            conn.pst.setString(11, staff.getPosition());
+            conn.pst.setString(12, staff.getNationality());
+            conn.pst.setString(13, staff.getDisability());
+            conn.pst.setString(14, staff.getDisability_explain());
+           
+            conn.pst.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getLogger(ScarderDAO.class.getName()).log(Level.SEVERE, null, e);
         }
+      
+    
         return rowsAffected;
     }
 
@@ -82,36 +117,7 @@ public class EmployeesRepo {
         return rowsAffected;
     }
 
-    public int addEmpBank(String sql_banking_det) {
-        int rowsAffected = 0;
-        //write the insert Query
-        try {
-            // prepare statement
-            conn.pst = conn.conn.prepareStatement(sql_banking_det);
-            // execute the satements
-            rowsAffected = conn.pst.executeUpdate();
-        } catch (SQLException e) {
-        }
-        return rowsAffected;
-    }
-
-    public int addEmpStat(String sql_statutory_details) {
-        int rowsAffected = 0;
-        //write the insert Query
-
-        try {
-            //	prepare statement
-            conn.pst = conn.conn.prepareStatement(sql_statutory_details);
-
-            //	execute the satements
-            rowsAffected = conn.pst.executeUpdate();
-        } catch (SQLException e) {
-        }
-
-        return rowsAffected;
-    }
-
-    public int addEmpAuth(String sql_login) {
+ public int addEmpAuth(String sql_login) {
         int rowsAffected = 0;
         //write the insert Query
 
@@ -362,7 +368,6 @@ public class EmployeesRepo {
                     + "IFNULL(c.basic_pay,'') as basic_pay "
                     + "from emp_bio as b join employee_hist as h on h.emp_no =b.emp_no "
                     + "join cadre_positions as c on h.position=c.id "
-                    + "join banking_det as bk ON bk.employee_no = b.emp_no "
                     + "where b.emp_no ='" + emp_no + "' and h.active =1";
 //            System.out.println("Select Query : "+sql);
             conn.rs = conn.st.executeQuery(sql);
@@ -463,15 +468,7 @@ public class EmployeesRepo {
             conn.pst2.setString(4, staff.getAccount_name());
             conn.pst2.setString(5, staff.getAcount_number());
             conn.pst2.executeUpdate();
-            String sql3 = "REPLACE INTO statutory_details(employee_no,kra_pin,nssf_no,nhif_no,cert_good_conduct_no,helb_clearance_no) VALUES (?,?,?,?,?,?)";
-            conn.pst3 = conn.conn.prepareStatement(sql3);
-            conn.pst3.setString(1, staff.getEmp_no());
-            conn.pst3.setString(2, staff.getKra_pin());
-            conn.pst3.setString(3, staff.getNssf_no());
-            conn.pst3.setString(4, staff.getNhif_no());
-            conn.pst3.setString(5, staff.getCert_good_conduct_no());
-            conn.pst3.setString(6, staff.getHelb_clearance_no());
-            conn.pst3.executeUpdate();
+          
             String sql4 = "REPLACE INTO login( emp_no, username, password, is_admin, profile_path)VALUES (?,?,?,?)";
             conn.pst4 = conn.conn.prepareStatement(sql4);
             conn.pst4.setString(1, staff.getEmp_no());
@@ -507,6 +504,24 @@ public class EmployeesRepo {
             e.printStackTrace();
         }
         return allStaff;
+    }
+
+    public int count_active_satff() {
+           int rowsAffected = 0;
+        //write the insert Query
+            try {
+            String sql = "select count(*) from employee_hist where active =1";
+            conn.rs = conn.st.executeQuery(sql);
+            while (conn.rs.next()) {
+//                int emp_id =conn.rs.get
+
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+     
+        return rowsAffected;
     }
 
 }

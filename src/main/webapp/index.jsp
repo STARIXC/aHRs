@@ -16,10 +16,14 @@
         <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="assets/vendor/jquery/jquery.min.js"></script>
+        <script src="assets/js/jquery.waypoints.js"></script>
+        <script src="assets/js/jquery.counterup.min.js"></script>
         <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
+        <script src="assets/js/pages/dashboard.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
         <style type="text/css">
-               .notif:hover {
+            .notif:hover {
                 background-color: rgba(0, 0, 0, 0.1);
             }
             /*for yellow bg*/
@@ -120,8 +124,8 @@
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper active">
-                 
-                   <!-- BEGIN SIDEBAR MENU -->         
+
+                    <!-- BEGIN SIDEBAR MENU -->         
                     <%@include file="/_includes/sidebar_menu.jsp"%>
                     <!-- END SIDEBAR MENU -->
                     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
@@ -184,7 +188,7 @@
                     </div>
                 </nav>
 
-                 <div class="main-content">
+                <div class="main-content">
 
 
 
@@ -406,18 +410,22 @@
                     <!-- /.container-fluid -->
 
                 </div>
-          </div>
+            </div>
 
         </div>
         <script src="assets/vendor/DataTables/datatables.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather-icons/feather.min.js"></script>
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+        <script src="assets/js/custom_.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/sidebar-nav.min.js"></script>
         <script src="assets/js/app.js"></script>
-        <script src="assets/js/pages/cader.js"></script>
+
         <script src="assets/js/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+        
 
     </body>
 </html>

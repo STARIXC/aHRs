@@ -1,18 +1,24 @@
 package models;
 
-public class facility {
+public class Facility {
 	int SubPartnerID;
 	String SubPartnerNom;
 	int DistrictID;
 	int CentreSanteId;
-	public facility(int subPartnerID, String subPartnerNom, int districtID, int centreSanteId) {
+
+    public Facility() {
+        super();
+    }
+        
+        
+	public Facility(int subPartnerID, String subPartnerNom, int districtID, int centreSanteId) {
 		super();
 		SubPartnerID = subPartnerID;
 		SubPartnerNom = subPartnerNom;
 		DistrictID = districtID;
 		CentreSanteId = centreSanteId;
 	}
-	public facility(String subPartnerNom, int districtID, int centreSanteId) {
+	public Facility(String subPartnerNom, int districtID, int centreSanteId) {
 		super();
 		SubPartnerNom = subPartnerNom;
 		DistrictID = districtID;

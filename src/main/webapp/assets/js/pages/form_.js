@@ -4,7 +4,7 @@ $("#createEmployee").submit(function (e) {
     var form = $("#createEmployee");
     let action = "save_employee";
     var data = form.serialize() + "&action=" + action;
-    var url = './Employee/create_employee'; //get submit url [replace url here if desired]
+    var url = './ProcessEmployee'; //get submit url [replace url here if desired]
     //screenLock();
     $.ajax({
         type: "POST",
@@ -15,7 +15,7 @@ $("#createEmployee").submit(function (e) {
             console.log(data);
         },
         success: function (data) {
-            
+
             console.log(data);
             //var url_ = "manage_employee.jsp";
             //$(location).attr('href', url_);
@@ -30,3 +30,28 @@ $("#createEmployee").submit(function (e) {
     });
 });
 
+
+var i = 1;
+get_FY();
+function get_FY() {
+    $.ajax({
+        type: "GET",
+        url: './ProcessFinancialYear?action=all',
+        contentType: "application/json; charset-utf-8",
+        dataType: "json",
+        success: function (data) {
+            $('#ddlFY').empty();
+            $('#ddlFY').append('<option value="">--- Select One---</option>');
+            $.each(data, function (key, value)
+            {
+                $('#ddlFY').append('<option value="' + value.id + '">' + value.name + '</option>');
+            });
+
+        },
+        complete: function () {
+
+        }
+
+    });
+
+}
