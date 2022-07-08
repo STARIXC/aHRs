@@ -233,7 +233,7 @@ public class EmployeesRepo {
             conn.rs = conn.st.executeQuery(sql);
             while (conn.rs.next()) {
                 Staff staff = new Staff();
-                staff.setId(conn.rs.getInt("emp_id"));
+                staff.setId(conn.rs.getString("emp_id"));
                 staff.setEmp_no(conn.rs.getString("emp_no"));
                 staff.setFull_name(conn.rs.getString("full_name"));
                 staff.setFirst_name(conn.rs.getString("firstname"));
@@ -291,7 +291,7 @@ public class EmployeesRepo {
             System.out.println("Select Query : "+sql);
             conn.rs = conn.st.executeQuery(sql);
             while (conn.rs.next()) {
-                staff.setId(conn.rs.getInt("emp_id"));
+                staff.setId(conn.rs.getString("emp_id"));
                 staff.setEmp_no(conn.rs.getString("emp_no"));
                 staff.setFirst_name(conn.rs.getString("firstname"));
                 staff.setSurname(conn.rs.getString("surname"));
@@ -372,7 +372,7 @@ public class EmployeesRepo {
 //            System.out.println("Select Query : "+sql);
             conn.rs = conn.st.executeQuery(sql);
             while (conn.rs.next()) {
-                staff.setId(conn.rs.getInt("emp_id"));
+                staff.setId(conn.rs.getString("emp_id"));
                 staff.setFull_name(conn.rs.getString("full_name"));
                 staff.setEmp_no(conn.rs.getString("emp_no"));
                 staff.setFirst_name(conn.rs.getString("firstname"));
@@ -491,7 +491,7 @@ public class EmployeesRepo {
                     + " from emp_bio b join employee_hist h on h.emp_no =b.emp_no WHERE h.active=1";
             conn.rs = conn.st.executeQuery(sql);
             while (conn.rs.next()) {
-                int emp_id = conn.rs.getInt("emp_id");
+                String emp_id = conn.rs.getString("emp_id");
                 String emp_no = conn.rs.getString("empl_no");
                 String full_name = conn.rs.getString("full_name");
                 Staff staff = new Staff(emp_id, emp_no, full_name);

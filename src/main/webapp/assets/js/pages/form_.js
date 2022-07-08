@@ -4,7 +4,7 @@ $("#createEmployee").submit(function (e) {
     var form = $("#createEmployee");
     let action = "save_employee";
     var data = form.serialize() + "&action=" + action;
-    var url = './ProcessEmployee'; //get submit url [replace url here if desired]
+    var url = './ProcessStaff'; //get submit url [replace url here if desired]
     //screenLock();
     $.ajax({
         type: "POST",
@@ -17,8 +17,8 @@ $("#createEmployee").submit(function (e) {
         success: function (data) {
 
             console.log(data);
-            //var url_ = "manage_employee.jsp";
-            //$(location).attr('href', url_);
+            var url_ = "manage_employee.jsp";
+            $(location).attr('href', url_);
         },
         error: function error(result) {
 

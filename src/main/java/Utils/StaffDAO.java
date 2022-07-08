@@ -113,7 +113,7 @@ public class StaffDAO {
 			conn.rs = conn.st.executeQuery(sql);
 			while (conn.rs.next()) {
 				Staff staff = new Staff();
-				staff.setId(conn.rs.getInt("id"));
+				staff.setId(conn.rs.getString("id"));
 				staff.setEmp_no(conn.rs.getString("emp_no"));
 				staff.setFirst_name(conn.rs.getString("firstname"));
 				staff.setSurname(conn.rs.getString("surname"));
@@ -147,7 +147,7 @@ public class StaffDAO {
 			
 			conn.rs = conn.st.executeQuery(sql);
 			if (conn.rs.next()) {
-				staff.setId(conn.rs.getInt("id"));
+				staff.setId(conn.rs.getString("id"));
 				staff.setEmp_no(conn.rs.getString("emp_no"));
 				staff.setFirst_name(conn.rs.getString("first_name"));
 				staff.setSurname(conn.rs.getString("surname"));

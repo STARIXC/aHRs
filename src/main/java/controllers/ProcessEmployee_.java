@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author CBWAHYI
  */
-public class ProcessEmployee extends HttpServlet {
+public class ProcessEmployee_ extends HttpServlet {
 
     PrintWriter out;
     int insert_bio, insert_hist, insert_stat, insert_banking, insert_login = 0;
@@ -29,7 +29,7 @@ public class ProcessEmployee extends HttpServlet {
             position_name, bank_name, branch, account_name, acount_number;
     int helb_benefitiary, active;
 
-    public ProcessEmployee() {
+    public ProcessEmployee_() {
         super();
         dao = new EmployeesRepo();
 
@@ -102,22 +102,18 @@ public class ProcessEmployee extends HttpServlet {
         mfl = request.getParameter("ddlFacility");
         position = request.getParameter("ddlDesignation");
         date_started = request.getParameter("hiredate");
-//            date_ended = request.getParameter("terminatedate");
-//            months_worked = request.getParameter("date_");
         financial_year = request.getParameter("year");
         current_contract = request.getParameter("start_date");
         contract_period = request.getParameter("contract_period");
         contract_end_date = request.getParameter("end_date");
         expected_months = request.getParameter("date_");
-        //  status = request.getParameter("date_");
         kra_pin = request.getParameter("txtPinCode");
         nssf_no = request.getParameter("txtNSSF");
         nhif_no = request.getParameter("txtNHIF");
         cert_good_conduct_no = request.getParameter("txtGoodConduct");
         helb_clearance_no = request.getParameter("txtHelbClearance");
         helb_benefitiary = Integer.parseInt(request.getParameter("rbtnHelb"));
-        // active = Integer.parseInt(request.getParameter("shift"));
-        position_name = request.getParameter("shift");
+//        position_name = request.getParameter("shift");
         bank_name = request.getParameter("txtBankName");
         branch = request.getParameter("txtBranchName");
         account_name = request.getParameter("txtAccountName");

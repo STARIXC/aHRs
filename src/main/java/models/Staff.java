@@ -2,7 +2,7 @@ package models;
 
 public class Staff {
 
-    private int id;
+    private String id;
     private String emp_no;
     private String full_name;
     private String first_name;
@@ -55,11 +55,11 @@ public class Staff {
         this.full_name = full_name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -351,7 +351,7 @@ public class Staff {
         this.position_name = position_name;
     }
 
-    public Staff(int id, String emp_no, String full_name) {
+    public Staff(String id, String emp_no, String full_name) {
         this.id = id;
         this.emp_no = emp_no;
         this.full_name = full_name;

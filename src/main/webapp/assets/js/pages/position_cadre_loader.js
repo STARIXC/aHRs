@@ -36,13 +36,22 @@ function pataPositions() {
     console.log(cadre);
     $.ajax({
         url: './GetPostionServlet?cadre=' + cadre,
-        type: 'post',
-        dataType: 'html',
+        type: 'GET',
+        contentType: "application/json; charset-utf-8",
+        dataType: "json",
         success: function (data) {
-            console.log(data);
-            $("#ddlPos").html(data);
-        }
+            $('#ddlPos').empty();
+            $('#ddlPos').append('<option value="">--- Select One---</option>');
+            $.each(data, function (key, value)
+            {
+                $('#ddlPos').append('<option value="' + value.id + '">' + value.position_title + '</option>');
+            });
 
+        },
+        complete: function () {
+
+        }
+      
 
     });
 

@@ -3,7 +3,7 @@
     <display-name>aHRIM</display-name>
     <servlet>
         <servlet-name>ProcessEmployee</servlet-name>
-        <servlet-class>controllers.ProcessEmployee</servlet-class>
+        <servlet-class>controllers.ProcessEmployee_</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Dashboard</servlet-name>
@@ -96,6 +96,10 @@
     <servlet>
         <servlet-name>GetFacility</servlet-name>
         <servlet-class>controllers.GetFacility</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessStaff</servlet-name>
+        <servlet-class>controllers.ProcessStaff</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ProcessEmployee</servlet-name>
@@ -197,6 +201,10 @@
     <servlet-mapping>
         <servlet-name>GetFacility</servlet-name>
         <url-pattern>/GetFacility</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessStaff</servlet-name>
+        <url-pattern>/ProcessStaff</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

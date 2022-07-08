@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hris.db.DatabaseConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.Position;
 
 import models.Position;
 
@@ -114,4 +117,25 @@ public class PositionDAO {
 
     }
 
+    public List<Position>  getPositionBySId(String standard_id) {
+   List<Position> positions = new ArrayList<>();
+   
+     try {
+            String SELECT_ALL_By_CID = "Select * from cadre_positions WHERE standardized_cadre_id='" + standard_id + "'";
+            conn.rs = conn.st.executeQuery(SELECT_ALL_By_CID);
+            while (conn.rs.next()) {
+                Position pos = new Position();
+                pos.setId(Integer.parseInt(conn.rs.getString("id")));
+                pos.setPosition_title(conn.rs.getString("position_title"));
+                positions.add(pos);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ScarderDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+   return positions;
+    }
+ 
 }
