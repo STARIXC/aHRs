@@ -61,6 +61,14 @@ public class IdGen {
         String id = year + "_" + month + "_" + date + "_" + hour + "_" + min + "_" + sec + "_" + micro;
         return tableID;
     }
+    public String t_current_id() {
+
+        String full_date2 = hour + "" + min + "" + sec ;
+        String db = Double.toString(fraction);
+        String tcID = (db + "" + full_date2).replace(".", "");
+        //String id = year + "_" + month + "_" + date + "_" + hour + "_" + min + "_" + sec + "_" + micro;
+        return tcID;
+    }
 
     public String CurrentMonth() {
         if (month < 10) {

@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="card-body pt-3">
                                     <div class="table-responsive">
-                                        <table id="cadre_type_table" class="table mt-3">
+                                        <table id="cadre_type_table" class="table mt-3  table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>S/L</th>

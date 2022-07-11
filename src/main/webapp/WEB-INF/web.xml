@@ -101,6 +101,10 @@
         <servlet-name>ProcessStaff</servlet-name>
         <servlet-class>controllers.ProcessStaff</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StaffUpdate</servlet-name>
+        <servlet-class>controllers.StaffUpdate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProcessEmployee</servlet-name>
         <url-pattern>/ProcessEmployee</url-pattern>
@@ -205,6 +209,10 @@
     <servlet-mapping>
         <servlet-name>ProcessStaff</servlet-name>
         <url-pattern>/ProcessStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffUpdate</servlet-name>
+        <url-pattern>/StaffUpdate</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

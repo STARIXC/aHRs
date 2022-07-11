@@ -12,16 +12,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Add Termination</title>
+   <link rel="stylesheet" href="assets/css/custom.css">
         <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
-
-        <script defer src="assets/fontawesome/js/all.min.js"></script>
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+        <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
+          <link rel="stylesheet" href="assets/css/toastr.min.css">
+        <link rel="stylesheet" href="assets/css/toggle.css">
+        <link rel="stylesheet" href="assets/vendor/DataTables/datatables.css">
+        <link href="assets/vendor/swal2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="assets/vendor/calender/lib/jquery-ui.min.css" />
+        <link rel="stylesheet" href="assets/vendor/calender/lib/bootstrap-datepicker.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+      
+
         <style type="text/css">
             .notif:hover{
                 background-color: rgba(0,0,0,0.1);
+            }
+            .fade:not(.show) {
+                opacity: 1 !important;
             }
         </style>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -118,7 +129,7 @@
                                     Edit Termination
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST"  class="form-horizontal" enctype="multipart/form-data">
+                                    <form method="POST" id="terminationForm" class="form-horizontal" enctype="multipart/form-data">
 
                                         <div class="form-body">
                                             <div class="row">
@@ -126,6 +137,7 @@
                                                     <div class="form-group">
                                                         <label class="control-label col-md-4">Employee Name<span class="validateRq">*</span></label>
                                                         <div class="col-md-12">
+                                                            <input type="hidden" class="form-control  input-width-xlarge" name="terminationby" id="terminationby"  autocomplete="off" value="super-admin">
                                                             <select class="form-control  employee_t required" name="employee_t">
                                                             </select>
                                                         </div>
@@ -170,7 +182,7 @@
                                                     <div class="col-md-8">
                                                         <div class="row">
                                                             <div class="col-md-offset-4 col-md-8">
-                                                                <input name="update" type="submit" class="btn btn-info btn_style" value="Update">
+                                                                <!--<input name="update" type="submit" class="btn btn-info btn_style" value="Update">-->
                                                                 <input name="submit" type="submit" class="btn btn-info btn_style" value="Submit">
                                                             </div>
                                                         </div>
@@ -189,16 +201,25 @@
                 </div>
             </div>
         </div>
-         <script src="assets/vendor/jquery/jquery.min.js"></script>
-        <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
+            <%@include file="/_includes/footer.jsp"%>
+
+        <script src="assets/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="assets/vendor/calender/lib/jquery-ui.min.js" type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/swal2/sweetalert2.min.js" type="text/javascript"></script>
+        <script src="assets/vendor/DataTables/datatables.js"></script>
+        <script defer src="assets/fontawesome/js/all.min.js" type="text/javascript"></script>
         <script src="assets/js/feather-icons/feather.min.js"></script>
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="assets/js/pages/form_.js"></script>
+        <script src="assets/js/pages/front.js"></script>
         <script src="assets/js/app.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/toastr.min.js"></script>
         <script src="assets/js/pages/termination.js"></script>
         <script src="assets/js/main.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
+   
     </body>
 </html>
 

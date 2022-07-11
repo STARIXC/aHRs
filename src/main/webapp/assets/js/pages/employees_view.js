@@ -3,20 +3,21 @@ getEmpDet();
 function getEmpDet() {
 
     var emp_no = $("#employee_id").val();
-    
- console.log("emp_no:" + emp_no);
+
+    console.log("emp_no:" + emp_no);
     $.ajax({
-        url: "AllStaffServlet?action=get_details",
+        url: "ProcessStaff?action=get_details",
         method: 'GET',
-        dataType: 'json',
+        contentType: "application/json; charset-utf-8",
+        dataType: "json",
         data: {
             'emp_no': emp_no
         },
         success: function (data) {
 //          console.log(eval(data));
-          var respond=eval(data);
-          console.log(respond);
-            $(".name").text(respond.surname +" "+respond.first_name);
+            var respond = data;
+            console.log(respond);
+            $(".name").text(respond.surname + " " + respond.first_name);
             $(".full_name").text(respond.full_name);
             $(".designation").text(respond.position);
             $(".email").text(respond.email);

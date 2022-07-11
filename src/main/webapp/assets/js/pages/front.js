@@ -1,3 +1,20 @@
+
+
+$('#ddlCounty').change(function () {
+    patasubcounty();
+
+});
+$('#ddlSubcounty').change(function () {
+    patafacility();
+
+});
+$('#ddlFY').change(function () {
+    patafydetails();
+
+});
+
+
+
 function loadcounty() {
 
 
@@ -7,7 +24,7 @@ function loadcounty() {
         dataType: 'html',
         success: function (data) {
             $("#ddlCounty").html(data);
-            patasubcounty();
+
 
         }
 
@@ -46,7 +63,7 @@ function patafacility() {
     var subcounty = document.getElementById("ddlSubcounty").value;
     $.ajax({
         url: './GetFacility?subcounty=' + subcounty,
-         type: 'GET',
+        type: 'GET',
         contentType: "application/json; charset-utf-8",
         dataType: "json",
         success: function (data) {
@@ -58,7 +75,7 @@ function patafacility() {
             });
 
         }
-     
+
     });
 }
 

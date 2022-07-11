@@ -21,7 +21,7 @@ function get_carder_type() {
 
         },
         complete: function () {
-
+  $('#cadre_type_table').DataTable();
         }
     });
 

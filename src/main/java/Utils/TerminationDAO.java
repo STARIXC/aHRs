@@ -1,9 +1,13 @@
 package Utils;
 
+import static Utils.CarderCatDAO.SELECT_ALL_CARDER_CATS;
 import com.hris.db.DatabaseConnection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.CarderCat;
 import models.TerminationModel;
 import models.TerminationModel;
 
@@ -47,7 +51,7 @@ public class TerminationDAO {
             conn.pst.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+
         }
     }
 
@@ -60,7 +64,7 @@ public class TerminationDAO {
             conn.pst.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+
         }
     }
 
@@ -79,20 +83,16 @@ public class TerminationDAO {
             conn.pst.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+
         }
     }
 
     @SuppressWarnings("static-access")
     public List<TerminationModel> getAllTerminationModels() {
         List<TerminationModel> terminates = new ArrayList<>();
-
         try {
-
             conn.rs = conn.st.executeQuery(SELECT_ALL_TERMINATION);
-
             while (conn.rs.next()) {
-
                 TerminationModel terminate = new TerminationModel();
                 terminate.setT_id(conn.rs.getString("id"));
                 terminate.setEmp_no(conn.rs.getString("emp_no"));
@@ -101,14 +101,12 @@ public class TerminationDAO {
                 terminate.setTermination_reason(conn.rs.getString("termination_reason"));
                 terminate.setVoluntary_termination(conn.rs.getString("voluntary_termination"));
                 terminate.setEmp_name(conn.rs.getString("full_name"));
-
                 terminates.add(terminate);
-
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Logger.getLogger(TerminationDAO.class.getName()).log(Level.SEVERE, null, e);
         }
+
         return terminates;
     }
 

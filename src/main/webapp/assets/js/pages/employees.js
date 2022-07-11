@@ -3,120 +3,60 @@
  */
 jQuery(document).ready(function () {
     var jsonData;
-
     var i = 1;
-    $('.datatable').DataTable({
-        responsive: true,
-        dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        buttons: [
-            {extend: 'copy', className: 'btn-sm'},
-            {extend: 'csv', title: 'ExampleFile', className: 'btn-sm'},
-            {extend: 'excel', title: 'exportTitle', className: 'btn-sm'},
-            {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
-            {extend: 'print', className: 'btn-sm'}
-        ]
-    });
-    $('#employee_table').DataTable({
-        responsive: true,
-      
-        "ajax": {
-            "url": './AllStaffServlet?action=allStaff',
-            "type": "GET",
+    get_all_staff();
+    function get_all_staff() {
+        $('#spinner-div').show();
+        $.ajax({
+            type: "GET",
+            url: './ProcessStaff?action=allStaff',
+            contentType: "application/json; charset-utf-8",
             dataType: "json",
-            dataSrc: "",
-            "data": function (d) {
-                $("#termination_data").html(d);
-            }
-        },
-        "columns": [
-            {
-                "data": null,
-                "render": function (data, type, row, meta) {
-                    return i++;
-                }
-            },
-            {
-                "data": "full_name"
-            },
+            success: function (data) {
+                $('#employee-table-data').empty();
+                $.each(data, function (key, value)
 
-            {
-                "data": "emp_no"
-            },
-            {
-                "data": "position_name"
-            },
-            {
-                "data": "phone"
-            },
-            {
-                "data": "email"
-            },
-            {
-                "data": "nationality"
-            },
-            {
-
-                "data": "active",
-                "render": function (data, type, row, meta) {
-                    if (data === 1) {
-                        return '<span class="label label-success">Active</span>';
+                {
+                    var status_active = '<span class="label label-success">Active</span>';
+                    var status_not_active = '<span class="label label-danger">In Active</span>';
+                    if (value.active === 1) {
+                        var status = status_active;
                     } else {
-                        return '<span class="label label-danger">In Active</span>';
+                        var status = status_not_active;
                     }
-                }
-            }, {
 
-                "data": "emp_no",
-                "render": function (data, type, row, meta) {
+
                     var edit_tr = '<div class="d-flex" style="width: 150px;">'
-                            + '<a title="Profile" href="employee_view.jsp?id=' + data + '" class="btn btn-primary btn-xs btnColor ms-1">'
+                            + '<a title="Profile" href="employee_view.jsp?employee_id=' + value.emp_no + '" class="btn btn-primary btn-xs btnColor ms-1">'
                             + '<i class="fa fa-th-large" aria-hidden="true"></i>'
                             + '</a>'
-                            + ' <a href="update_employee_form.jsp?employee_id='+data+'" class="btn btn-success btn-xs btnColor ms-1">'
+                            + ' <a href="update_employee_form.jsp?employee_id=' + value.emp_no + '" class="btn btn-success btn-xs btnColor ms-1">'
                             + '<i class="fa fa-edit" aria-hidden="true"></i>'
                             + ' </a>'
-                            + ' <a href="javascript:void(0);"  data-id="' + data + '" class="delete btn btn-danger btn-xs deleteBtn btnColor ms-1"><i class="fa fa-trash"'
+                            + ' <a id="delete_staff" href="javascript:void(0);"  data-emp="' + value.emp_no + '" data-id="' + value.id + '" class="delete btn btn-danger btn-xs deleteBtn btnColor ms-1"><i class="fa fa-trash"'
                             + '        aria-hidden="true"></i></a>'
                             + ' </div>';
-                    return 	edit_tr;
-                }
-            }]
-
-    });
- 
-
-
-
-    // jQuery ajax form submit example, runs when form is submitted
-    $("#positionForm").submit(function (e) {
-        e.preventDefault(); // prevent actual form submit
-        var form = $("#timesheetForm");
-        var action = "save_log";
-        var data = form.serialize() + "&action=" + action;
-        var url = './PositionServlet'; //get submit url [replace url here if desired]
-        // screenLock();
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: data, // serializes form input
-            beforeSend: function beforeSend() {
-                //	startLoader();
-                console.log(data);
+                    $('#employee-table-data').append('<tr><td>' + i++ + '</td><td>' + value.full_name + '</td><td>' + value.emp_no + '</td> <td>' + value.position_name + '</td><td>' + value.phone + '</td><td>' + value.email + '</td><td>' + value.nationality + '</td><td>' + status + '</td><td>' + edit_tr + '  </td></tr>');
+                });
             },
-            success: function (data) {
-                var url_ = "manage_timesheet.jsp";
-                $(location).attr('href', url_);
-            },
-            error: function error(result) {
-
-            },
-            complete: function complete() {
-                //	stopLoader();
-
+            complete: function () {
+                $('#employee_table').DataTable(
+                        {
+                            responsive: true,
+                            dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+                            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                            buttons: [
+                                {extend: 'copy', className: 'btn-sm'},
+                                {extend: 'csv', title: 'ExampleFile', className: 'btn-sm'},
+                                {extend: 'excel', title: 'exportTitle', className: 'btn-sm'},
+                                {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
+                                {extend: 'print', className: 'btn-sm'}
+                            ]
+                        });
+                $('#spinner-div').hide();//Request is complete so hide spinner
             }
         });
+    }
 
-    });
 
 });
