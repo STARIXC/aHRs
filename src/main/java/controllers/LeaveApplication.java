@@ -39,17 +39,25 @@ public class LeaveApplication extends HttpServlet {
         response.setContentType("application/json");
         String action = request.getParameter("action");
 
-        if (action.equalsIgnoreCase("approved")) {
-            String leaves = json.convert(dao.getAllApproved());
+       if (action.equalsIgnoreCase("get_leave_balance")) {
+            int emp_id;
+            String emp = request.getParameter("employee_id");
+           // emp_id= Integer.parseInt(emp);
+            String start = request.getParameter("from_date");
+            String end = request.getParameter("to_date");
+            String leaves = json.convert(dao.getBalanceByEmpNo(emp, start, end));
             out.println(leaves);
-        } else if (action.equalsIgnoreCase("notapproved")) {
-            String leaves = json.convert(dao.getAllrejected());
+        } else if (action.equalsIgnoreCase("get_leave_empl")) {
+            int emp_id;
+            String emp = request.getParameter("employee_id");
+            emp_id= Integer.parseInt(emp);
+            String start = request.getParameter("from_date");
+            String end = request.getParameter("to_date");
+            String leaves = json.convert(dao.getAllAppliedByEmpNo(emp_id, start, end));
             out.println(leaves);
-        } else if (action.equalsIgnoreCase("pendingapproval")) {
+        }
+        else if (action.equalsIgnoreCase("pendingapproval")) {
             String leaves = json.convert(dao.getAllpending());
-            out.println(leaves);
-        } else if (action.equalsIgnoreCase("allLeave")) {
-            String leaves = json.convert(dao.getAllApplied());
             out.println(leaves);
         } else {
             String leaves = json.convert(dao.getAllApplied());

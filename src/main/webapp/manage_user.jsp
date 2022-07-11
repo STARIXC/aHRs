@@ -5,14 +5,21 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manage User</title>
-
+        <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
-
-        <link rel="stylesheet" href="assets/vendors/simple-datatables/style.css">
-
+        <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
+        <link rel="stylesheet" href="assets/css/toggle.css">
+        <link rel="stylesheet" href="assets/vendor/DataTables/datatables.css">
         <script defer src="assets/fontawesome/js/all.min.js"></script>
         <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
         <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/vendor/jquery/jquery.min.js"></script>
+        <script src="assets/js/jquery.waypoints.js"></script>
+        <script src="assets/js/jquery.counterup.min.js"></script>
+        <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
+        <script src="assets/js/pages/users.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
         <style type="text/css">
             .notif:hover{
                 background-color: rgba(0,0,0,0.1);
@@ -24,92 +31,10 @@
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper active">
-                    <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                        <i class="fa fa-users text-success me-4"></i>
-                        <span>HRH</span>
-                    </div>
-                    <div class="sidebar-menu">
-                        <ul class="menu">
-                            <li class="sidebar-item  ">
-                                <a href="index.jsp" class='sidebar-link'> <i class="fa fa-home text-success"></i>
-                                    <span>Dashboard</span>
-                                </a></li>
 
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Designation</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="manage_carder_type.jsp">Carder Type</a></li>
-                                    <li><a href="manage_carder_category.jsp">Carder Category</a></li>
-                                    <li><a href="manage_standardised_carder.jsp">Standardized Carder</a></li>
-                                    <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-users text-success"></i>
-                                    <span>Employees</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_employee.jsp">Add Employee</a></li>
-                                    <li><a href="manage_employee.jsp">Manage Employee</a></li>
-                                    <li><a href="manage_termination.jsp">Termination</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Type</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_leave_type.jsp">Add Leave Type</a></li>
-                                    <li><a href="manage_leave_type.jsp">Manage Leave Type</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Management</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="all_leave.jsp">All Leaves</a></li>
-                                    <li><a href="pending_leave.jsp">Pending Leaves</a></li>
-                                    <li><a href="approve_leave.jsp">Approve Leaves</a></li>
-                                    <li><a href="not_approve_leave.jsp">Not Approve Leaves</a>
-                                    </li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="javascript:void(0)" class='sidebar-link'>
-                                    <i class="fa fa-user text-success"></i> <span>Attendance</span></i>
-                                    </span>
-                                </a>
-
-                                <ul class="submenu" style="display: block;">
-                                    <li class=""><a
-                                            href="monthly_manual_attendance.jsp">Monthly
-                                            Attendance</a></li>
-
-                                    <li class=""><a
-                                            href="missing_attendance">Missing
-                                            Attendance</a></li>
-
-
-                                    <!-- single level menu/link -->
-                                    <li class=""><a
-                                            href="att_log_report">Attendance
-                                            Log</a></li>
-
-                                </ul></li>
-                            <li class="sidebar-item active has-sub"><a href="#"
-                                                                       class='sidebar-link'> <i class="fa fa-user text-success"></i>
-                                    <span>Users</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_user.jsp">Add User</a></li>
-                                    <li><a href="manage_user.jsp">Manage Users</a></li>
-                                </ul></li>
-                            <li class="sidebar-item "><a href="reports.jsp"
-                                                         class='sidebar-link'> <i class="fa fa-chart-bar text-success"></i>
-                                    <span>Reports</span>
-                                </a></li>
-                        </ul>
-                    </div>
-                    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+                    <!-- BEGIN SIDEBAR MENU -->         
+                    <%@include file="/_includes/sidebar_menu.jsp"%>
+                    <!-- END SIDEBAR MENU --><button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
                 </div>
             </div>
             <div id="main">
@@ -169,75 +94,89 @@
                         </ul>
                     </div>
                 </nav>
-
                 <div class="main-content container-fluid">
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Manage User</h3>
-                            </div>
-                            <div class="col-12 col-md-6 order-md-2 order-first">
+                    <div class="container-fluid">
+                        <div class="row bg-title">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                                 <nav aria-label="breadcrumb" class='breadcrumb-header'>
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.jsp" class="text-success">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Manage User</li>
+                                        <li class="breadcrumb-item"><a href="index.jsp" class="text-info"><i class="fa fa-home"></i> Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Manage Users</li>
                                     </ol>
                                 </nav>
                             </div>
-                        </div>
-                    </div>
-                    <section class="section">
-                        <div class="card">
-                            <div class="card-body">
-                                <table class='table' id="table1">
-                                    <thead>
-                                        <tr>
-                                            <th>Full Name</th>
-                                            <th>Contact</th>
-                                            <th>Category</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Admin Admin</td>
-                                            <td>09123456789</td>
-                                            <td>Admin</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>John Doe</td>
-                                            <td>09123456789</td>
-                                            <td>Staff</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jane Doe</td>
-                                            <td>09123456789</td>
-                                            <td>Staff</td>
-                                            <td><span class="badge bg-danger">Deactivated</span></td>
-                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                <a href="add_user.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light"><i class="fa fa-plus" aria-hidden="true"></i>  New User</a>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card text-white">
+                                    <div class="card-header bg-info"><i class="fa fa-list-ul fa-fw"></i>  User List
+                                    </div>
+                                    <div class="card-wrapper" >
+                                        <div class="card-body card-body">
+                                            <div class="card-body">
+                                                <table class='table' id="table1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Full Name</th>
+                                                            <th>Contact</th>
+                                                            <th>Category</th>
+                                                            <th>Status</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Admin Admin</td>
+                                                            <td>09123456789</td>
+                                                            <td>Admin</td>
+                                                            <td><span class="badge bg-success">Active</span></td>
+                                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>John Doe</td>
+                                                            <td>09123456789</td>
+                                                            <td>Staff</td>
+                                                            <td><span class="badge bg-success">Active</span></td>
+                                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Jane Doe</td>
+                                                            <td>09123456789</td>
+                                                            <td>Staff</td>
+                                                            <td><span class="badge bg-danger">Deactivated</span></td>
+                                                            <td><a href="editDesignation.php"><i class="fa fa-pen text-success"></i></a>   <a href="editDesignation.php"><i class="fa fa-trash text-danger"></i></a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
 
-                    </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- // Basic multiple Column Form section start -->
+
                 </div>
+
             </div>
         </div>
+                    <%@include file="/_includes/footer.jsp"%>
+        <script src="assets/vendor/DataTables/datatables.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/feather-icons/feather.min.js"></script>
         <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="assets/js/custom_.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/sidebar-nav.min.js"></script>
         <script src="assets/js/app.js"></script>
-
-        <script src="assets/vendors/simple-datatables/simple-datatables.js"></script>
-        <script src="assets/js/vendors.js"></script>
-
         <script src="assets/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     </body>
 
 </html>

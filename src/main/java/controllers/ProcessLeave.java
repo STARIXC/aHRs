@@ -38,13 +38,13 @@ public class ProcessLeave extends HttpServlet {
         String forward = "";
         String action = request.getServletPath();
         int leave = Integer.parseInt(request.getParameter("tambua"));
-        
+
         if (leave > 0) {
             LeaveApplication application = null;
             application = dao.getAppliedLeaveById(leave);
             request.getSession().setAttribute("application", application);
 
-out.println("Attribute Value : " +application);
+            out.println("Attribute Value : " + application);
 
         }
         RequestDispatcher view = request.getRequestDispatcher(INSERT_OR_EDIT);

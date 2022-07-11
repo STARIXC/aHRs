@@ -1,87 +1,182 @@
 package models;
 
 public class Staff {
+ public String   marital_status,SubPartnerNom, DistrictID, DistrictNom, CountyID, county, cat_id, cadre_type_name, standard_id, standardized_cadre_name, position_id, position_title, fy_id, fy_name;
 
-    private int id;
-    private String emp_no;
-    private String full_name;
-    private String first_name;
-    private String surname;
-    private String other_name;
-    private String gender;
-    private String phone;
-    private String email;
-    private String dob;
-    private String home_address;
-    private String postal_code;
-    private String nationality;
-    private String disability;
-    private String disability_explain;
-    private String national_id;
-    private String mfl;
-    private String position;
-    private String date_started;
-    private String date_ended;
-    private String months_worked;
-    private String current_contract;
-    private String contract_period;
-    private String contract_end_date;
-    private String expected_months;
-    private String status;
+ 
 
-    private String kra_pin;
-    private String nssf_no;
-    private String nhif_no;
-    private String cert_good_conduct_no;
-    private String helb_clearance_no;
-    private int helb_benefitiary;
-    private int active;
-    private String position_name;
-    private String bank_name, branch, account_name, acount_number;
+    public String id;
+    public String emp_no;
+    public String full_name;
+    public String first_name;
+    public String surname;
+    public String other_name;
+    public String national_id;
+    public String gender;
+    public String phone;
+    public String email;
+    public String dob;
+    public String home_address;
+    public String postal_code;
+    public String nationality;
+    public String disability;
+    public String disability_explain;
+    public String kra_pin;
+    public String nssf_no;
+    public String nhif_no;
+    public String cert_good_conduct_no;
+    public String helb_clearance_no;
+    public int helb_benefitiary;
+    public String bank_name, branch, account_name, acount_number;
+//    emp_history
+    public String emprecordid;
+    public String mfl;
+    public String position;
+    public String date_started;
+    public String date_ended;
+    public String months_worked;
+    public String financial_year;
+
+    public String current_contract;
+    public String contract_period;
+    public String contract_end_date;
+    public String expected_months;
+    public String status;
+
+    
+    public int active;
+    public String position_name;
+    
 
     public Staff() {
         super();
    }
 
-    public Staff(int id, String emp_no, String full_name, String first_name, String surname, String other_name, String gender, String phone, String email, String dob, String home_address, String postal_code, String nationality, String disability, String disability_explain, String national_id, String mfl, String position, String date_started, String date_ended, String months_worked, String current_contract, String contract_period, String contract_end_date, String expected_months, String status, String kra_pin, String nssf_no, String nhif_no, String cert_good_conduct_no, String helb_clearance_no, int helb_benefitiary, int active, String position_name, String bank_name, String branch, String account_name, String acount_number) {
-        this.id = id;
-        this.emp_no = emp_no;
-        this.full_name = full_name;
-        this.first_name = first_name;
-        this.surname = surname;
-        this.other_name = other_name;
-        this.gender = gender;
-        this.phone = phone;
-        this.email = email;
-        this.dob = dob;
-        this.home_address = home_address;
-        this.postal_code = postal_code;
-        this.nationality = nationality;
-        this.disability = disability;
-        this.disability_explain = disability_explain;
-        this.national_id = national_id;
-        this.mfl = mfl;
-        this.position = position;
-        this.date_started = date_started;
-        this.date_ended = date_ended;
-        this.months_worked = months_worked;
-        this.current_contract = current_contract;
-        this.contract_period = contract_period;
-        this.contract_end_date = contract_end_date;
-        this.expected_months = expected_months;
-        this.status = status;
-        this.kra_pin = kra_pin;
-        this.nssf_no = nssf_no;
-        this.nhif_no = nhif_no;
-        this.cert_good_conduct_no = cert_good_conduct_no;
-        this.helb_clearance_no = helb_clearance_no;
-        this.helb_benefitiary = helb_benefitiary;
-        this.active = active;
-        this.position_name = position_name;
-        this.bank_name = bank_name;
-        this.branch = branch;
-        this.account_name = account_name;
-        this.acount_number = acount_number;
+    public String getFinancial_year() {
+        return financial_year;
+    }
+
+    public void setFinancial_year(String financial_year) {
+        this.financial_year = financial_year;
+    }
+    public String getMarital_status() {
+        return marital_status;
+    }
+
+    public void setMarital_status(String marital_status) {
+        this.marital_status = marital_status;
+    }
+ 
+    public String getSubPartnerNom() {
+        return SubPartnerNom;
+    }
+
+    public void setSubPartnerNom(String SubPartnerNom) {
+        this.SubPartnerNom = SubPartnerNom;
+    }
+
+    public String getDistrictID() {
+        return DistrictID;
+    }
+
+    public void setDistrictID(String DistrictID) {
+        this.DistrictID = DistrictID;
+    }
+
+    public String getDistrictNom() {
+        return DistrictNom;
+    }
+
+    public void setDistrictNom(String DistrictNom) {
+        this.DistrictNom = DistrictNom;
+    }
+
+    public String getCountyID() {
+        return CountyID;
+    }
+
+    public void setCountyID(String CountyID) {
+        this.CountyID = CountyID;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
+
+    public String getCat_id() {
+        return cat_id;
+    }
+
+    public void setCat_id(String cat_id) {
+        this.cat_id = cat_id;
+    }
+
+    public String getCadre_type_name() {
+        return cadre_type_name;
+    }
+
+    public void setCadre_type_name(String cadre_type_name) {
+        this.cadre_type_name = cadre_type_name;
+    }
+
+    public String getStandard_id() {
+        return standard_id;
+    }
+
+    public void setStandard_id(String standard_id) {
+        this.standard_id = standard_id;
+    }
+
+    public String getStandardized_cadre_name() {
+        return standardized_cadre_name;
+    }
+
+    public void setStandardized_cadre_name(String standardized_cadre_name) {
+        this.standardized_cadre_name = standardized_cadre_name;
+    }
+
+    public String getPosition_id() {
+        return position_id;
+    }
+
+    public void setPosition_id(String position_id) {
+        this.position_id = position_id;
+    }
+
+    public String getPosition_title() {
+        return position_title;
+    }
+
+    public void setPosition_title(String position_title) {
+        this.position_title = position_title;
+    }
+
+    public String getFy_id() {
+        return fy_id;
+    }
+
+    public void setFy_id(String fy_id) {
+        this.fy_id = fy_id;
+    }
+
+    public String getFy_name() {
+        return fy_name;
+    }
+
+    public void setFy_name(String fy_name) {
+        this.fy_name = fy_name;
+    }
+
+    public String getEmprecordid() {
+        return emprecordid;
+    }
+
+    public void setEmprecordid(String emprecordid) {
+        this.emprecordid = emprecordid;
     }
 
     public String getFull_name() {
@@ -92,11 +187,11 @@ public class Staff {
         this.full_name = full_name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -388,7 +483,7 @@ public class Staff {
         this.position_name = position_name;
     }
 
-    public Staff(int id, String emp_no, String full_name) {
+    public Staff(String id, String emp_no, String full_name) {
         this.id = id;
         this.emp_no = emp_no;
         this.full_name = full_name;

@@ -19,17 +19,30 @@ jQuery(document).ready(function () {
         "columns": [
 
             {
+                "targets": 0,
+                "data": "application_id",
+                "render": function (data, type, row, meta) {
+                    return 	'<input type="checkbox" id="checkItem_'+data+'" name="leave[]" value="'+data+'">';
+                
+            }},
+            {
+
                 "data": "employee_name"
-            }, {
+            },
+            {
                 "data": "employee_id"
-            }, {
+            },
+            {
                 "data": "start_date"
             }
-            , {
+            ,
+            {
                 "data": "end_date"
-            }, {
+            },
+            {
                 "data": "date_of_application"
-            }, {
+            },
+            {
                 "targets": 0,
                 "data": "leave_status",
                 "render": function (data, type, row, meta) {
@@ -43,11 +56,12 @@ jQuery(document).ready(function () {
                         return '<span class="badge bg-danger">Not Applicable</span>';
                     }
                 }
-            }, {
+            },
+            {
                 "targets": 0,
                 "data": "application_id",
                 "render": function (data, type, row, meta) {
-                    return 	'<a href="/Leave/approve_application_form/&tambua="' + data + '"" title="Leave Approve" class="btn btn-xs btn-info"><i class="fa fa-paper-plane" aria-hidden="true"></i></a><a  class="btn btn-xs btn-danger"><i class="fa fa-close"></i></a>';
+                    return 	'<a  data-id="'+data+'" href="javascript:void(0)" class="btn btn-danger m-s-20 hidden-xs hidden-sm waves-effect waves-light" id="reject"><i class="fa fa-times"></i></a>';
                 }
             }
         ]

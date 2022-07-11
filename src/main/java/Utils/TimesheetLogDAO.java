@@ -8,7 +8,7 @@ import models.TimesheetLog;
 
 public class TimesheetLogDAO {
 
-    private DatabaseConnection conn;
+    public final DatabaseConnection conn;
 
     public TimesheetLogDAO() {
         conn = new DatabaseConnection();
@@ -25,7 +25,7 @@ public class TimesheetLogDAO {
                     + "a.holiday_hours,a.extra_hours,a.expected_hours,a.status,  b.monthName ,a.total_hours AS total_hours"
                     + ""
                     + ""
-                    + " ROM timesheet_logs a JOIN calendar_table b ON a.month=b.m JOIN emp_bio e ON a.emp_no=e.emp_no ";
+                    + " FROM timesheet_logs a JOIN calendar_table b ON a.month=b.m JOIN emp_bio e ON a.emp_no=e.emp_no ";
             conn.rs = conn.st.executeQuery(sql);
             while (conn.rs.next()) {
                 TimesheetLog activityLog = new TimesheetLog();
@@ -51,7 +51,7 @@ public class TimesheetLogDAO {
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+
         }
         return activityLogs;
     }
@@ -70,7 +70,6 @@ public class TimesheetLogDAO {
             //	execute the satements
             rowsAffected = conn.pst.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return rowsAffected;
@@ -86,7 +85,6 @@ public class TimesheetLogDAO {
             rowsAffected = conn.pst1.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return rowsAffected;

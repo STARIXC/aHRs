@@ -5,21 +5,35 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Manage Employee</title>
-
+          <link rel="stylesheet" href="assets/css/custom.css">
+        <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
         <link rel="stylesheet" href="assets/css/bootstrap-toggle.min.css">
         <link rel="stylesheet" href="assets/css/toggle.css">
         <link rel="stylesheet" href="assets/vendor/DataTables/datatables.css">
-
-        <script defer src="assets/fontawesome/js/all.min.js"></script>
-        <link rel="stylesheet"
-              href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+        <link href="assets/vendor/swal2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="assets/vendor/calender/lib/jquery-ui.min.css" />
+        <link rel="stylesheet" href="assets/vendor/calender/lib/bootstrap-datepicker.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
         <link rel="stylesheet" href="assets/css/style.css">
-        <script src="assets/vendor/jquery/jquery.min.js"></script>
-        <script src="assets/vendor/calender/lib/jquery-ui.min.js"></script>
         <style type="text/css">
             .notif:hover {
                 background-color: rgba(0, 0, 0, 0.1);
+            }
+            #spinner-div {
+                position: fixed;
+                display: none;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                text-align: center;
+                background-color: rgba(255, 255, 255, 0.8);
+                z-index: 2;
+            }
+            .fade:not(.show) {
+                opacity: 1 !important;
             }
         </style>
     </head>
@@ -28,90 +42,10 @@
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper ">
-                    <div class="sidebar-header" style="height: 50px; margin-top: -30px">
-                        <i class="fa fa-users text-success me-4"></i> <span>HRH</span>
-                    </div>
-                    <div class="sidebar-menu">
-                        <ul class="menu">
-                            <li class="sidebar-item  "><a href="index.jsp"
-                                                          class='sidebar-link'> <i class="fa fa-home text-success"></i>
-                                    <span>Dashboard</span>
-                                </a></li>
 
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Designation</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="manage_carder_type.jsp">Carder Type</a></li>
-                                    <li><a href="manage_carder_category.jsp">Carder Category</a></li>
-                                    <li><a href="manage_standardised_carder.jsp">Standardized Carder</a></li>
-                                    <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
-                                </ul>
-                            </li>
-                            <li class="sidebar-item active has-sub">
-                                <a href="#" class='sidebar-link'> <i class="fa fa-users text-success"></i>
-                                    <span>Employees</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_employee.jsp">Add Employee</a></li>
-                                    <li><a href="manage_employee.jsp">Manage Employee</a></li>
-                                    <li><a href="manage_termination.jsp">Termination</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Type</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_leave_type.jsp">Add Leave Type</a></li>
-                                    <li><a href="manage_leave_type.jsp">Manage Leave Type</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Management</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="all_leave.jsp">All Leaves</a></li>
-                                    <li><a href="pending_leave.jsp">Pending Leaves</a></li>
-                                    <li><a href="approve_leave.jsp">Approve Leaves</a></li>
-                                    <li><a href="not_approve_leave.jsp">Not Approve Leaves</a>
-                                    </li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="javascript:void(0)" class='sidebar-link'>
-                                    <i class="fa fa-user text-success"></i> <span>Attendance</span></i>
-                                    </span>
-                                </a>
-
-                                <ul class="submenu" style="display: block;">
-                                    <li class=""><a
-                                            href="monthly_manual_attendance.jsp">Monthly
-                                            Attendance</a></li>
-
-                                    <li class=""><a
-                                            href="missing_attendance">Missing
-                                            Attendance</a></li>
-
-
-                                    <!-- single level menu/link -->
-                                    <li class=""><a
-                                            href="att_log_report">Attendance
-                                            Log</a></li>
-
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-user text-success"></i>
-                                    <span>Users</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_user.jsp">Add User</a></li>
-                                    <li><a href="manage_user.jsp">Manage Users</a></li>
-                                </ul></li>
-                            <li class="sidebar-item "><a href="reports.jsp"
-                                                         class='sidebar-link'> <i class="fa fa-chart-bar text-success"></i>
-                                    <span>Reports</span>
-                                </a></li>
-                        </ul>
-                    </div>
+                    <!-- BEGIN SIDEBAR MENU -->         
+                    <%@include file="/_includes/sidebar_menu.jsp"%>
+                    <!-- END SIDEBAR MENU -->
                     <button class="sidebar-toggler btn x">
                         <i data-feather="x"></i>
                     </button>
@@ -176,75 +110,137 @@
                 </nav>
 
                 <div class="main-content container-fluid">
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h4>Manage Employee</h4>
-                            </div>
-                            <div class="col-12 col-md-6 order-md-2 order-first">
-                                <nav aria-label="breadcrumb" class='breadcrumb-header'>
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.jsp"
-                                                                       class="text-success">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Manage
-                                            Employee</li>
-                                    </ol>
-                                </nav>
-                            </div>
+
+                    <div class="row  bg-title">
+                        <div class="col-md-8 order-md-1 order-last">
+                            <nav aria-label="breadcrumb" class='breadcrumb-header'>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.jsp" class="text-success"><i class="fa fa-home"></i> Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Manage Employees</li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-md-4 order-md-2 order-first">
+                            <a href="bulk_upload.jsp" class="btn btn-success float-end ms-2 hidden-xs hidden-sm waves-effect waves-light">
+                                <i class="fa fa-plus" aria-hidden="true"></i>Bulk Upload</a>
+
+                            <a href="add_employee.jsp" class="btn btn-success float-end ms-2 hidden-xs hidden-sm waves-effect waves-light">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Add Employee</a>
                         </div>
                     </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <!--  table area -->
-                            <div class="col-sm-12">
 
-                                <div class="card card-bd"> 
+                    <div class="row">
+                        <div id="spinner-div" class="pt-5">
+                            <div class="spinner-border text-primary" role="status">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="card text-white">
+                                <div class="card-header bg-info"><i class="fa fa-table fa-fw"></i> Staff List</div>
+                                <div class="card-wrapper " aria-expanded="true">
+                                    <div class="card-body">
+                                        <div class="table-responsive ">
+                                            <table width="100%" class="employee_table table table-striped table-bordered table-hover " id="employee_table">
+                                                <thead class='mt-3'>
+                                                    <tr>
+                                                        <th>SL No</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Employee PF_NO</th>
+                                                        <th>Position</th>
+                                                        <th>Phone</th>
+                                                        <th>Email Address</th>
+                                                        <th>Country</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="employee-table-data">
 
-
-                                    <div class="card-body table-responsive">
-                                        <table width="100%" class="employee_table table table-striped table-bordered table-hover" id="employee_table">
-                                            <thead>
-                                                <tr>
-                                                    <th>SL No</th>
-                                                    <th>Surname</th>
-                                                    <th>Other Name</th>
-                                                    <th>Employee PF_NO</th>
-                                                    <th>Position</th>
-                                                    <th>Phone</th>
-                                                    <th>Email Address</th>
-                                                    <th>Country</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="employee-table-data">
-
-                                            </tbody>
-                                        </table>
-
-                                    </div>  <!-- /.table-responsive -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
 
 
             </div>
         </div>
     </div>
-    <script src="assets/js/feather-icons/feather.min.js"></script>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap-toggle.min.js"></script>
-    <script src="assets/js/app.js"></script>
+   <%@include file="/_includes/footer.jsp"%>
 
-    <script src="assets/vendor/DataTables/datatables.js"></script>
-    <!-- <script src="assets/js/vendors.js"></script>  -->
+        <script src="assets/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="assets/vendor/calender/lib/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/swal2/sweetalert2.min.js" type="text/javascript"></script>
+        <script src="assets/vendor/DataTables/datatables.js"></script>
+        <script defer src="assets/fontawesome/js/all.min.js" type="text/javascript"></script>
+        <script src="assets/js/feather-icons/feather.min.js"></script>
+        <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/pages/employees.js"></script>
 
+ <script type="text/javascript">
+            $(document).ready(function () {
 
+              
+                $(document).on('click', '#delete_staff', function (e) {
+                    e.preventDefault();
+                    var emp_id = $(this).data('emp');
+                    console.log("Type id: " + emp_id);
+                    SwalDelete(emp_id);
+
+                });
+
+
+               
+            });
+   
+            function SwalDelete(typeId) {
+
+                swal({
+                    title: 'Are you sure?',
+                    text: "It will be deleted permanently",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6', //sweetalert confirm dialouge 
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    showLoaderOnConfirm: true,
+
+                    preConfirm: function () {
+                        return new Promise(function (resolve) {    //Promise() function take care delete process done by ajax
+                            var action = "delete";
+                            var data = "deleteId=" + typeId + "&action=" + action;
+                            var url = url;
+                            $.ajax({
+                                url: './ProcessStaff', //ajax codes start for delete data
+                                type: 'POST',
+                                data: data,
+                                dataType: 'JSON'
+                            })
+                                    .done(function (response) {
+                                        swal('Deleted!', response.message, response.status);    //after process done on delete.jsp file get JSON response display message "Fruit Delete Successfully"
+                                        var url_ = "manage_employee.jsp";
+                                        $(location).attr('href', url_);
+                                        //  readFruit();
+                                    })
+                                    .fail(function () {
+                                        swal('Oops...', 'Something went wrong with ajax !', 'error');    //if process fail on delete.jsp file get JSON response display message "Unable to delete fruit"
+                                    });
+                        });
+                    },
+                    allowOutsideClick: false
+                });
+            }
+        </script>
 </body>
 
 </html>

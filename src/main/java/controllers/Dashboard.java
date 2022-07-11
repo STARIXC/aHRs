@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 /**
  *
@@ -26,16 +27,17 @@ public class Dashboard extends HttpServlet {
 
     //HttpSession session;
     String query;
-    private final DatabaseConnection conn;
+    //private final DatabaseConnection conn;
     String message;
     PrintWriter out;
     private JSONConverter json;
-    private EmployeesRepo dao;
+    public EmployeesRepo dao;
 
-    int active_staff,onleave,pending_leave_applications,approvedleaves, execute_activity = 0;
+    int active_staff, onleave, pending_leave_applications, approvedleaves, execute_activity = 0;
 
     public Dashboard() {
-        conn = new DatabaseConnection();
+        super();
+        dao = new EmployeesRepo();
     }
 
     int row;
@@ -49,10 +51,14 @@ public class Dashboard extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("staff")) {
-          // active_staff=dao.get_all_active_staff();
-           active_staff=+1;
-          System.out.println(active_staff);
-            out.println(active_staff);
+            int get_all_active = dao.get_all_active_staff();
+            // active_staff=dao.get_all_active_staff();
+            active_staff = get_all_active;
+            System.out.println("Number of active staff: " + active_staff);
+           JSONObject obj = new JSONObject();
+           obj.put("staff", new Integer(active_staff));
+
+            out.println(obj);
         } else if (action.equalsIgnoreCase("leave")) {
 
         } else if (action.equalsIgnoreCase("approvedleaves")) {

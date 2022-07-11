@@ -12,7 +12,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Holidays</title>
-
+        <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/css/bootstrap.css">
 
         <script defer src="assets/fontawesome/js/all.min.js"></script>
@@ -24,10 +24,7 @@
                 background-color: rgba(0,0,0,0.1);
             }
         </style>
-        <!--        <link rel="stylesheet" href="vendor/calender/lib/jquery-ui.min.css" />
-                <link rel="stylesheet" href="vendor/calender/lib/bootstrap-datepicker.css" />-->
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-        <link href="assets/vendor/select2/dist/css/select2.min.css" rel="stylesheet" />
+      
         <link rel="stylesheet" href="assets/vendor/calender/lib/jquery-ui.min.css" />
         <link rel="stylesheet"
               href="assets/vendor/calender/lib/bootstrap-datepicker.css" />
@@ -38,92 +35,10 @@
         <div id="app">
             <div id="sidebar" class='active'>
                 <div class="sidebar-wrapper active">
-                    <div class="sidebar-header" style="height: 50px;margin-top: -30px">
-                        <i class="fa fa-users text-success me-4"></i>
-                        <span>HRH</span>
-                    </div>
-                    <div class="sidebar-menu">
-                        <ul class="menu">
-                            <li class="sidebar-item  "><a href="index.jsp"
-                                                          class='sidebar-link'> <i class="fa fa-home text-success"></i>
-                                    <span>Dashboard</span>
-                                </a></li>
-                           
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Designation</span>
-                                </a>
-                                        <ul class="submenu ">
-                                    <li><a href="manage_carder_type.jsp">Carder Type</a></li>
-                                    <li><a href="manage_carder_category.jsp">Carder Category</a></li>
-                                    <li><a href="manage_standardised_carder.jsp">Standardized Carder</a></li>
-                                    <li><a href="manage_designation.jsp"> Designations/Positions</a></li>
-                                    </ul>
-                            </li>
-                            <li class="sidebar-item  has-sub active"><a href="#"
-                                                                        class='sidebar-link'> <i class="fa fa-users text-success"></i>
-                                    <span>Employees</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_employee.jsp">Add Employee</a></li>
-                                    <li><a href="manage_employee.jsp">Manage Employee</a></li>
-                                    <li><a href="manage_termination.jsp">Termination</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Type</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_leave_type.jsp">Add Leave Type</a></li>
-                                    <li><a href="manage_leave_type.jsp">Manage Leave Type</a></li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-table text-success"></i>
-                                    <span>Leave Management</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="all_leave.jsp">All Leaves</a></li>
-                                    <li><a href="pending_leave.jsp">Pending Leaves</a></li>
-                                    <li><a href="approve_leave.jsp">Approve Leaves</a></li>
-                                    <li><a href="not_approve_leave.jsp">Not Approve Leaves</a>
-                                    </li>
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="javascript:void(0)" class='sidebar-link'>
-                                    <i class="fa fa-user text-success"></i> <span>Attendance</span></i>
-                                    </span>
-                                </a>
-
-                                <ul class="submenu" style="display: block;">
-                                    <li class=""><a
-                                            href="monthly_manual_attendance.jsp">Monthly
-                                            Attendance</a></li>
-
-                                    <li class=""><a
-                                            href="missing_attendance">Missing
-                                            Attendance</a></li>
-
-
-                                    <!-- single level menu/link -->
-                                    <li class=""><a
-                                            href="att_log_report">Attendance
-                                            Log</a></li>
-
-                                </ul></li>
-                            <li class="sidebar-item  has-sub"><a href="#"
-                                                                 class='sidebar-link'> <i class="fa fa-user text-success"></i>
-                                    <span>Users</span>
-                                </a>
-                                <ul class="submenu ">
-                                    <li><a href="add_user.jsp">Add User</a></li>
-                                    <li><a href="manage_user.jsp">Manage Users</a></li>
-                                </ul></li>
-                            <li class="sidebar-item "><a href="reports.jsp"
-                                                         class='sidebar-link'> <i class="fa fa-chart-bar text-success"></i>
-                                    <span>Reports</span>
-                                </a></li>
-                        </ul>
-                    </div>
-
+                  
+                   <!-- BEGIN SIDEBAR MENU -->         
+                    <%@include file="/_includes/sidebar_menu.jsp"%>
+                    <!-- END SIDEBAR MENU -->
                     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
                 </div>
             </div>
@@ -196,16 +111,16 @@
                                 </nav>
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                                <a href="http://hrms.braintricker.com/publicHoliday" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light"><i class="fa fa-list-ul" aria-hidden="true"></i>  View Public Holiday</a>
+                                <a href="manage_holidays.jsp" class="btn btn-success float-end m-l-20 hidden-xs hidden-sm waves-effect waves-light"><i class="fa fa-list-ul" aria-hidden="true"></i>  View Public Holiday</a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card panel panel-info">
-                                    <div class="panel-heading"><i class="mdi mdi-clipboard-text fa-fw"></i>	Add Public Holiday
+                                <div class="card text-white">
+                                    <div class="card-header bg-info"><i class="mdi mdi-clipboard-text fa-fw"></i>	Add Public Holiday
                                     </div>
-                                    <div class="panel-wrapper" >
-                                        <div class="card-body panel-body">
+                                    <div class="card-wrapper" >
+                                        <div class="card-body card-body">
                                             <form method="POST"  enctype="multipart/form-data" id="publicHolidayForm" class="form-horizontal" autocomplete="off">
 
                                                 <div class="form-body">

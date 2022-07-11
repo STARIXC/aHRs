@@ -2,7 +2,15 @@ package models;
 
 
 public class LeaveApplication {
- private String   date_of_application,start_date,end_date,  remarks, date_of_approval,leave_type_name, employee_name;
+ private String   date_of_application,start_date,end_date,  remarks, date_of_approval,leave_type_name, employee_name,duration;
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
 
     public void setLeave_type_name(String leave_type_name) {
         this.leave_type_name = leave_type_name;

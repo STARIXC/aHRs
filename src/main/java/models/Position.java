@@ -10,15 +10,10 @@ public class Position {
     int basic_pay;
 
     public Position(int carder_category_id, int standardized_cadre_id, String position_title, int cadre_type_id, int basic_pay) {
-        super();
-        this.carder_category_id = carder_category_id;
-        this.standardized_cadre_id = standardized_cadre_id;
-        this.position_title = position_title;
-        this.cadre_type_id = cadre_type_id;
-        this.basic_pay = basic_pay;
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public int getId() {
+     public int getId() {
         return id;
     }
 

@@ -23,53 +23,47 @@ public class DatabaseConnection {
     public PreparedStatement pst, pst1, pst2, pst3, pst4, pst5;
     public PreparedStatement prest, prest1, prest2, prest3, prest4, prest5;
     public CallableStatement csmt, csmt1, csmt2, csmt3, csmt4;
-    public 
-    String mydrive = "";
+    public String mydrive = "";
     public static int issetdbcalled_file_exists = 2;
     public static int issetdbcalled_exception = 2;
     public static int issetdbcalled_wrongpword = 2;
     public String dbsetup[] = new String[4];
     public Connection conn = null;
-    
+
     public static String conn_driver = "com.mysql.cj.jdbc.Driver";
 
     public DatabaseConnection() {
 
         try {
-           Class.forName(conn_driver).newInstance();
-           //if the saved host name is less than 2 letters long, then thats not a genuine host name
+            Class.forName(conn_driver).newInstance();
+            //if the saved host name is less than 2 letters long, then thats not a genuine host name
             URL location = DatabaseConnection.class.getProtectionDomain().getCodeSource().getLocation();
-    mydrive = location.getFile().substring(1, 2);
+            mydrive = location.getFile().substring(1, 2);
 
             if (getdbsettings(mydrive) == true) {
 
                 //String myfile=getServletContext().getRealPath("/dbsettings.txt");
-
                 if (dbsetup[0] != null) {
-                     if(dbsetup[3]==null){
-                        conn = DriverManager.getConnection("jdbc:mysql://" + dbsetup[0] + "/" + dbsetup[1], dbsetup[2],"");
-}
-                    else{
-                     //System.out.println("jdbc:mysql://" + dbsetup[0] + "/" + dbsetup[1]+","+ dbsetup[2]+","+dbsetup[3]);   
+                    if (dbsetup[3] == null) {
+                        conn = DriverManager.getConnection("jdbc:mysql://" + dbsetup[0] + "/" + dbsetup[1], dbsetup[2], "");
+                    } else {
+                        //System.out.println("jdbc:mysql://" + dbsetup[0] + "/" + dbsetup[1]+","+ dbsetup[2]+","+dbsetup[3]);   
 
-                    conn = DriverManager.getConnection("jdbc:mysql://" + dbsetup[0] + "/" + dbsetup[1], dbsetup[2],dbsetup[3]);
+                        conn = DriverManager.getConnection("jdbc:mysql://" + dbsetup[0] + "/" + dbsetup[1], dbsetup[2], dbsetup[3]);
                     }
 
                     //System.out.println("connection is : "+conn);
-
                 } else {
                     //call the page thats sets up the database
                     //use if to avoid calling the db.jsp twice.
-                    if (issetdbcalled_wrongpword %2== 0) {
-                 
-                        issetdbcalled_wrongpword ++;
-                    }
-                    else{
-                     issetdbcalled_wrongpword ++;
+                    if (issetdbcalled_wrongpword % 2 == 0) {
+
+                        issetdbcalled_wrongpword++;
+                    } else {
+                        issetdbcalled_wrongpword++;
                     }
 
                 }
-
 
                 //initialize this three values
                 issetdbcalled_exception = 2;
@@ -83,7 +77,6 @@ public class DatabaseConnection {
                 st3 = conn.createStatement();
                 st4 = conn.createStatement();
 
-
                 st_1 = conn.createStatement();
                 st_2 = conn.createStatement();
                 st_3 = conn.createStatement();
@@ -92,9 +85,7 @@ public class DatabaseConnection {
                 st_6 = conn.createStatement();
                 anc_scheduling_st = conn.createStatement();
 
-
             }
-
 
         } catch (Exception ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
@@ -102,12 +93,11 @@ public class DatabaseConnection {
             //error in dbase configuration 
             //call the jsp page that does configuration
 
-            if (issetdbcalled_exception%2 == 0) {
-            
-                issetdbcalled_exception ++;
-            }
-            else{
-            issetdbcalled_exception ++;
+            if (issetdbcalled_exception % 2 == 0) {
+
+                issetdbcalled_exception++;
+            } else {
+                issetdbcalled_exception++;
             }
 
         }
@@ -119,12 +109,11 @@ public class DatabaseConnection {
         try {
 
             String dbconnpath = "";
-           
-            if(OSValidator.isWindows()){
-            dbconnpath = drive + ":/HRH/DO_NOT_DELETE/_/_/dbconnection.txt";
-            }
-            else if(OSValidator.isUnix()){
-            dbconnpath = "HRH/DO_NOT_DELETE/_/_/dbconnection.txt";
+
+            if (OSValidator.isWindows()) {
+                dbconnpath = drive + ":/HRH/DO_NOT_DELETE/_/_/dbconnection.txt";
+            } else if (OSValidator.isUnix()) {
+                dbconnpath = "HRH/DO_NOT_DELETE/_/_/dbconnection.txt";
             }
             //File file = new File("");
             // InputStream inStream = getClass().getResourceAsStream("Web-INF/classes/dbconnection.txt");  
@@ -138,10 +127,7 @@ public class DatabaseConnection {
             while ((stLine = br.readLine()) != null) {
 
                 // Print the content on the console
-
-
                 dbsetup[count] = stLine;
-
 
                 if (count < 4) {
                     count++;
@@ -152,20 +138,17 @@ public class DatabaseConnection {
         } catch (IOException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
 
-
             System.out.println("MY VALUE:" + issetdbcalled_file_exists);
 
-            if (issetdbcalled_file_exists%2 == 0) {
+            if (issetdbcalled_file_exists % 2 == 0) {
 
-            calldbjsp();
+                calldbjsp();
+                issetdbcalled_file_exists++;
+            } else {
                 issetdbcalled_file_exists++;
             }
-            else{
-            issetdbcalled_file_exists++;
-            }
 
             System.out.println("MY VALUE:" + issetdbcalled_file_exists);
-
 
             System.out.println("ERROR:      FILE NOT FOUND");
             worked = false;
@@ -175,16 +158,16 @@ public class DatabaseConnection {
         return worked;
 
     }
-        public void calldbjsp() {
+
+    public void calldbjsp() {
         try {
 
             //not so good for now because the host name is static
             String url = "http://localhost:8080/aHRIM//dataconfig.jsp";
             java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
-             } catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }
+    }
 
-   
 }

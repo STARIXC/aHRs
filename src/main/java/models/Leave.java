@@ -2,11 +2,19 @@ package models;
 
 public class Leave {
 	private int typeID;
-	private String leave_type_name, total_days , emp_type;
+	private String leave_type_name, total_days , emp_type,leave_description;
 
 	public int getTypeID() {
 		return typeID;
 	}
+
+    public String getLeave_description() {
+        return leave_description;
+    }
+
+    public void setLeave_description(String leave_description) {
+        this.leave_description = leave_description;
+    }
 
 	public void setTypeID(int typeID) {
 		this.typeID = typeID;
